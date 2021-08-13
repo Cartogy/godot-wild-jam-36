@@ -67,33 +67,33 @@ jobs:
             PACKAGE: build/linux
 
 
-#  export-deploy-web:
-#    name: Web Export and Deploy
-#    runs-on: ubuntu-latest
-#    container:
-#      image: barichello/godot-ci:3.3.2
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#        with:
-#          lfs: true
-#      - name: Setup
-#        run: |
-#          mkdir -v -p ~/.local/share/godot/templates
-#          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-#      - name: Web Build
-#        run: |
-#          mkdir -v -p build/web
-#          # cd $EXPORT_NAME
-#          godot -v --export "HTML5" build/web/index.html
-#      - name: Deploy to Itch
-#        uses: josephbmanley/butler-publish-itchio-action@master
-#        env:
-#            BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-#            CHANNEL: web
-#            ITCH_GAME: War Pigs
-#            ITCH_USER: jonas1426
-#            PACKAGE: build/web
+  export-deploy-web:
+    name: Web Export and Deploy
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:3.3.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Web Build
+        run: |
+          mkdir -v -p build/web
+          # cd $EXPORT_NAME
+          godot -v --export "HTML5" build/web/index.html
+      - name: Deploy to Itch
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+            BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+            CHANNEL: web
+            ITCH_GAME: gwj-36 
+            ITCH_USER: jonas1426
+            PACKAGE: build/web
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
       #- name: Install rsync 📚
       #run: |
