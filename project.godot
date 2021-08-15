@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Cell",
+"language": "GDScript",
+"path": "res://src/Grid/Cell/cell.gd"
+}, {
+"base": "HexCoordinates",
+"class": "DoubledHexCoordinate",
+"language": "GDScript",
+"path": "res://src/Grid/Cell/HexCoordinates/double.gd"
+}, {
 "base": "Resource",
 "class": "HexCoordinates",
 "language": "GDScript",
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://src/Grid/Orientation/orientation.gd"
 } ]
 _global_script_class_icons={
+"Cell": "",
+"DoubledHexCoordinate": "",
 "HexCoordinates": "",
 "HexOrientation": ""
 }
