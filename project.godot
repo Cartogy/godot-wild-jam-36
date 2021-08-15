@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "HexCoordinates",
+"language": "GDScript",
+"path": "res://src/Grid/Cell/HexCoordinates/hex_coordinate.gd"
+}, {
+"base": "Resource",
+"class": "HexOrientation",
+"language": "GDScript",
+"path": "res://src/Grid/Orientation/orientation.gd"
+} ]
+_global_script_class_icons={
+"HexCoordinates": "",
+"HexOrientation": ""
+}
+
 [application]
 
 config/name="Godot-wild-jam- 36"
