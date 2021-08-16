@@ -2,11 +2,11 @@ extends Node2D
 
 var cell_scene = preload("res://src/Grid/Cell/Cell.tscn")
 
-export (bool) var DEBUG = true
+export (bool) var DEBUG = false
 export (Vector2) var dimensions = Vector2(10,10)
 
 # Where the grid starts
-var origin: Vector2 = Vector2(0,0)
+export (Vector2) var origin: Vector2 = Vector2(0,0)
 # Move cell to align to real hex position
 var cell_offset: Vector2 = Vector2(0,-8)
 
@@ -38,14 +38,15 @@ func _input(event):
 			print_debug(event.position)
 			
 			# Move point to originate from (0,0)
+			# Compensates for the shift and stretching done.
 			var pt = Vector2(
 				(event.position.x - origin.x) / size.x,
 				(event.position.y + origin.y) / size.y
 			)
 			
 			# Pixel to Axial Coordinates
-			var q = sqrt(3)/3.0 * pt.x - 1.0/3.0
-			var r = 2.0/3.0 * pt.y
+			#var q = sqrt(3)/3.0 * pt.x - 1.0/3.0
+			#var r = 2.0/3.0 * pt.y
 			
 			var frac_doubled = converter.pixel_to_doublewidth(event.position, origin, size)
 			
@@ -76,9 +77,7 @@ func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
 			print_debug([col,row])
 			var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
 			
-			#var cell = cell_scene.instance()
-			#cell.position = center + cell_offset
-			#add_child(cell)
+			add_cell(center, cell_offset)
 			
 			# Display 'Real' Hex positions
 			if DEBUG:
@@ -87,7 +86,12 @@ func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
 	if DEBUG:
 		update()
 		
-		
+
+func add_cell(center: Vector2, offset: Vector2):
+	var cell = cell_scene.instance()
+	cell.position = center+cell_offset
+	
+	add_child(cell)
 ###############
 ## DEBUG ZONE
 ###############
