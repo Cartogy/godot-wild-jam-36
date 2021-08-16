@@ -9,15 +9,30 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "AxialCoordinate",
+"language": "GDScript",
+"path": "res://src/Grid/Cell/HexCoordinates/axial_coordinate.gd"
+}, {
 "base": "Node2D",
 "class": "Cell",
 "language": "GDScript",
 "path": "res://src/Grid/Cell/cell.gd"
 }, {
-"base": "HexCoordinates",
-"class": "DoubledHexCoordinate",
+"base": "Resource",
+"class": "CubeCoordinate",
 "language": "GDScript",
-"path": "res://src/Grid/Cell/HexCoordinates/double.gd"
+"path": "res://src/Grid/Cell/HexCoordinates/cube_coordinate.gd"
+}, {
+"base": "Resource",
+"class": "DoubleCoordinate",
+"language": "GDScript",
+"path": "res://src/Grid/Cell/HexCoordinates/double_coordinate.gd"
+}, {
+"base": "Resource",
+"class": "HexConversion",
+"language": "GDScript",
+"path": "res://src/Grid/Cell/HexCoordinates/hex_conversions.gd"
 }, {
 "base": "Resource",
 "class": "HexCoordinates",
@@ -30,8 +45,11 @@ _global_script_classes=[ {
 "path": "res://src/Grid/Orientation/orientation.gd"
 } ]
 _global_script_class_icons={
+"AxialCoordinate": "",
 "Cell": "",
-"DoubledHexCoordinate": "",
+"CubeCoordinate": "",
+"DoubleCoordinate": "",
+"HexConversion": "",
 "HexCoordinates": "",
 "HexOrientation": ""
 }
