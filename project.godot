@@ -14,10 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Grid/Cell/HexCoordinates/axial_coordinate.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "BNet",
 "language": "GDScript",
 "path": "res://src/BNet/b_net.gd"
+}, {
+"base": "TileEntity",
+"class": "Bunny",
+"language": "GDScript",
+"path": "res://src/TileEntities/Bunny/bunny_entity.gd"
 }, {
 "base": "Node2D",
 "class": "Cell",
@@ -58,10 +63,16 @@ _global_script_classes=[ {
 "class": "State",
 "language": "GDScript",
 "path": "res://src/tools/StateMachine/state.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "TileEntity",
+"language": "GDScript",
+"path": "res://src/TileEntities/tile_entity.gd"
 } ]
 _global_script_class_icons={
 "AxialCoordinate": "",
 "BNet": "",
+"Bunny": "",
 "Cell": "",
 "CellState": "",
 "CubeCoordinate": "",
@@ -69,7 +80,8 @@ _global_script_class_icons={
 "HexConversion": "",
 "HexCoordinates": "",
 "HexOrientation": "",
-"State": ""
+"State": "",
+"TileEntity": ""
 }
 
 [application]

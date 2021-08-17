@@ -15,7 +15,11 @@ var neighbour_directions = [
 	Vector2(-2,0), Vector2(-1, 1), Vector2(1, 1)
 ]
 
+# Hex coordinate system
 var hex_coords: Vector2
+# Center in coordinat system
+# The cell's position might be offseted by the grid to compensate 
+# for the sprite.
 var real_hex_center: Vector2
 var neighbours: Array = []
 
@@ -30,6 +34,7 @@ var current_cell_consumption
 
 
 signal consumption_complete(from, neighbour)
+signal new_bunny(bunny)
 
 func _ready():
 	state_machine.setup_state_machine()
@@ -114,7 +119,8 @@ func breadth_search_neighbours():
 
 func add_bunny():
 	if state_machine.current_state.name == "BNet":
-		bunnies.add_bunny("Bunny!")
+		var bunny = bunnies.add_bunny(real_hex_center, hex_coords)
+		emit_signal("new_bunny", bunny)
 
 # production cells only
 func consume_cell(to_consume: Cell):
