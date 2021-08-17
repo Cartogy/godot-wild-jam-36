@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/BNet/BNet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/BNet/BNetView/BNetView.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Grid/Grid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Level/level.gd" type="Script" id=3]
 
@@ -9,5 +9,4 @@ script = ExtResource( 3 )
 
 [node name="Grid" parent="." instance=ExtResource( 2 )]
 
-[node name="BNet" parent="." instance=ExtResource( 1 )]
-tick_in_seconds = 0.2
+[node name="BNetView" parent="." instance=ExtResource( 1 )]
