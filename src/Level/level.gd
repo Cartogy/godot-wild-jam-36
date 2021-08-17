@@ -5,7 +5,7 @@ export (bool) var DEBUG
 export (Vector2) var starting_cell
 
 onready var grid = $Grid
-onready var bnet = $BNet
+onready var bnet = $BNetView/BNet
 
 func _ready():
 	# Add starting cell

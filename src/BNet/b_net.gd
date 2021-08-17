@@ -7,6 +7,7 @@ Responsible for ticking each cell that is being acquired.
 export (float) var tick_in_seconds = 1
 
 onready var tick_timer = $TickTimer
+onready var actor_data = $ActorData
 
 # Cells that are consuming/populating another cell.
 # These cells are already consumed
@@ -36,6 +37,7 @@ func cell_consumed(from: Cell, cell_consumed: Cell):
 	consumed_cells[cell_consumed.hex_coords] = cell_consumed
 	
 	var next_cell = from.breadth_search_neighbours()
+	next_cell.connect("get_resources", actor_data, "add_resources")
 	if next_cell != null:
 		from.consume_cell(next_cell)
 	else:
@@ -58,7 +60,9 @@ func add_consuming_cell(hex_coord: Vector2, cell: Cell):
 	var n = cell.breadth_search_neighbours()
 	if n != null:
 		# Make it a production cell
-		cell.bnet_produce()
+		cell.bnet_produce()	
+		n.connect("get_resources", actor_data, "add_resources")
 		cell.consume_cell(n)
 	else:
 		production_cells.erase(hex_coord)
+

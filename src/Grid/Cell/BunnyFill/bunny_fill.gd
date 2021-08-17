@@ -31,6 +31,12 @@ func add_bunny(center: Vector2, hex_coord: Vector2):
 	bunny.global_position = position_in_cell
 	bunny.hex_center = center
 	bunny.hex_coord = hex_coord
+	
+	# Conquer cell and consume resources
+	if bunnies_in_tile.size() == 0:
+		cell.triggered()
+		cell.emit_signal("get_resources", cell.resources)
+	
 	bunnies_in_tile.append(bunny)
 	
 	cell.add_child(bunny)
