@@ -127,10 +127,10 @@ func breadth_search_neighbours():
 ## BNet
 ###############
 
-func add_bunny(bnet):
-	if state_machine.current_state.name == "BNet":
-		var bunny = bunnies.add_bunny(real_hex_center, hex_coords, bnet)
-		#emit_signal("new_bunny", bunny)
+#func add_bunny(bnet):
+#	if state_machine.current_state.name == "BNet":
+#		var bunny = bunnies.add_bunny(real_hex_center, hex_coords, bnet)
+#		#emit_signal("new_bunny", bunny)
 
 # production cells only
 func consume_cell(to_consume: Cell):
