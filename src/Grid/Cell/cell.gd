@@ -1,6 +1,14 @@
 extends Node2D
 class_name Cell
 
+
+export (Texture) var default
+export (Texture) var display
+
+onready var state_machine = $StateMachine
+onready var bunnies = $BunnyFill
+onready var resources = $CellResources
+
 ## This cell is a D
 
 var neighbour_directions = [
@@ -8,12 +16,17 @@ var neighbour_directions = [
 	Vector2(-2,0), Vector2(-1, 1), Vector2(1, 1)
 ]
 
-var hex_coords: HexCoordinates = null
+
+var hex_size: Vector2
+# Hex coordinate system
+var hex_coords: Vector2
+# Center in coordinat system
+# The cell's position might be offseted by the grid to compensate 
+# for the sprite.
 var real_hex_center: Vector2
 var neighbours: Array = []
 
-export (Texture) var default
-export (Texture) var display
+
 
 # BNet variables to use
 var consumed: bool = false
@@ -21,10 +34,14 @@ var consumed: bool = false
 # TODO: Refactor into its own component
 var current_cell_consumption
 
+
+
 signal consumption_complete(from, neighbour)
+signal new_bunny(to_cell)
+signal get_resources(resources)
 
 func _ready():
-	pass
+	state_machine.setup_state_machine()
 
 func add_neighbour(cell):
 	neighbours.append(cell)
@@ -36,16 +53,21 @@ func show_neighbours():
 func hide_neighbours():
 	for n in neighbours:
 		n.deselect()
-		
+
+func pointy_hex_corner(center: Vector2, c_size: Vector2, corner_id: int):
+	var angle_deg = 60 * corner_id - 30
+	var angle_rad = PI / 180 * angle_deg
+	
+	return Vector2(center.x + c_size.x * cos(angle_rad), center.y + c_size.y * sin(angle_rad))
+
 ###############
 # BNET Interface
 ###############
 
 func tick():
-	# Currently acquiring a cell
-	if current_cell_consumption != null:
-		emit_signal("consumption_complete", self, current_cell_consumption)
-	
+	if state_machine.current_state.name == "BNetProduction":
+		state_machine.current_state.tick()
+
 func find_neighbour_to_consume():
 	for n in neighbours:
 		if n.consumed == false:
@@ -88,7 +110,7 @@ func breadth_search_neighbours():
 			var cell_rand = choosing_array[random_index]
 			
 			# Found neighbour to acquire next
-			if cell_rand.consumed == false:
+			if cell_rand.state_machine.current_state.name == "Available":
 				return cell_rand
 			else:	
 				# Investigate later, if not already visited
@@ -101,6 +123,40 @@ func breadth_search_neighbours():
 			amount_left -= 1
 			
 	return null
+###############
+## BNet
+###############
+
+#func add_bunny(bnet):
+#	if state_machine.current_state.name == "BNet":
+#		var bunny = bunnies.add_bunny(real_hex_center, hex_coords, bnet)
+#		#emit_signal("new_bunny", bunny)
+
+# production cells only
+func consume_cell(to_consume: Cell):
+	if state_machine.current_state.name == "BNetProduction":
+		state_machine.current_state.add_consuming_cell(to_consume)
+		to_consume.bnet_acquire()
+
+################
+## State 
+################
+
+func bnet_produce():
+	state_machine.change_state("BNetProduction")
+
+func bnet_acquire():
+	state_machine.change_state("BNet")
+
+func available_cell():
+	state_machine.change_state("Available")
+
+func opposing_cell():
+	state_machine.change_state("Opposing")
+
+func water_cell():
+	state_machine.change_state("Water")
+
 
 ################
 ## DEBUG ZONE
@@ -122,7 +178,6 @@ func _draw():
 
 func triggered():
 	$Sprite.texture = display
-	consumed = true
 	
 func deselect():
 	$Sprite.texture = default

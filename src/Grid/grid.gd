@@ -8,7 +8,8 @@ export (Vector2) var dimensions = Vector2(10,10)
 # Where the grid starts
 export (Vector2) var origin: Vector2 = Vector2(0,0)
 # Move cell to align to real hex position
-var cell_offset: Vector2 = Vector2(0,-8)
+#var cell_offset: Vector2 = Vector2(0,-8)
+var cell_offset: Vector2 = Vector2(0,0)
 
 
 # How wide/tall a cell will be
@@ -73,7 +74,7 @@ func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
 			
 			
 			# Store Cells
-			var cell = create_cell(center, cell_offset)
+			var cell = create_cell(center, cell_offset, size,d_coord)
 			add_cell(cell)
 			# Map hexagon coord to cell
 			hexagon_coords[Vector2(col, row)] = cell
@@ -85,10 +86,12 @@ func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
 	if DEBUG:
 		update()
 
-func create_cell(center: Vector2, offset: Vector2):
+func create_cell(center: Vector2, offset: Vector2, p_size: Vector2, d_coord: DoubleCoordinate):
 	var cell = cell_scene.instance()
 	cell.real_hex_center = center
 	cell.position = center+cell_offset
+	cell.hex_size = p_size
+	cell.hex_coords = d_coord.to_vector()
 	
 	return cell
 

@@ -9,8 +9,9 @@
 [node name="Controller" parent="." instance=ExtResource( 2 )]
 
 [node name="BaseLevel" parent="." instance=ExtResource( 1 )]
+DEBUG = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Begin" type="Button" parent="."]
 margin_left = 27.7795
 margin_top = 27.7795
 margin_right = 152.78
@@ -20,8 +21,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [connection signal="pressed" from="Button" to="BaseLevel" method="_on_Button_pressed"]
+[node name="Stop" type="Button" parent="."]
+margin_left = 218.295
+margin_top = 26.9087
+margin_right = 346.295
+margin_bottom = 46.9087
+text = "Stop Expansion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Begin" to="BaseLevel" method="_on_Button_pressed"]
+[connection signal="pressed" from="Stop" to="BaseLevel" method="_on_Stop_pressed"]
