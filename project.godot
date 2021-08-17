@@ -19,10 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/BNet/b_net.gd"
 }, {
+"base": "TileEntity",
+"class": "Bunny",
+"language": "GDScript",
+"path": "res://src/TileEntities/Bunny/bunny_entity.gd"
+}, {
 "base": "Node2D",
 "class": "Cell",
 "language": "GDScript",
 "path": "res://src/Grid/Cell/cell.gd"
+}, {
+"base": "State",
+"class": "CellState",
+"language": "GDScript",
+"path": "res://src/Grid/Cell/States/cell_state.gd"
 }, {
 "base": "Resource",
 "class": "CubeCoordinate",
@@ -48,16 +58,30 @@ _global_script_classes=[ {
 "class": "HexOrientation",
 "language": "GDScript",
 "path": "res://src/Grid/Orientation/orientation.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/tools/StateMachine/state.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "TileEntity",
+"language": "GDScript",
+"path": "res://src/TileEntities/tile_entity.gd"
 } ]
 _global_script_class_icons={
 "AxialCoordinate": "",
 "BNet": "",
+"Bunny": "",
 "Cell": "",
+"CellState": "",
 "CubeCoordinate": "",
 "DoubleCoordinate": "",
 "HexConversion": "",
 "HexCoordinates": "",
-"HexOrientation": ""
+"HexOrientation": "",
+"State": "",
+"TileEntity": ""
 }
 
 [application]
