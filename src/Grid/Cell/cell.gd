@@ -15,6 +15,8 @@ var neighbour_directions = [
 	Vector2(-2,0), Vector2(-1, 1), Vector2(1, 1)
 ]
 
+
+var hex_size: Vector2
 # Hex coordinate system
 var hex_coords: Vector2
 # Center in coordinat system
@@ -49,7 +51,13 @@ func show_neighbours():
 func hide_neighbours():
 	for n in neighbours:
 		n.deselect()
-		
+
+func pointy_hex_corner(center: Vector2, c_size: Vector2, corner_id: int):
+	var angle_deg = 60 * corner_id - 30
+	var angle_rad = PI / 180 * angle_deg
+	
+	return Vector2(center.x + c_size.x * cos(angle_rad), center.y + c_size.y * sin(angle_rad))
+
 ###############
 # BNET Interface
 ###############
