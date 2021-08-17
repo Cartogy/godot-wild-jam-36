@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://src/Menu/Tabs/Main/MainMenuTab.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Menu/Tabs/menu_tab_container.gd" type="Script" id=3]
+[ext_resource path="res://src/Menu/Tabs/Settings/SettingsMenuTab.tscn" type="PackedScene" id=4]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
+tabs_visible = false
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuTab" parent="CanvasLayer/TabContainer" instance=ExtResource( 2 )]
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="SettingsMenuTab" parent="CanvasLayer/TabContainer" instance=ExtResource( 4 )]
+visible = false
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
