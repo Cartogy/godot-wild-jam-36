@@ -69,10 +69,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Grid/Orientation/orientation.gd"
 }, {
+"base": "MarginContainer",
+"class": "MenuTab",
+"language": "GDScript",
+"path": "res://src/Menu/Tabs/menu_tab.gd"
+}, {
 "base": "CellSpecialResource",
 "class": "MountainResource",
 "language": "GDScript",
 "path": "res://src/Grid/Cell/CellResource/SpecialResources/mountain_resource.gd"
+}, {
+"base": "MarginContainer",
+"class": "PauseTab",
+"language": "GDScript",
+"path": "res://src/Menu/Pause/Tabs/pause_tab.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -102,7 +112,9 @@ _global_script_class_icons={
 "HexConversion": "",
 "HexCoordinates": "",
 "HexOrientation": "",
+"MenuTab": "",
 "MountainResource": "",
+"PauseTab": "",
 "State": "",
 "TileEntity": "",
 "TreeResource": ""
@@ -112,6 +124,11 @@ _global_script_class_icons={
 
 config/name="Godot-wild-jam- 36"
 config/icon="res://icon.png"
+
+[autoload]
+
+ConfigData="*res://src/AutoLoad/ConfigData.tscn"
+Flow="*res://src/AutoLoad/Flow.tscn"
 
 [physics]
 
