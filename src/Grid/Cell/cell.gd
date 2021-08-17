@@ -15,7 +15,10 @@ var neighbours: Array = []
 export (Texture) var default
 export (Texture) var display
 
+# BNet variables to use
 var consumed: bool = false
+# If containing a cell to consume, this cell is a production cell.
+# TODO: Refactor into its own component
 var current_cell_consumption
 
 signal consumption_complete(from, neighbour)
@@ -39,6 +42,7 @@ func hide_neighbours():
 ###############
 
 func tick():
+	# Currently acquiring a cell
 	if current_cell_consumption != null:
 		emit_signal("consumption_complete", self, current_cell_consumption)
 	
@@ -48,26 +52,34 @@ func find_neighbour_to_consume():
 			return n
 	return null
 
+# Breadth-Search
+# TODO: Refactor out onto a seperate component or something. Ideally only buildings (Dens) will allow this kind of behaviour.
 func breadth_search_neighbours():
-	# Store neighbours of current cell
+	# Store neighbours to search
 	var ns_queue = []
-	# Start of algorithm
 	var visited: Dictionary
 	
-	
+	# Start of algorithm
 	ns_queue.append(self)
+
+	# Invariant
 	while ns_queue.empty() == false:
+		# Look at first cell
 		var c = ns_queue.pop_front()
+		# No need to look at it again
 		visited[c] = true
 		
+		# Get cell's neighbours
 		var cell_neighbours: Array = c.neighbours
 		
 		var neighbour_size = cell_neighbours.size()
+		# Array to remove neighbours when searching for a random neighbour
 		var choosing_array = []
-		# playground
+		# Fill array
 		for n in cell_neighbours:
 			choosing_array.append(n)
 		
+		# Allow random neighbour selection
 		randomize()
 		var amount_left = neighbour_size
 		# Go over the neighbours in a random manner
@@ -75,26 +87,19 @@ func breadth_search_neighbours():
 			var random_index = randi() % amount_left
 			var cell_rand = choosing_array[random_index]
 			
+			# Found neighbour to acquire next
 			if cell_rand.consumed == false:
 				return cell_rand
-			else:
+			else:	
+				# Investigate later, if not already visited
 				if visited.has(cell_rand) == false:
 					ns_queue.append(cell_rand)
-			
+			# remove random cell. No need to look at it again.
+			# Avoids getting the same cell twice.
 			choosing_array.erase(cell_rand)
 			
 			amount_left -= 1
 			
-		# Search cell neighbours
-		#for n in cell_neighbours:
-		#	var cell_n: Cell = n
-		#	if cell_n.consumed:		# store to search its neighbours later
-		#		ns_queue.append(cell_n)
-		#	else:	# Found next cell to consume
-		#		return cell_n
-		# Remove current cell from queue
-		
-	#
 	return null
 
 ################

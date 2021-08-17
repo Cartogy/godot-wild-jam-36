@@ -40,10 +40,6 @@ func _ready():
 	fill_neighbours(hexagon_coords, neighbour_directions)
 
 func pixel_to_hex(cursor: Vector2):
-	#var pt = Vector2(
-	#			(cursor.x - origin.x) / size.x,
-	#			(cursor.y + origin.y) / size.y
-	#		)
 	var frac_doubled = converter.pixel_to_doublewidth(cursor, origin, size)
 	
 	# Round Hex Coords
@@ -70,6 +66,7 @@ func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
 			# Column coordinate based on Doubled-coordinate
 			var col = (x * 2) + row_mod
 			var d_coord = DoubleCoordinate.new(row,col)
+			# Ensure property holds for double width coordinate
 			assert((col + row) % 2 == 0)
 			
 			var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
@@ -95,30 +92,13 @@ func create_cell(center: Vector2, offset: Vector2):
 	
 	return cell
 
-func add_neighbours(cell: Cell, storage: Array, current_row: Array, x: int, y: int):
-	var storage_size = storage.size()
-	# Horizontal Neight on its left
-	if x != 0:
-		var horizontal_neighbour = current_row[x-1]
-		cell.add_neighbour(horizontal_neighbour)
-	# Neighbours ontop
-	if storage_size != 0:
-		var prev_row = storage[storage_size-2]
-		var top_left_neighbour = prev_row[x]
-		cell.add_neighbour(top_left_neighbour)
-		
-		# May not be a top right neighbour
-		if x+1 < prev_row.size():
-			var top_right_neighbour = prev_row[x+1]
-			cell.add_neighbour(top_right_neighbour)
-	
-	
 func add_cell(cell):
 	add_child(cell)
 	
 func get_cell(hex_coord: Vector2) -> Cell:
 	return hexagon_coords.get(hex_coord)
 	
+# Connects each cell to their respective neighbours
 func fill_neighbours(hex_map: Dictionary, directions: Array):
 	for coord in hex_map.keys():
 		var cell = hex_map.get(coord)

@@ -1,15 +1,23 @@
 extends Node
+class_name BNet
+"""
+Responsible for ticking each cell that is being acquired.
+"""
 
 export (float) var tick_in_seconds = 1
 
 onready var tick_timer = $TickTimer
 
 # Cells that are consuming/populating another cell.
-# These cels are already consume.
+# These cells are already consumed
 # Hex_Coord -> Cell
+
+# TODO: Refactor. This will store production cells (Cells with Buildings) as cells that have Dens
+# Will be the only ones to acquire/consume another cell.
 var consuming_cells: Dictionary
 
-var active=  false
+# Run BNet
+var active = false
 
 func _ready():
 	#active = true
@@ -21,7 +29,7 @@ func _physics_process(delta):
 			tick_cells()
 			tick_timer.start(tick_in_seconds)
 	
-# Called by cell when consumption is finished
+# Called by cell production when consumption is finished
 func cell_consumed(from: Cell, cell_consumed: Cell):
 	cell_consumed.triggered()
 	var next_cell = from.breadth_search_neighbours()
@@ -39,6 +47,7 @@ func tick_cells():
 # Adding
 #####
 
+# Adds a new production cell to take into acount
 func add_consuming_cell(hex_coord: Vector2, cell: Cell):
 	consuming_cells[hex_coord] = cell
 	cell.connect("consumption_complete", self, "cell_consumed")

@@ -15,6 +15,9 @@ func _input(event):
 				highlight_neighbours(event)
 			
 
+###############
+## DEBUG ZONE
+###############
 func highlight_neighbours(event):
 	var doubled_width_coord = grid_hex.pixel_to_hex(event.position)
 	var hex_cell = grid_hex.get_cell(doubled_width_coord.to_vector())
