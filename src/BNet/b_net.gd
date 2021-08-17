@@ -56,6 +56,7 @@ func tick_cells():
 func add_consuming_cell(hex_coord: Vector2, cell: Cell):
 	production_cells[hex_coord] = cell
 	cell.connect("consumption_complete", self, "cell_consumed")
+	cell.connect("new_bunny", self, "add_bunny")
 	cell.triggered()
 	var n = cell.breadth_search_neighbours()
 	if n != null:
@@ -66,3 +67,9 @@ func add_consuming_cell(hex_coord: Vector2, cell: Cell):
 	else:
 		production_cells.erase(hex_coord)
 
+func add_bunny(to: Cell):
+	var real_hex_center = to.real_hex_center
+	var hex_coords = to.hex_coords
+	
+	if to.state_machine.current_state.name == "BNet":
+		to.bunnies.add_bunny(real_hex_center, hex_coords, self)

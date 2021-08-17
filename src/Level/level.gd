@@ -15,6 +15,12 @@ func _ready():
 func start_bnet():
 	bnet.active = true
 
+func stop_bnet():
+	bnet.active = false
 
 func _on_Button_pressed():
 	start_bnet()
+
+
+func _on_Stop_pressed():
+	stop_bnet()

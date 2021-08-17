@@ -20,7 +20,7 @@ func _ready():
 func reached_max_capacity():
 	return max_bunnies == bunnies_in_tile.size()
 	
-func add_bunny(center: Vector2, hex_coord: Vector2):
+func add_bunny(center: Vector2, hex_coord: Vector2, bnet):
 	var cell = get_owner()
 	var bunny: Bunny = bunny_scene.instance()
 	var hex_center = center - cell.global_position
@@ -31,6 +31,8 @@ func add_bunny(center: Vector2, hex_coord: Vector2):
 	bunny.global_position = position_in_cell
 	bunny.hex_center = center
 	bunny.hex_coord = hex_coord
+	# connect to system
+	bunny.bnet = bnet
 	
 	# Conquer cell and consume resources
 	if bunnies_in_tile.size() == 0:

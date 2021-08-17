@@ -38,7 +38,8 @@ func tick():
 		cell_consumption.triggered()
 		cell.emit_signal("consumption_complete", cell, cell_consumption)
 	else:
-		cell_consumption.add_bunny()
+		#cell_consumption.add_bunny()
+		cell.emit_signal("new_bunny", cell_consumption)
 		if cell_consumption.bunnies.reached_max_capacity():
 			cell_consumption.triggered()
 			cell.emit_signal("consumption_complete", cell, cell_consumption)

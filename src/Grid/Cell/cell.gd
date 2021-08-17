@@ -37,7 +37,7 @@ var current_cell_consumption
 
 
 signal consumption_complete(from, neighbour)
-signal new_bunny(bunny)
+signal new_bunny(to_cell)
 signal get_resources(resources)
 
 func _ready():
@@ -127,9 +127,9 @@ func breadth_search_neighbours():
 ## BNet
 ###############
 
-func add_bunny():
+func add_bunny(bnet):
 	if state_machine.current_state.name == "BNet":
-		var bunny = bunnies.add_bunny(real_hex_center, hex_coords)
+		var bunny = bunnies.add_bunny(real_hex_center, hex_coords, bnet)
 		#emit_signal("new_bunny", bunny)
 
 # production cells only
