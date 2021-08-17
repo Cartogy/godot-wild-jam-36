@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Grid/Cell/cell.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/Hex_Neutral.png" type="Texture" id=2]
-[ext_resource path="res://assets/graphics/Hex_Creep.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/grass.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/desert.png" type="Texture" id=3]
 [ext_resource path="res://src/tools/StateMachine/state_machine.gd" type="Script" id=4]
 [ext_resource path="res://src/Grid/Cell/States/available_state.gd" type="Script" id=5]
 [ext_resource path="res://src/Grid/Cell/BunnyFill/bunny_fill.gd" type="Script" id=6]

@@ -8,7 +8,8 @@ export (Vector2) var dimensions = Vector2(10,10)
 # Where the grid starts
 export (Vector2) var origin: Vector2 = Vector2(0,0)
 # Move cell to align to real hex position
-var cell_offset: Vector2 = Vector2(0,-8)
+#var cell_offset: Vector2 = Vector2(0,-8)
+var cell_offset: Vector2 = Vector2(0,0)
 
 
 # How wide/tall a cell will be

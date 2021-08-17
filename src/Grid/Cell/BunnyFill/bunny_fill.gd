@@ -12,7 +12,7 @@ var bunnies_in_tile: Array = []
 
 # Percentage for positions
 var default_percentage = 0.30
-var percentage_increase = 0.10
+var percentage_increase = 0.20
 
 func _ready():
 	pass
@@ -53,6 +53,7 @@ func get_cell_position(center: Vector2, cell_size: Vector2, bunny_id: int, perce
 	var percentage_adjustment = 0
 	# How many times have we gone over all hex corners
 	var complete_cycles = bunny_id / 7
+	percentage_adjustment = complete_cycles
 	
 	var adjust_vector_by = percentage + (percentage_adjustment * percentage_increase)
 	
