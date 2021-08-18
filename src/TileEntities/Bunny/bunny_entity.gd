@@ -5,6 +5,7 @@ var on_cell: Cell
 var bnet = null
 
 func _ready():
+	selectable = true
 	if bnet != null:
 		bnet.actor_data.add_population(1)
 
