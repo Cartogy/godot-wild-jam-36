@@ -14,7 +14,6 @@ script = ExtResource( 3 )
 
 [node name="BCommander" parent="." instance=ExtResource( 4 )]
 hex_grid_path = NodePath("../Grid")
-camera_path = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true

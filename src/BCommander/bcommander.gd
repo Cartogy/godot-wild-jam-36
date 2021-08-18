@@ -6,35 +6,72 @@ Responsible for selecting and moving units
 """
 
 export (NodePath) var hex_grid_path
-export (NodePath) var camera_path
 
 # Used for unit selection
 onready var area = $Area2D
 onready var collision = $Area2D/CollisionShape2D
 
 var hex_grid
-var camera: Camera2D = null
 var selected_units: Array = []
+var select_rect = RectangleShape2D.new()
+
+var mouse_click_area = Vector2(1,1)
+
+var dragging: bool = false
+var drag_start: Vector2 = Vector2.ZERO
+var drag_end: Vector2 = Vector2.ZERO
+var cursor: Vector2 = Vector2.ZERO
 
 func _ready():
+	update()
 	if hex_grid_path != "":
 		hex_grid = get_node(hex_grid_path)
-	if camera_path != "":
-		camera = get_node(camera_path)
 
-func _input(event):
+
+
+
+func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
+			clear_units()
+			
+			cursor = get_global_mouse_position()
+			
+			select_rect.extents = mouse_click_area
+			var space = get_world_2d().direct_space_state
+			var query = Physics2DShapeQueryParameters.new()
+			query.set_shape(select_rect)
+			query.transform = Transform2D(0, cursor)
+			var unit_collision = space.intersect_shape(query)
+			filter_units(unit_collision)
+			
+			print_debug(selected_units)
+			
+			drag_start = cursor - (mouse_click_area/2)
+			drag_end = cursor + (mouse_click_area / 2)
+			update()
+			
+			#dragging = true
+			#drag_start = get_global_mouse_position()
+		elif dragging:
+			dragging = false
+			drag_end = get_global_mouse_position()
+			
+			select_rect.extents = (drag_end - drag_start) / 2
+			var space = get_world_2d().direct_space_state
+			var query = Physics2DShapeQueryParameters.new()
+			query.set_shape(select_rect)
+			query.transform = Transform2D(0, (drag_end + drag_start)/2)
+
+			
+			update()
+			print_debug(selected_units)
 			#var hex_coord:DoubleCoordinate = hex_grid.pixel_to_hex(event.position)
 			#var cell = hex_grid.get_cell(hex_coord.to_vector())
-			var cursor: Vector2
-			if camera != null:
-				cursor = camera.get_global_mouse_position()
-			else:
-				cursor = event.position
-			area.global_position = cursor
-			var units = area.get_overlapping_bodies()
-			print_debug(units)
+
+			area.global_position = get_global_mouse_position()
+			#var units = area.get_overlapping_bodies()
+			
 			
 			
 
@@ -57,6 +94,17 @@ func _move_to(hex_coord: Vector2):
 		# Move units
 		pass
 
+func filter_units(units: Array):
+	for u in units:
+		var unit = u.collider
+		if unit is TileEntity:
+			if unit.selectable:
+				selected_units.append(unit)
+
+func _draw():
+	draw_rect(Rect2(drag_start, cursor - drag_start), Color(.5,.5,.5), false)
 
 func _on_Area2D_body_entered(body):
-	pass # Replace with function body.
+	if body is TileEntity:
+		if body.selectable:
+			selected_units.append(body)
