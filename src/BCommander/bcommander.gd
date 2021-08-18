@@ -53,6 +53,9 @@ func _unhandled_input(event):
 			
 			#dragging = true
 			#drag_start = get_global_mouse_position()
+		elif event.button_index == BUTTON_RIGHT and event.pressed:
+
+			move_units(selected_units, get_global_mouse_position())
 		elif dragging:
 			dragging = false
 			drag_end = get_global_mouse_position()
@@ -89,10 +92,13 @@ func decrement_units():
 func clear_units():
 	selected_units.clear()
 
-func _move_to(hex_coord: Vector2):
-	if selected_units.size() > 0:
-		# Move units
-		pass
+func move_units(units: Array, pixel: Vector2):
+	var hex_coord = hex_grid.pixel_to_hex(pixel)
+	var cell = hex_grid.get_cell(hex_coord)
+	if units.size() > 0:
+		for u in units:
+			u.move_to([cell])
+
 
 func filter_units(units: Array):
 	for u in units:
