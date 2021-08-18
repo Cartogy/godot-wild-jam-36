@@ -7,10 +7,6 @@ Responsible for selecting and moving units
 
 export (NodePath) var hex_grid_path
 
-# Used for unit selection
-onready var area = $Area2D
-onready var collision = $Area2D/CollisionShape2D
-
 var hex_grid
 var selected_units: Array = []
 var select_rect = RectangleShape2D.new()
@@ -72,7 +68,6 @@ func _unhandled_input(event):
 			#var hex_coord:DoubleCoordinate = hex_grid.pixel_to_hex(event.position)
 			#var cell = hex_grid.get_cell(hex_coord.to_vector())
 
-			area.global_position = get_global_mouse_position()
 			#var units = area.get_overlapping_bodies()
 			
 			
@@ -94,7 +89,7 @@ func clear_units():
 
 func move_units(units: Array, pixel: Vector2):
 	var hex_coord = hex_grid.pixel_to_hex(pixel)
-	var cell = hex_grid.get_cell(hex_coord)
+	var cell = hex_grid.get_cell(hex_coord.to_vector())
 	if units.size() > 0:
 		for u in units:
 			u.move_to([cell])

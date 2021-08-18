@@ -30,9 +30,13 @@ func _physics_process(_delta):
 				arrived_at(next_cell)
 				next_cell = cell_path.pop_front()
 			else:
+				arrived_at(next_cell)
+				cell = next_cell
+				next_cell = null
 				migrating = false
-		direction = direction.normalized()
-		move_and_slide(direction * speed)
+		else:
+			direction = direction.normalized()
+			move_and_slide(direction * speed)
 
 
 func arrived_at(p_cell: Cell):
