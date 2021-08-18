@@ -7,10 +7,14 @@ export (Vector2) var starting_cell
 onready var grid = $Grid
 onready var bnet = $BNetView/BNet
 
+var starting_den: PackedScene = load("res://src/Structures/BNetStructure/Den/Den.tscn")
+
 func _ready():
 	# Add starting cell
 	var cell = grid.get_cell(starting_cell)
-	bnet.add_consuming_cell(starting_cell, cell)
+	var den = starting_den.instance()
+
+	bnet.add_starting_structure(den, starting_cell, cell)
 
 func start_bnet():
 	bnet.active = true

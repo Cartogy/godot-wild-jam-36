@@ -60,6 +60,9 @@ func pointy_hex_corner(center: Vector2, c_size: Vector2, corner_id: int):
 	
 	return Vector2(center.x + c_size.x * cos(angle_rad), center.y + c_size.y * sin(angle_rad))
 
+func get_hex_center() -> Vector2:
+	return real_hex_center - self.global_position
+
 ###############
 # BNET Interface
 ###############
