@@ -129,6 +129,7 @@ config/icon="res://icon.png"
 
 ConfigData="*res://src/AutoLoad/ConfigData.tscn"
 Flow="*res://src/AutoLoad/Flow.tscn"
+AudioEngine="*res://src/AutoLoad/AudioEngine/AudioEngine.tscn"
 
 [physics]
 
