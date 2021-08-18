@@ -20,6 +20,16 @@ func _ready():
 func reached_max_capacity():
 	return max_bunnies == bunnies_in_tile.size()
 
+func calc_direction_placement() -> Vector2:
+	var cell: Cell = get_owner()
+	var hex_center = cell.global_position
+	var hex_size = cell.hex_size
+	var bunny_id = bunnies_in_tile.size() + 1
+
+	var vector_to_position = get_cell_position(hex_center, hex_size, bunny_id, default_percentage, percentage_increase)
+
+	return vector_to_position
+
 func add_bunny(center: Vector2, hex_coord: Vector2, bnet):
 	var cell: Cell = get_owner()
 	var bunny: Bunny = bunny_scene.instance()
@@ -45,6 +55,24 @@ func add_bunny(center: Vector2, hex_coord: Vector2, bnet):
 	
 
 	bnet.add_child(bunny)
+
+func place_bunny_on_cell(bunny):
+	var cell: Cell = get_owner()
+	# Find somewhere else to place bunny
+	if reached_max_capacity():
+		var next_available_cell = cell.breadth_search_neighbours()
+
+		if next_available_cell != null:
+			bunny.move_to([next_available_cell])
+	else:	# Place bunny in this tile
+		if bunnies_in_tile.size() == 0:
+			cell.triggered()
+		bunny.cell = cell
+		bunnies_in_tile.append(bunny)
+
+func remove_bunny(bunny):
+	if bunnies_in_tile.has(bunny):
+		bunnies_in_tile.erase(bunny)
 
 func delete_bunnies(amount: int):
 	for i in amount:
