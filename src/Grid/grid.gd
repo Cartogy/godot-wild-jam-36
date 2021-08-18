@@ -37,28 +37,28 @@ var neighbour_directions = [
 
 func _ready():
 	generate_hex_grid(dimensions, origin, size)
-		
+
 	fill_neighbours(hexagon_coords, neighbour_directions)
 
 func pixel_to_hex(cursor: Vector2):
 	var frac_doubled = converter.pixel_to_doublewidth(cursor, origin, size)
-	
+
 	# Round Hex Coords
 	#var axial = AxialCoordinate.new(q, r)
 	var cube = converter.doublewidth_to_cube(frac_doubled)
 	var round_cube = converter.cube_round(cube)
 
-	
-	
+
+
 	# Convert back to original coordinate system
 	var double_width = converter.cube_to_double_width(round_cube)
 	print_debug(double_width.to_vector())
-	
+
 	return double_width
-			
+
 
 func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
-	
+
 	for y in dimension.y:
 		# Shifted or Unshifted Row
 		var row_mod = y % 2
@@ -69,16 +69,16 @@ func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
 			var d_coord = DoubleCoordinate.new(row,col)
 			# Ensure property holds for double width coordinate
 			assert((col + row) % 2 == 0)
-			
+
 			var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
-			
-			
+
+
 			# Store Cells
 			var cell = create_cell(center, cell_offset, size,d_coord)
 			add_cell(cell)
 			# Map hexagon coord to cell
 			hexagon_coords[Vector2(col, row)] = cell
-			
+
 			# Display 'Real' Hex positions
 			if DEBUG:
 				var corners = make_hex_corners(center, p_size)
@@ -92,15 +92,15 @@ func create_cell(center: Vector2, offset: Vector2, p_size: Vector2, d_coord: Dou
 	cell.position = center+cell_offset
 	cell.hex_size = p_size
 	cell.hex_coords = d_coord.to_vector()
-	
+
 	return cell
 
 func add_cell(cell):
 	add_child(cell)
-	
+
 func get_cell(hex_coord: Vector2) -> Cell:
 	return hexagon_coords.get(hex_coord)
-	
+
 # Connects each cell to their respective neighbours
 func fill_neighbours(hex_map: Dictionary, directions: Array):
 	for coord in hex_map.keys():
@@ -110,9 +110,29 @@ func fill_neighbours(hex_map: Dictionary, directions: Array):
 			if hex_map.has(coord + dir):
 				var neighbour = hex_map[coord+dir]
 				cell.add_neighbour(neighbour)
-			
-	
-	
+
+
+##############
+## UTIL
+##############
+
+# used for limiting the camera's navigation
+func get_grid_bounds() -> Rect2:
+	var minimum_x = 9999999
+	var maximum_x = -99999999
+	var minimum_y = 99999999
+	var maximum_y = -9999999
+	for cell in hexagon_coords.values():
+		if cell.position.x < minimum_x:
+			minimum_x = cell.position.x
+		if cell.position.y < minimum_y:
+			minimum_y = cell.position.y
+		if cell.position.x > maximum_x:
+			maximum_x = cell.position.x
+		if cell.position.y > maximum_y:
+			maximum_y = cell.position.x
+	return Rect2(minimum_x, minimum_y, maximum_x - minimum_x, maximum_y - minimum_y)
+
 ###############
 ## DEBUG ZONE
 ###############
@@ -131,7 +151,7 @@ func make_hex_corners(center: Vector2, c_size: Vector2):
 func pointy_hex_corner(center: Vector2, c_size: Vector2, corner_id: int):
 	var angle_deg = 60 * corner_id - 30
 	var angle_rad = PI / 180 * angle_deg
-	
+
 	return Vector2(center.x + c_size.x * cos(angle_rad), center.y + c_size.y * sin(angle_rad))
 
 
@@ -141,7 +161,7 @@ func _draw_hex(corners: Array):
 		var c0 = corners[c-1]
 		var c1 = corners[c]
 		draw_line(c0, c1, Color(1,1,1,1))
-		
+
 	# Complete the Hexagon
 	draw_line(corners[0], corners[corners.size()-1], Color(1,1,1,1))
 

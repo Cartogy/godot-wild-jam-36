@@ -30,17 +30,17 @@ func _physics_process(delta):
 		if tick_timer.is_stopped():
 			tick_cells()
 			tick_timer.start(tick_in_seconds)
-	
+
 func tick_cells():
 	for c in production_structures.values():
 		c.tick()
-		
+
 #####
 # Adding
 #####
 
 func add_structure(structure: BNetStructure, hex_coord: Vector2, cell: Cell):
-	
+
 	production_structures[hex_coord] = structure
 
 	print_debug()

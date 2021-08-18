@@ -21,7 +21,7 @@ var hex_size: Vector2
 # Hex coordinate system
 var hex_coords: Vector2
 # Center in coordinat system
-# The cell's position might be offseted by the grid to compensate 
+# The cell's position might be offseted by the grid to compensate
 # for the sprite.
 var real_hex_center: Vector2
 var neighbours: Array = []
@@ -57,7 +57,7 @@ func hide_neighbours():
 func pointy_hex_corner(center: Vector2, c_size: Vector2, corner_id: int):
 	var angle_deg = 60 * corner_id - 30
 	var angle_rad = PI / 180 * angle_deg
-	
+
 	return Vector2(center.x + c_size.x * cos(angle_rad), center.y + c_size.y * sin(angle_rad))
 
 func get_hex_center() -> Vector2:
@@ -83,7 +83,7 @@ func breadth_search_neighbours():
 	# Store neighbours to search
 	var ns_queue = []
 	var visited: Dictionary
-	
+
 	# Start of algorithm
 	ns_queue.append(self)
 
@@ -93,17 +93,17 @@ func breadth_search_neighbours():
 		var c = ns_queue.pop_front()
 		# No need to look at it again
 		visited[c] = true
-		
+
 		# Get cell's neighbours
 		var cell_neighbours: Array = c.neighbours
-		
+
 		var neighbour_size = cell_neighbours.size()
 		# Array to remove neighbours when searching for a random neighbour
 		var choosing_array = []
 		# Fill array
 		for n in cell_neighbours:
 			choosing_array.append(n)
-		
+
 		# Allow random neighbour selection
 		randomize()
 		var amount_left = neighbour_size
@@ -111,20 +111,20 @@ func breadth_search_neighbours():
 		while amount_left > 0:
 			var random_index = randi() % amount_left
 			var cell_rand = choosing_array[random_index]
-			
+
 			# Found neighbour to acquire next
 			if cell_rand.state_machine.current_state.name == "Available":
 				return cell_rand
-			else:	
+			else:
 				# Investigate later, if not already visited
 				if visited.has(cell_rand) == false:
 					ns_queue.append(cell_rand)
 			# remove random cell. No need to look at it again.
 			# Avoids getting the same cell twice.
 			choosing_array.erase(cell_rand)
-			
+
 			amount_left -= 1
-			
+
 	return null
 ###############
 ## BNet
@@ -132,7 +132,7 @@ func breadth_search_neighbours():
 
 
 ################
-## State 
+## State
 ################
 
 func bnet_produce():
@@ -164,13 +164,13 @@ func _draw_neighbours():
 		# draw line from cell to center of neighbour
 		draw_line(real_hex_center - self.global_position, center_n - self.global_position, Color(0.5,0.5,0.5))
 
-		
+
 func _draw():
 	draw_circle(real_hex_center-self.global_position, 2, Color(1,0,0))
 	_draw_neighbours()
 
 func triggered():
 	$Sprite.texture = display
-	
+
 func deselect():
 	$Sprite.texture = default

@@ -1,27 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Level/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Controller/Controller.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Menu/Pause/PauseMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/BNet/BNetUI/bnet_ui.gd" type="Script" id=4]
 
 [node name="Main" type="Node2D"]
 
-[node name="Controller" parent="." instance=ExtResource( 2 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BaseLevel" parent="." instance=ExtResource( 1 )]
-DEBUG = true
-
-[node name="Begin" type="Button" parent="."]
-margin_left = 27.7795
-margin_top = 27.7795
-margin_right = 152.78
-margin_bottom = 47.7795
-text = "Begin Expansion"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Stop" type="Button" parent="."]
+[node name="Stop" type="Button" parent="CanvasLayer"]
 margin_left = 218.295
 margin_top = 26.9087
 margin_right = 346.295
@@ -31,9 +19,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 3 )]
 
-[connection signal="pressed" from="Begin" to="BaseLevel" method="_on_Button_pressed"]
-[connection signal="pressed" from="Stop" to="BaseLevel" method="_on_Stop_pressed"]
+[node name="Begin" type="Button" parent="CanvasLayer"]
+margin_left = 27.7795
+margin_top = 27.7795
+margin_right = 152.78
+margin_bottom = 47.7795
+text = "Begin Expansion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BNetUI" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resources" type="Label" parent="CanvasLayer/BNetUI"]
+margin_right = 233.0
+margin_bottom = 111.0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Population" type="Label" parent="CanvasLayer/BNetUI"]
+margin_left = 290.0
+margin_right = 570.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controller" parent="." instance=ExtResource( 2 )]
+
+[node name="BaseLevel" parent="." instance=ExtResource( 1 )]
+DEBUG = true
+
+[connection signal="pressed" from="CanvasLayer/Stop" to="BaseLevel" method="_on_Stop_pressed"]
+[connection signal="pressed" from="CanvasLayer/Begin" to="BaseLevel" method="_on_Button_pressed"]

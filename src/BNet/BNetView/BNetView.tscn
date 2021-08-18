@@ -1,34 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/BNet/BNet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/BNet/BNetView/bnet_view.gd" type="Script" id=2]
-[ext_resource path="res://src/BNet/BNetUI/bnet_ui.gd" type="Script" id=3]
 
 [node name="BNetView" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="BNet" parent="." instance=ExtResource( 1 )]
-
-[node name="BNetUI" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Resources" type="Label" parent="BNetUI"]
-margin_right = 233.0
-margin_bottom = 111.0
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Population" type="Label" parent="BNetUI"]
-margin_left = 290.0
-margin_right = 570.0
-margin_bottom = 74.0
-__meta__ = {
-"_edit_use_anchors_": false
-}

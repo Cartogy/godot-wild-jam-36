@@ -13,7 +13,7 @@ func _input(event):
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			if DEBUG:
 				highlight_neighbours(event)
-			
+
 
 ###############
 ## DEBUG ZONE
@@ -21,7 +21,8 @@ func _input(event):
 func highlight_neighbours(event):
 	var doubled_width_coord = grid_hex.pixel_to_hex(event.position)
 	var hex_cell = grid_hex.get_cell(doubled_width_coord.to_vector())
-	
+	print(hex_cell)
+
 	if current_hex_cell != null:
 		if hex_cell != current_hex_cell:
 			current_hex_cell.hide_neighbours()

@@ -10,6 +10,7 @@ const DEFAULT_CONTEXT_PATH := "res://default_context.json"
 
 ### PUBLIC VARIABLES ###
 var pause_menu : Control = null
+var b_net_ui: Control = null
 
 # Is the game currently in editor mode? or not?
 var is_in_editor_mode := false
