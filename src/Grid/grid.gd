@@ -22,6 +22,7 @@ export (Vector2) var size: Vector2 = Vector2(23,16)
 
 
 # Easy way to store hex coordinates
+# Vector2 -> Cell
 var hexagon_coords: Dictionary = {}
 
 # Used for debugging hexagons
@@ -99,7 +100,10 @@ func add_cell(cell):
 	add_child(cell)
 
 func get_cell(hex_coord: Vector2) -> Cell:
-	return hexagon_coords.get(hex_coord)
+	if hexagon_coords.has(hex_coord):
+		return hexagon_coords.get(hex_coord)
+	else:
+		return null
 
 # Connects each cell to their respective neighbours
 func fill_neighbours(hex_map: Dictionary, directions: Array):
