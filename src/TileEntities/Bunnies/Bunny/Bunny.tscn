@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/TileEntities/Bunnies/Bunny/bunny.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/bunny.png" type="Texture" id=2]
+[ext_resource path="res://src/TileEntities/TileEntity.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/TileEntities/Bunnies/Bunny/upgrade_container.gd" type="Script" id=4]
+[ext_resource path="res://src/TileEntities/Bunnies/UpgradeData/BoxerBunny.tres" type="Resource" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.45254
+
+[node name="Bunny" instance=ExtResource( 3 )]
+script = ExtResource( 1 )
+bunny_upgrades = [ ExtResource( 5 ) ]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Upgrades" type="Node2D" parent="." index="3"]
+position = Vector2( -21.8514, -39.9947 )
+z_index = 2
+script = ExtResource( 4 )

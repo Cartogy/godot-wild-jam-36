@@ -4,7 +4,7 @@ extends Node
 Stores bunnies on tile
 """
 export (int) var max_bunnies
-var bunny_scene = preload("res://src/TileEntities/Bunny/Bunny.tscn")
+var bunny_scene = preload("res://src/TileEntities/Bunnies/Bunny/Bunny.tscn")
 
 
 # Store all bunnies

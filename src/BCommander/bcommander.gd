@@ -18,6 +18,11 @@ var drag_start: Vector2 = Vector2.ZERO
 var drag_end: Vector2 = Vector2.ZERO
 var cursor: Vector2 = Vector2.ZERO
 
+var shift: bool = false
+
+var selecting_upgrades: bool = false
+var bunny: Bunny
+
 func _ready():
 	update()
 	if hex_grid_path != "":
@@ -27,19 +32,43 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton:
+
+	if event.is_action_pressed("shift"):
+		shift = true
+	elif event.is_action_released("shift"):
+		shift = false
+
+	if shift:
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_LEFT and event.pressed:
+				clear_units()
+				cursor = get_global_mouse_position()
+
+				var unit_collision = get_units_clicked(cursor)
+				selected_units = filter_units(unit_collision)
+
+				if selected_units.size() != 0:
+					var first_unit = selected_units[0]
+					if first_unit.has_method("show_upgrades"):
+						bunny = first_unit
+						first_unit.show_upgrades()
+						selecting_upgrades = true
+	
+
+	elif event is InputEventMouseButton:
+		
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			clear_units()
 			
 			cursor = get_global_mouse_position()
 			
-			select_rect.extents = mouse_click_area
-			var space = get_world_2d().direct_space_state
-			var query = Physics2DShapeQueryParameters.new()
-			query.set_shape(select_rect)
-			query.transform = Transform2D(0, cursor)
-			var unit_collision = space.intersect_shape(query)
-			filter_units(unit_collision)
+			var unit_collision = get_units_clicked(cursor)
+			selected_units = filter_units(unit_collision)
+			if selected_units.size() > 0 && selecting_upgrades:
+				selecting_upgrades = false
+				if is_instance_valid(bunny) == false:
+					bunny = null
+			
 			
 			print_debug(selected_units)
 			
@@ -71,7 +100,15 @@ func _unhandled_input(event):
 			#var units = area.get_overlapping_bodies()
 			
 			
-			
+func get_units_clicked(p_cursor: Vector2) -> Array:
+	select_rect.extents = mouse_click_area
+	var space = get_world_2d().direct_space_state
+	var query = Physics2DShapeQueryParameters.new()
+	query.set_shape(select_rect)
+	query.transform = Transform2D(0, cursor)
+	var unit_collision = space.intersect_shape(query)
+
+	return unit_collision
 
 			
 			
@@ -95,12 +132,15 @@ func move_units(units: Array, pixel: Vector2):
 			u.move_to([cell])
 
 
-func filter_units(units: Array):
+func filter_units(units: Array) -> Array:
+	var us = []
 	for u in units:
 		var unit = u.collider
 		if unit is TileEntity:
 			if unit.selectable:
-				selected_units.append(unit)
+				us.append(unit)
+
+	return us
 
 func _draw():
 	draw_rect(Rect2(drag_start, cursor - drag_start), Color(.5,.5,.5), false)

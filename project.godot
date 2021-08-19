@@ -29,10 +29,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Structures/BNetStructure/bnet_structure.gd"
 }, {
-"base": "TileEntity",
+"base": "BunnyBase",
 "class": "Bunny",
 "language": "GDScript",
-"path": "res://src/TileEntities/Bunny/bunny_entity.gd"
+"path": "res://src/TileEntities/Bunnies/Bunny/bunny.gd"
+}, {
+"base": "TileEntity",
+"class": "BunnyBase",
+"language": "GDScript",
+"path": "res://src/TileEntities/Bunnies/bunny_entity.gd"
+}, {
+"base": "Resource",
+"class": "BunnyUpgrade",
+"language": "GDScript",
+"path": "res://src/TileEntities/Bunnies/UpgradeData/upgrade_data.gd"
 }, {
 "base": "Node2D",
 "class": "Cell",
@@ -125,6 +135,8 @@ _global_script_class_icons={
 "BNet": "",
 "BNetStructure": "",
 "Bunny": "",
+"BunnyBase": "",
+"BunnyUpgrade": "",
 "Cell": "",
 "CellResource": "",
 "CellSpecialResource": "",
@@ -160,6 +172,11 @@ AudioEngine="*res://src/AutoLoad/AudioEngine/AudioEngine.tscn"
 left_click={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+shift={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
 

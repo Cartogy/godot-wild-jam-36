@@ -1,5 +1,5 @@
 extends TileEntity
-class_name Bunny
+class_name BunnyBase
 
 var on_cell: Cell
 var bnet = null
@@ -11,7 +11,8 @@ func _ready():
 
 func move_to(p_cell_path: Array):
 	if p_cell_path.size() > 0:
-		cell.bunnies.remove_bunny(self)
+		if cell != null:
+			cell.bunnies.remove_bunny(self)
 		cell = null
 		cell_path = p_cell_path.duplicate()
 		next_cell = cell_path.pop_front()
@@ -25,11 +26,13 @@ func arrived_at(p_cell: Cell):
 	print_debug("Arrived at Cell")
 
 func die():
+	if cell != null:
+		cell.bunnies.remove_bunny(self)
 	bnet.actor_data.remove_population(1)
+	self.queue_free()
 
 func add_to_tile(new_cell: Cell):
 	new_cell.bunnies.place_bunny_on_cell(self)
 	var vector_to_position = new_cell.bunnies.calc_direction_placement()
 
 	goal = goal + vector_to_position
-
