@@ -1,5 +1,5 @@
 extends BNetStructure
-class_name DenStructure
+class_name Barracks
 
 var consuming_cell
 var bnet
