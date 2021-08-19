@@ -23,6 +23,12 @@ var shift: bool = false
 var selecting_upgrades: bool = false
 var bunny: Bunny
 
+
+onready var structures = {
+	"barracks": preload("res://src/Structures/BNetStructure/Barracks/Barracks.tscn")
+}
+
+
 func _ready():
 	update()
 	if hex_grid_path != "":
@@ -53,29 +59,41 @@ func _unhandled_input(event):
 						bunny = first_unit
 						first_unit.show_upgrades()
 						selecting_upgrades = true
-	
+
 
 	elif event is InputEventMouseButton:
-		
+
+
 		if event.button_index == BUTTON_LEFT and event.pressed:
+			if Flow.selected_structure:
+				var cell_coordinate = hex_grid.pixel_to_hex(get_global_mouse_position())
+				if cell_coordinate == null:
+					return
+				var cell = hex_grid.hexagon_coords[cell_coordinate.to_vector()]
+				if cell.bnet:
+					var structure = structures[Flow.selected_structure].instance()
+					Flow.b_net.add_structure(structure, cell_coordinate.to_vector(), cell)
+					Flow.selected_structure = null
+				return
+
 			clear_units()
-			
+
 			cursor = get_global_mouse_position()
-			
+
 			var unit_collision = get_units_clicked(cursor)
 			selected_units = filter_units(unit_collision)
 			if selected_units.size() > 0 && selecting_upgrades:
 				selecting_upgrades = false
 				if is_instance_valid(bunny) == false:
 					bunny = null
-			
-			
+
+
 			print_debug(selected_units)
-			
+
 			drag_start = cursor - (mouse_click_area/2)
 			drag_end = cursor + (mouse_click_area / 2)
 			update()
-			
+
 			#dragging = true
 			#drag_start = get_global_mouse_position()
 		elif event.button_index == BUTTON_RIGHT and event.pressed:
@@ -84,22 +102,22 @@ func _unhandled_input(event):
 		elif dragging:
 			dragging = false
 			drag_end = get_global_mouse_position()
-			
+
 			select_rect.extents = (drag_end - drag_start) / 2
 			var space = get_world_2d().direct_space_state
 			var query = Physics2DShapeQueryParameters.new()
 			query.set_shape(select_rect)
 			query.transform = Transform2D(0, (drag_end + drag_start)/2)
 
-			
+
 			update()
 			print_debug(selected_units)
 			#var hex_coord:DoubleCoordinate = hex_grid.pixel_to_hex(event.position)
 			#var cell = hex_grid.get_cell(hex_coord.to_vector())
 
 			#var units = area.get_overlapping_bodies()
-			
-			
+
+
 func get_units_clicked(p_cursor: Vector2) -> Array:
 	select_rect.extents = mouse_click_area
 	var space = get_world_2d().direct_space_state
@@ -110,8 +128,8 @@ func get_units_clicked(p_cursor: Vector2) -> Array:
 
 	return unit_collision
 
-			
-			
+
+
 func add_unit(unit):
 	selected_units.append(unit)
 

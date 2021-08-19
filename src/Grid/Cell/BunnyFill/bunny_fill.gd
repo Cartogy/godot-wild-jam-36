@@ -49,10 +49,10 @@ func add_bunny(center: Vector2, hex_coord: Vector2, bnet):
 	# Conquer cell and consume resources
 	if bunnies_in_tile.size() == 0:
 		cell.bnet_acquire(bnet)
-		
+
 
 	bunnies_in_tile.append(bunny)
-	
+
 
 	bnet.add_child(bunny)
 

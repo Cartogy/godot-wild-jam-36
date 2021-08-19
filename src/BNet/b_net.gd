@@ -23,6 +23,7 @@ var active = false
 
 func _ready():
 	#active = true
+	Flow.b_net = self
 	tick_timer.start(tick_in_seconds)
 
 func _physics_process(delta):
@@ -46,7 +47,7 @@ func add_structure(structure: BNetStructure, hex_coord: Vector2, cell: Cell):
 	print_debug()
 	structure.place_on_cell(cell)
 	structure.add_to_bnet(self)
-	
+
 	add_child(structure)
 
 func add_starting_structure(structure: BNetStructure, hex_coord:Vector2, cell: Cell):

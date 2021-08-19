@@ -11,6 +11,7 @@ const DEFAULT_CONTEXT_PATH := "res://default_context.json"
 ### PUBLIC VARIABLES ###
 var pause_menu : Control = null
 var b_net_ui: Control = null
+var b_net: BNet = null
 
 # Is the game currently in editor mode? or not?
 var is_in_editor_mode := false
@@ -23,6 +24,8 @@ var _game_scenes := {
 	STATE.GAME: preload("res://src/Main/Main.tscn"),
 }
 var _game_state : int = STATE.MENU
+
+var selected_structure = null
 
 onready var _options_loader := $OptionsLoader
 
@@ -56,7 +59,10 @@ func _unhandled_input(event : InputEvent):
 	match _game_state:
 		STATE.GAME:
 			if InputMap.has_action("toggle_paused") and event.is_action_pressed("toggle_paused"):
-				toggle_paused()
+				if selected_structure:
+					selected_structure = null
+				else:
+					toggle_paused()
 
 func toggle_paused():
 	get_tree().paused = not get_tree().paused
@@ -97,3 +103,12 @@ func go_to_menu() -> void:
 
 func new_game() -> void:
 	go_to_game()
+
+
+func can_afford_building(structure_name: String) -> bool:
+	return true
+
+func select_structure(structure_name: String):
+	if can_afford_building(structure_name):
+		selected_structure = structure_name
+		print("Selected building ", structure_name)
