@@ -24,13 +24,14 @@ func tick():
 		add_bunny(consuming_cell)
 		if consuming_cell.bunnies.reached_max_capacity():
 			#consuming_cell.triggered()
-
-			cell_consumed(cell, consuming_cell)
+			pass
+			#cell_consumed(cell, consuming_cell)
 			
 
 func add_consuming_cell(p_cell: Cell):
 	consuming_cell = p_cell
 	consuming_cell.bnet_acquire(bnet)
+	add_bunny(consuming_cell)
 
 func cell_consumed(from: Cell, cell_consumed: Cell):
 	bnet.consumed_cells[cell_consumed.hex_coords] = cell_consumed

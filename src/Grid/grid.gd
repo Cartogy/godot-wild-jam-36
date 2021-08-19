@@ -63,7 +63,7 @@ func load_level_grid(level: LevelData, bnet: BNet, dimension: Vector2):
 				water_cell.global_position = center
 				add_child(water_cell)
 				hexagon_coords[d_coord.to_vector()] = water_cell
-	print_debug(hexagon_coords)
+
 	fill_neighbours(hexagon_coords, neighbour_directions)
 			
 
@@ -81,6 +81,7 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet):
 	cell.global_position = center
 	cell.hex_coords = hex_coord
 	cell.real_hex_center = center
+	cell.hex_size = size
 
 	# Check if structure
 	if structure_path != "":
