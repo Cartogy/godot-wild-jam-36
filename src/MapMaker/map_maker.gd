@@ -13,7 +13,7 @@ var structures = {
 }
 
 var tiles = {
-	"res://src/Grid/Cell/CellScenes/AvailableCell.tscn": "res://assets/graphics/grass.png",
+	"res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn": "res://assets/graphics/grass.png",
 }
 
 var selected_tile: Node2D = null
@@ -29,7 +29,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			if selected_tile != null:
-				add_tile(selected_tile, self.get_global_mouse_position(), selected_scene_path)
+				add_tile(selected_tile, self.get_global_mouse_position())
 				selected_tile = null
 				selected_scene_path = ""
 
@@ -63,12 +63,12 @@ func tile_selected(scene_path):
 	selected_tile = tile
 	selected_scene_path = scene_path
 
-func add_tile(cell: Cell, cursor: Vector2, scene_path: String):
+func add_tile(cell: TileDisplay, cursor: Vector2):
 	var hex_coord = grid.pixel_to_hex(self.get_global_mouse_position(), origin)
 	var pixel_center = converter.doublewidth_to_pixel(hex_coord, origin, grid.size)
 	cell.global_position = pixel_center
 	
-	level.add_cell(hex_coord, cell, "", scene_path)
+	level.add_cell(hex_coord, cell)
 
 func save_level(p_level: LevelData):
 	p_level.grid_origin = origin
@@ -88,11 +88,15 @@ func load_level():
 		spawn_cell(hex_coord, cell_data)
 		
 func spawn_cell(hex_coord: Vector2, cell_data: Dictionary):
-	var scene: PackedScene = load(cell_data.scene_path)
-	var cell: Cell = scene.instance()
-	cell.hex_coords = cell_data.hex_coord
+	var scene: PackedScene = load(cell_data.tile_display)
+	var cell: TileDisplay = scene.instance()
+	
+	cell.hex_coord = cell_data.hex_coord
 	cell.global_position = cell_data.cell_position
-	cell.real_hex_center = cell_data.cell_position
+	cell.cell_scene_path = cell_data.scene_path
+	cell.structure_scene_path = cell_data.structure_path
+	cell.resource_path = cell_data.spec_resource_path
+	cell.self_scene = cell_data.tile_display
 	
 	self.add_child(cell)
 	

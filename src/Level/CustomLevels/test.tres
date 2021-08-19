@@ -5,10 +5,21 @@
 [resource]
 script = ExtResource( 1 )
 level_data = {
-Vector2( 9, 1 ): {
-"cell_position": Vector2( 229.267, 74 ),
-"hex_coord": Vector2( 9, 1 ),
-"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn"
+Vector2( 3, 1 ): {
+"cell_position": Vector2( 109.756, 74 ),
+"hex_coord": Vector2( 3, 1 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 8, 2 ): {
+"cell_position": Vector2( 209.349, 98 ),
+"hex_coord": Vector2( 8, 2 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
 }
 }
 grid_origin = Vector2( 50, -50 )

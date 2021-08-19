@@ -134,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/tools/StateMachine/state.gd"
 }, {
+"base": "Node2D",
+"class": "TileDisplay",
+"language": "GDScript",
+"path": "res://src/MapMaker/TileDisplay/tile_display.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "TileEntity",
 "language": "GDScript",
@@ -170,6 +175,7 @@ _global_script_class_icons={
 "MountainResource": "",
 "PauseTab": "",
 "State": "",
+"TileDisplay": "",
 "TileEntity": "",
 "TreeResource": ""
 }
