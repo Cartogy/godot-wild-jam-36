@@ -17,7 +17,9 @@ var tiles = {
 }
 
 var selected_tile: Node2D = null
+var selected_scene_path: String  = ""
 var converter = HexConversion.new()
+var level = LevelData.new()
 
 func _ready():
 	make_tile_options(tiles)
@@ -27,8 +29,9 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			if selected_tile != null:
-				add_tile(selected_tile, self.get_global_mouse_position())
+				add_tile(selected_tile, self.get_global_mouse_position(), selected_scene_path)
 				selected_tile = null
+				selected_scene_path = ""
 
 func _process(delta):
 	if selected_tile != null:
@@ -58,8 +61,46 @@ func tile_selected(scene_path):
 	var tile = scene.instance()
 	add_child(tile)
 	selected_tile = tile
+	selected_scene_path = scene_path
 
-func add_tile(cell: Cell, cursor: Vector2):
+func add_tile(cell: Cell, cursor: Vector2, scene_path: String):
 	var hex_coord = grid.pixel_to_hex(self.get_global_mouse_position(), origin)
 	var pixel_center = converter.doublewidth_to_pixel(hex_coord, origin, grid.size)
 	cell.global_position = pixel_center
+	
+	level.add_cell(hex_coord, cell, "", scene_path)
+
+func save_level(p_level: LevelData):
+	p_level.grid_origin = origin
+	ResourceSaver.save("res://src/Level/CustomLevels/test.tres", p_level)
+	
+func load_level():
+	var dir = Directory.new()
+	if not dir.file_exists("res://src/Level/CustomLevels/test.tres"):
+		return false
+	
+	var level_save: LevelData = load("res://src/Level/CustomLevels/test.tres")
+	
+	origin = level_save.grid_origin
+	for hex_coord in level_save.level_data.keys():
+		var cell_data:Dictionary = level_save.level_data[hex_coord]
+
+		spawn_cell(hex_coord, cell_data)
+		
+func spawn_cell(hex_coord: Vector2, cell_data: Dictionary):
+	var scene: PackedScene = load(cell_data.scene_path)
+	var cell: Cell = scene.instance()
+	cell.hex_coords = cell_data.hex_coord
+	cell.global_position = cell_data.cell_position
+	cell.real_hex_center = cell_data.cell_position
+	
+	self.add_child(cell)
+	
+
+
+func _on_Button_pressed():
+	save_level(level)
+
+
+func _on_Save2_pressed():
+	load_level()

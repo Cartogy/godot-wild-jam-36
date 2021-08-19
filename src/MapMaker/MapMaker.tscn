@@ -28,3 +28,20 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ScrollContainer"]
+
+[node name="Save" type="Button" parent="CanvasLayer/Control"]
+margin_left = 899.18
+margin_top = 510.776
+margin_right = 911.18
+margin_bottom = 530.776
+text = "Save"
+
+[node name="Load" type="Button" parent="CanvasLayer/Control"]
+margin_left = 835.2
+margin_top = 508.531
+margin_right = 876.2
+margin_bottom = 528.531
+text = "Load"
+
+[connection signal="pressed" from="CanvasLayer/Control/Save" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Load" to="." method="_on_Save2_pressed"]
