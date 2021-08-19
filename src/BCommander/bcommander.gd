@@ -83,6 +83,9 @@ func _unhandled_input(event):
 
 			var unit_collision = get_units_clicked(cursor)
 			selected_units = filter_units(unit_collision)
+			# Ensure only one unit is moved
+			if selected_units.size() > 1:
+				selected_units = [selected_units.pop_front()]
 			if selected_units.size() > 0 && selecting_upgrades:
 				selecting_upgrades = false
 				if is_instance_valid(bunny) == false:
