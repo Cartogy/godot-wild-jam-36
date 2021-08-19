@@ -9,7 +9,7 @@ func handle_input(event):
 
 # What occurs when entering a state
 func enter():
-	pass
+	cell.deselect()
 
 # What occurs when exiting state
 func exit():
@@ -20,7 +20,7 @@ func p_process(delta: float):
 	pass
 
 func setup():
-	pass
+	cell = get_owner()
 
 #######################
 # Cell State functions

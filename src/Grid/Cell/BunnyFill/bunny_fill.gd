@@ -48,8 +48,8 @@ func add_bunny(center: Vector2, hex_coord: Vector2, bnet):
 
 	# Conquer cell and consume resources
 	if bunnies_in_tile.size() == 0:
-		cell.triggered()
-		cell.emit_signal("get_resources", cell.resources)
+		cell.bnet_acquire(bnet)
+		
 
 	bunnies_in_tile.append(bunny)
 	
@@ -66,13 +66,19 @@ func place_bunny_on_cell(bunny):
 			bunny.move_to([next_available_cell])
 	else:	# Place bunny in this tile
 		if bunnies_in_tile.size() == 0:
-			cell.triggered()
+			cell.connect("get_resources", bunny.bnet.actor_data, "add_resources")
+			cell.bnet_acquire(bunny.bnet)
 		bunny.cell = cell
 		bunnies_in_tile.append(bunny)
+		print_debug("Bunny placed")
 
 func remove_bunny(bunny):
 	if bunnies_in_tile.has(bunny):
 		bunnies_in_tile.erase(bunny)
+		if bunnies_in_tile.size() == 0:
+			var cell: Cell = get_owner()
+			cell.available_cell()
+		print_debug("Bunny removed")
 
 func delete_bunnies(amount: int):
 	for i in amount:

@@ -10,11 +10,14 @@ func handle_input(event):
 
 # What occurs when entering a state
 func enter():
-	pass
+	cell.triggered()
+	cell.emit_signal("get_resources", cell.resources)
 
 # What occurs when exiting state
 func exit():
-	pass
+	var population_to_decrease = cell.resources.population_amount
+	cell.bnet.actor_data.remove_max_population(population_to_decrease)
+	cell.disconnect("get_resources", cell.bnet.actor_data, "add_resources")
 
 # Physics process for state
 func p_process(delta: float):
