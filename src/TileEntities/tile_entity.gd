@@ -24,6 +24,7 @@ var next_cell: Cell
 
 # What an entity can't go through
 var obstacles: Array = []
+var ignore_edge_obstacles: bool = false
 
 var goal: Vector2
 

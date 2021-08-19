@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Grid/Cell/cell.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/grass.png" type="Texture" id=2]
@@ -9,14 +9,19 @@
 [ext_resource path="res://src/Grid/Cell/States/bnet_production_state.gd" type="Script" id=7]
 [ext_resource path="res://src/Grid/Cell/States/bnet_consume_state.gd" type="Script" id=8]
 [ext_resource path="res://src/Grid/Cell/CellResource/CellResources.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Grid/Cell/States/water_state.gd" type="Script" id=10]
+[ext_resource path="res://assets/graphics/c_water.png" type="Texture" id=11]
+[ext_resource path="res://src/Grid/Cell/States/debug_state.gd" type="Script" id=12]
+[ext_resource path="res://assets/graphics/debug.png" type="Texture" id=13]
 
 [node name="Cell" type="Node2D"]
 script = ExtResource( 1 )
-default = ExtResource( 2 )
-display = ExtResource( 3 )
+available_texture = ExtResource( 2 )
+bnet_texture = ExtResource( 3 )
+water_texture = ExtResource( 11 )
+debug_texture = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -30,6 +35,12 @@ script = ExtResource( 7 )
 
 [node name="BNet" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
+
+[node name="Water" type="Node" parent="StateMachine"]
+script = ExtResource( 10 )
+
+[node name="Debug" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
 
 [node name="BunnyFill" type="Node" parent="."]
 script = ExtResource( 6 )

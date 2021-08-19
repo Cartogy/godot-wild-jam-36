@@ -1,6 +1,7 @@
 extends Node2D
 
 var cell_scene = preload("res://src/Grid/Cell/Cell.tscn")
+const water_cell_scene = preload("res://src/Grid/Cell/CellScenes/Water.tscn")
 
 export (bool) var DEBUG = false
 export (Vector2) var dimensions = Vector2(10,10)
@@ -37,9 +38,69 @@ var neighbour_directions = [
 ]
 
 func _ready():
-	generate_hex_grid(dimensions, origin, size)
+	pass
+	#generate_hex_grid(dimensions, origin, size)
+
+	#fill_neighbours(hexagon_coords, neighbour_directions)
+
+func load_level_grid(level: LevelData, bnet: BNet, dimension: Vector2):
+	var p_size = size
+
+	for y in dimension.y:
+		var row_mod = y % 2
+		var row = y
+
+		for x in dimension.x:
+			var col = (x * 2) + row_mod
+			var d_coord = DoubleCoordinate.new(row, col)
+
+			if level.level_data.has(d_coord.to_vector()):
+				create_level_cell(level.level_data[d_coord.to_vector()], bnet)
+			else:
+				var water_cell = water_cell_scene.instance()
+				var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
+
+				water_cell.global_position = center
+				add_child(water_cell)
+				hexagon_coords[d_coord.to_vector()] = water_cell
 
 	fill_neighbours(hexagon_coords, neighbour_directions)
+			
+
+func create_level_cell(cell_data: Dictionary, bnet: BNet):
+	var hex_coord: Vector2 = cell_data.hex_coord
+	var cell_scene_path = cell_data.scene_path
+	var structure_path = cell_data.structure_path
+	var special_res_path = cell_data.spec_resource_path
+	var cell_position = cell_data.cell_position
+	
+	var center = converter.doublewidth_to_pixel(DoubleCoordinate.new(hex_coord.y, hex_coord.x), origin, size)
+
+	var cell_pack = load(cell_scene_path)
+	var cell = cell_pack.instance()
+	cell.global_position = center
+	cell.hex_coords = hex_coord
+	cell.real_hex_center = center
+	cell.hex_size = size
+
+	# Check if structure
+	if structure_path != "":
+		var structure_packed: PackedScene = load(structure_path)
+		var structure: CellStructure = structure_packed.instance()
+		cell.bnet = bnet
+
+		match structure.structure_id:
+			"den":
+				bnet.add_structure(structure, hex_coord, cell)
+
+
+	# Check if special res
+	if special_res_path != "":
+		var special_res = load(special_res_path)
+		cell.special_res = special_res
+	hexagon_coords[hex_coord] = cell
+	add_child(cell)
+
 
 func pixel_to_hex(cursor: Vector2):
 	var frac_doubled = converter.pixel_to_doublewidth(cursor, origin, size)
@@ -57,6 +118,24 @@ func pixel_to_hex(cursor: Vector2):
 
 	return double_width
 
+func display_hex_grid(origin: Vector2):
+	var dimension = dimensions
+	var p_size = size
+	
+	for y in dimension.y:
+		var row_mod = y % 2
+		var row = y
+		
+		for x in dimension.x:
+			var col = (x * 2) + row_mod
+			var d_coord = DoubleCoordinate.new(row,col)
+			# Ensure property holds for double width coordinate
+			assert((col + row) % 2 == 0)
+			
+			var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
+			var corners = make_hex_corners(center, p_size)
+			hex_corners.append(corners)
+	update()
 
 func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
 

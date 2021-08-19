@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Grid/Cell/cell.gd"
 }, {
+"base": "Resource",
+"class": "CellData",
+"language": "GDScript",
+"path": "res://src/MapMaker/LevelData/cell_data.gd"
+}, {
 "base": "Node",
 "class": "CellResource",
 "language": "GDScript",
@@ -109,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Grid/Orientation/orientation.gd"
 }, {
+"base": "Resource",
+"class": "LevelData",
+"language": "GDScript",
+"path": "res://src/MapMaker/LevelData/level_data.gd"
+}, {
 "base": "MarginContainer",
 "class": "MenuTab",
 "language": "GDScript",
@@ -128,6 +138,11 @@ _global_script_classes=[ {
 "class": "State",
 "language": "GDScript",
 "path": "res://src/tools/StateMachine/state.gd"
+}, {
+"base": "Node2D",
+"class": "TileDisplay",
+"language": "GDScript",
+"path": "res://src/MapMaker/TileDisplay/tile_display.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "TileEntity",
@@ -150,6 +165,7 @@ _global_script_class_icons={
 "BunnyBase": "",
 "BunnyUpgrade": "",
 "Cell": "",
+"CellData": "",
 "CellResource": "",
 "CellSpecialResource": "",
 "CellState": "",
@@ -160,10 +176,12 @@ _global_script_class_icons={
 "HexConversion": "",
 "HexCoordinates": "",
 "HexOrientation": "",
+"LevelData": "",
 "MenuTab": "",
 "MountainResource": "",
 "PauseTab": "",
 "State": "",
+"TileDisplay": "",
 "TileEntity": "",
 "TreeResource": ""
 }

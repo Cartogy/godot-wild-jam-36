@@ -2,12 +2,17 @@ extends Node2D
 class_name Cell
 
 
-export (Texture) var default
-export (Texture) var display
+export (Texture) var available_texture
+export (Texture) var bnet_texture
+export (Texture) var water_texture
+export (Texture) var debug_texture
+
+export (String) var starting_state = ""
 
 onready var state_machine = $StateMachine
 onready var bunnies = $BunnyFill
 onready var resources = $CellResources
+onready var sprite = $Sprite
 
 ## This cell is a D
 
@@ -43,17 +48,19 @@ signal get_resources(resources)
 
 func _ready():
 	state_machine.setup_state_machine()
+	if starting_state != "":
+		state_machine.change_state(starting_state)
 
 func add_neighbour(cell):
 	neighbours.append(cell)
 
 func show_neighbours():
 	for n in neighbours:
-		n.triggered()
+		n.debug_cell()
 
 func hide_neighbours():
 	for n in neighbours:
-		n.deselect()
+		n.available_cell()
 
 func pointy_hex_corner(center: Vector2, c_size: Vector2, corner_id: int):
 	var angle_deg = 60 * corner_id - 30
@@ -118,7 +125,7 @@ func breadth_search_neighbours():
 				return cell_rand
 			else:
 				# Investigate later, if not already visited
-				if visited.has(cell_rand) == false:
+				if visited.has(cell_rand) == false and cell_rand.state_machine.current_state.name != "Water":
 					ns_queue.append(cell_rand)
 			# remove random cell. No need to look at it again.
 			# Avoids getting the same cell twice.
@@ -153,27 +160,37 @@ func opposing_cell():
 func water_cell():
 	state_machine.change_state("Water")
 
+func debug_cell():
+	state_machine.change_state("Debug")
 
 ################
 ## DEBUG ZONE
 ################
 func begin_neighbour_drawing():
-	update()
+	pass
+	#update()
 
 func _draw_neighbours():
 	for n in neighbours:
 		# Get center of neighbour
 		var center_n = n.position
 		# draw line from cell to center of neighbour
-		draw_line(real_hex_center - self.global_position, center_n - self.global_position, Color(0.5,0.5,0.5))
+		draw_line(real_hex_center, center_n - self.global_position, Color(0.5,0.5,0.5))
 
 
 func _draw():
-	draw_circle(real_hex_center-self.global_position, 2, Color(1,0,0))
-	_draw_neighbours()
+	pass
+	#draw_circle(real_hex_center, 2, Color(1,0,0))
+	#_draw_neighbours()
 
-func triggered():
-	$Sprite.texture = display
+func bnet_tex():
+	sprite.texture = bnet_texture
 
-func deselect():
-	$Sprite.texture = default
+func available_tex():
+	sprite.texture = available_texture
+	
+func water_tex():
+	sprite.texture = water_texture
+	
+func debug_tex():
+	sprite.texture = debug_texture

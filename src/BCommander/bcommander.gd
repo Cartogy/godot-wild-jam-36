@@ -148,29 +148,20 @@ func move_units(units: Array, pixel: Vector2):
 	var hex_coord = hex_grid.pixel_to_hex(pixel)
 	var goal_cell = hex_grid.get_cell(hex_coord.to_vector())
 	
-	for cell in units_in_tiles.keys():
-		var us: Array = units_in_tiles[cell]
-		var individual_paths = {
-			"bunny": [],
-			"scubabunny": [],
-		}
-		for u in us:
-			# Bunny movement
-			if u is Bunny:
-				if individual_paths["bunny"].size() == 0:
-					var paths = HexPath.path_finding(cell, goal_cell, false, u.obstacles)
-					individual_paths["bunny"] = paths
-					print_debug(paths)
-					show_path(paths)
-				u.move_to(individual_paths["bunny"])
-			elif u is BoxerBunny:
-				if individual_paths["bunny"].size() == 0:
-					var paths = HexPath.path_finding(cell, goal_cell, false, u.obstacles)
-					individual_paths["bunny"] = paths
-				u.move_to(individual_paths["bunny"])
-			else:
-				printerr("Invalid bunny")
+	for u in units:
+		var paths = []
+		paths = HexPath.path_finding(u.cell, goal_cell, u.ignore_edge_obstacles, u.obstacles)
+		u.move_to(paths)
 
+
+func debug_path(path: Array):
+	for c in path:
+		c.debug_cell()
+
+func add_bunny_path(path_dict: Dictionary, bunny_name: String, entity: BunnyBase, cell: Cell, goal_cell: Cell):
+	var paths = []
+	paths = HexPath.path_finding(cell, goal_cell, entity.ignore_edge_obstacles, entity.obstacles)
+	path_dict[bunny_name] = paths
 
 func filter_units(units: Array) -> Array:
 	var us = []
@@ -179,12 +170,7 @@ func filter_units(units: Array) -> Array:
 		var unit = u.collider
 		if unit is TileEntity:
 			if unit.selectable:
-				var cell = unit.cell
-				if units_in_tiles.has(cell):
-					var u_in_cell: Array = units_in_tiles[cell]
-					u_in_cell.append(unit)
-				else:
-					units_in_tiles[cell] = [unit]
+				us.append(unit)
 
 	return us
 
