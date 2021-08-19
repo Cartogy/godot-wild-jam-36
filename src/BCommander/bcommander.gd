@@ -135,16 +135,16 @@ func move_units(units: Array, pixel: Vector2):
 		var us: Array = units_in_tiles[cell]
 		var individual_paths = {
 			"bunny": [],
+			"boxerbunny": [],
 			"scubabunny": [],
 		}
 		for u in us:
 			# Bunny movement
 			if u is Bunny:
 				if individual_paths["bunny"].size() == 0:
-					var paths = HexPath.path_finding(cell, goal_cell, false, u.obstacles)
-					individual_paths["bunny"] = paths
-					print_debug(paths)
-					show_path(paths)
+					add_bunny_path(individual_paths, "bunny", u, cell, goal_cell)
+					#var paths = HexPath.path_finding(cell, goal_cell, false, u.obstacles)
+					#individual_paths["bunny"] = paths
 				u.move_to(individual_paths["bunny"])
 			elif u is BoxerBunny:
 				if individual_paths["bunny"].size() == 0:
@@ -154,6 +154,11 @@ func move_units(units: Array, pixel: Vector2):
 			else:
 				printerr("Invalid bunny")
 
+
+func add_bunny_path(path_dict: Dictionary, bunny_name: String, entity: BunnyBase, cell: Cell, goal_cell: Cell):
+	var paths = []
+	paths = HexPath.path_finding(cell, goal_cell, entity.ignore_edge_obstacles, entity.obstacles)
+	path_dict[bunny_name] = paths
 
 func filter_units(units: Array) -> Array:
 	var us = []
