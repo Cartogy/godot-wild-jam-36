@@ -9,6 +9,7 @@ export (NodePath) var hex_grid_path
 
 var hex_grid
 var selected_units: Array = []
+var units_in_tiles: Dictionary = {}
 var select_rect = RectangleShape2D.new()
 
 var mouse_click_area = Vector2(1,1)
@@ -71,6 +72,7 @@ func _unhandled_input(event):
 			
 			
 			print_debug(selected_units)
+			print_debug(units_in_tiles)
 			
 			drag_start = cursor - (mouse_click_area/2)
 			drag_end = cursor + (mouse_click_area / 2)
@@ -125,20 +127,47 @@ func clear_units():
 	selected_units.clear()
 
 func move_units(units: Array, pixel: Vector2):
+	# Get goal
 	var hex_coord = hex_grid.pixel_to_hex(pixel)
-	var cell = hex_grid.get_cell(hex_coord.to_vector())
-	if units.size() > 0:
-		for u in units:
-			u.move_to([cell])
+	var goal_cell = hex_grid.get_cell(hex_coord.to_vector())
+	
+	for cell in units_in_tiles.keys():
+		var us: Array = units_in_tiles[cell]
+		var individual_paths = {
+			"bunny": [],
+			"scubabunny": [],
+		}
+		for u in us:
+			# Bunny movement
+			if u is Bunny:
+				if individual_paths["bunny"].size() == 0:
+					var paths = HexPath.path_finding(cell, goal_cell, false, u.obstacles)
+					individual_paths["bunny"] = paths
+					print_debug(paths)
+					show_path(paths)
+				u.move_to(individual_paths["bunny"])
+			elif u is BoxerBunny:
+				if individual_paths["bunny"].size() == 0:
+					var paths = HexPath.path_finding(cell, goal_cell, false, u.obstacles)
+					individual_paths["bunny"] = paths
+				u.move_to(individual_paths["bunny"])
+			else:
+				printerr("Invalid bunny")
 
 
 func filter_units(units: Array) -> Array:
 	var us = []
+	units_in_tiles.clear()
 	for u in units:
 		var unit = u.collider
 		if unit is TileEntity:
 			if unit.selectable:
-				us.append(unit)
+				var cell = unit.cell
+				if units_in_tiles.has(cell):
+					var u_in_cell: Array = units_in_tiles[cell]
+					u_in_cell.append(unit)
+				else:
+					units_in_tiles[cell] = [unit]
 
 	return us
 
@@ -149,3 +178,8 @@ func _on_Area2D_body_entered(body):
 	if body is TileEntity:
 		if body.selectable:
 			selected_units.append(body)
+
+func show_path(paths: Array):
+	for cell in paths:
+		var c: Cell = cell
+		print_debug(c.hex_coords)

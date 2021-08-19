@@ -22,6 +22,9 @@ var max_radius_idle: float
 var cell_path: Array = []
 var next_cell: Cell
 
+# What an entity can't go through
+var obstacles: Array = []
+
 var goal: Vector2
 
 

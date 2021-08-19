@@ -11,6 +11,7 @@ var upgrade_select = preload("res://src/TileEntities/Bunnies/Bunny/Upgrades/Upgr
 
 func _ready():
 	#._ready()
+	obstacles = ["water"]
 	_fill_upgrades(bunny_upgrades)
 	hide_upgrades()
 	

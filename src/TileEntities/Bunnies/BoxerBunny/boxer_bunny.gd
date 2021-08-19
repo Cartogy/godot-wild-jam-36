@@ -1,0 +1,2 @@
+extends BunnyBase
+class_name BoxerBunny
