@@ -5,6 +5,7 @@ class_name Cell
 export (Texture) var available_texture
 export (Texture) var bnet_texture
 export (Texture) var water_texture
+export (Texture) var debug_texture
 
 export (String) var starting_state = ""
 
@@ -55,11 +56,11 @@ func add_neighbour(cell):
 
 func show_neighbours():
 	for n in neighbours:
-		n.triggered()
+		n.debug_cell()
 
 func hide_neighbours():
 	for n in neighbours:
-		n.deselect()
+		n.available_cell()
 
 func pointy_hex_corner(center: Vector2, c_size: Vector2, corner_id: int):
 	var angle_deg = 60 * corner_id - 30
@@ -159,6 +160,8 @@ func opposing_cell():
 func water_cell():
 	state_machine.change_state("Water")
 
+func debug_cell():
+	state_machine.change_state("Debug")
 
 ################
 ## DEBUG ZONE
@@ -188,3 +191,6 @@ func available_tex():
 	
 func water_tex():
 	sprite.texture = water_texture
+	
+func debug_tex():
+	sprite.texture = debug_texture

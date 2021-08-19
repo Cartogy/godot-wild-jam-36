@@ -87,6 +87,7 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet):
 	if structure_path != "":
 		var structure_packed: PackedScene = load(structure_path)
 		var structure: CellStructure = structure_packed.instance()
+		cell.bnet = bnet
 
 		match structure.structure_id:
 			"den":
@@ -101,8 +102,8 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet):
 	add_child(cell)
 
 
-func pixel_to_hex(cursor: Vector2, p_origin: Vector2):
-	var frac_doubled = converter.pixel_to_doublewidth(cursor, p_origin, size)
+func pixel_to_hex(cursor: Vector2):
+	var frac_doubled = converter.pixel_to_doublewidth(cursor, origin, size)
 
 	# Round Hex Coords
 	#var axial = AxialCoordinate.new(q, r)

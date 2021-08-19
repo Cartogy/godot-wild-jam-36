@@ -62,6 +62,7 @@ margin_right = 313.0
 margin_bottom = 14.0
 
 [node name="Controller" parent="." instance=ExtResource( 2 )]
+grid_hex_path = NodePath("../BaseLevel/Grid")
 
 [node name="BaseLevel" parent="." instance=ExtResource( 1 )]
 DEBUG = true

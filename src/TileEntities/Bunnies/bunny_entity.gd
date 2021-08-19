@@ -13,8 +13,9 @@ func move_to(p_cell_path: Array):
 	if p_cell_path.size() > 0:
 		if cell != null:
 			cell.bunnies.remove_bunny(self)
-		cell = null
+		#cell = null
 		cell_path = p_cell_path.duplicate()
+		debug_path(cell_path)
 		next_cell = cell_path.pop_front()
 
 		goal = next_cell.global_position
@@ -36,3 +37,10 @@ func add_to_tile(new_cell: Cell):
 	var vector_to_position = new_cell.bunnies.calc_direction_placement()
 
 	goal = goal + vector_to_position
+
+func debug_path(path: Array):
+	for c in path:
+		c.debug_cell()
+		
+func to_normal(c: Cell):
+	c.available_cell()
