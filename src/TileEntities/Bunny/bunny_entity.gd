@@ -18,8 +18,7 @@ func move_to(p_cell_path: Array):
 
 		goal = next_cell.global_position
 
-		state = EState.MIGRATING
-		migrating = true
+		state_machine.change_state("Migrating")
 
 func arrived_at(p_cell: Cell):
 	p_cell.bunnies.place_bunny_on_cell(self)
@@ -33,5 +32,4 @@ func add_to_tile(new_cell: Cell):
 	var vector_to_position = new_cell.bunnies.calc_direction_placement()
 
 	goal = goal + vector_to_position
-	state = EState.MOVINGTOPOSITION
 
