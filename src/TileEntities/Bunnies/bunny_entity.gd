@@ -15,7 +15,6 @@ func move_to(p_cell_path: Array):
 			cell.bunnies.remove_bunny(self)
 		#cell = null
 		cell_path = p_cell_path.duplicate()
-		debug_path(cell_path)
 		next_cell = cell_path.pop_front()
 
 		goal = next_cell.global_position
