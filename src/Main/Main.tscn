@@ -65,6 +65,7 @@ margin_bottom = 14.0
 
 [node name="BaseLevel" parent="." instance=ExtResource( 1 )]
 DEBUG = true
+level_data = "res://src/Level/CustomLevels/my_level.tres"
 
 [connection signal="pressed" from="CanvasLayer/Stop" to="BaseLevel" method="_on_Stop_pressed"]
 [connection signal="pressed" from="CanvasLayer/Begin" to="BaseLevel" method="_on_Button_pressed"]

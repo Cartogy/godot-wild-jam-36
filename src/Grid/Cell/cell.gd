@@ -164,19 +164,21 @@ func water_cell():
 ## DEBUG ZONE
 ################
 func begin_neighbour_drawing():
-	update()
+	pass
+	#update()
 
 func _draw_neighbours():
 	for n in neighbours:
 		# Get center of neighbour
 		var center_n = n.position
 		# draw line from cell to center of neighbour
-		draw_line(real_hex_center - self.global_position, center_n - self.global_position, Color(0.5,0.5,0.5))
+		draw_line(real_hex_center, center_n - self.global_position, Color(0.5,0.5,0.5))
 
 
 func _draw():
-	draw_circle(real_hex_center-self.global_position, 2, Color(1,0,0))
-	_draw_neighbours()
+	pass
+	#draw_circle(real_hex_center, 2, Color(1,0,0))
+	#_draw_neighbours()
 
 func bnet_tex():
 	sprite.texture = bnet_texture

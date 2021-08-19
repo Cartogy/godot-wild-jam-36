@@ -8,6 +8,7 @@ onready var grid = $Grid
 onready var bnet = $BNetView/BNet
 onready var camera = $Camera
 
+export (String, FILE, "*.tres") var level_data
 var starting_den: PackedScene = load("res://src/Structures/BNetStructure/Den/Den.tscn")
 
 var grid_bounds: Rect2
@@ -15,11 +16,18 @@ var CAMERA_MOVE_SPEED = 200
 
 func _ready():
 	# Add starting cell
-	var cell = grid.get_cell(starting_cell)
-	var den = starting_den.instance()
+	#var cell = grid.get_cell(starting_cell)
+	#var den = starting_den.instance()
 
-	bnet.add_starting_structure(den, starting_cell, cell)
-
+	#bnet.add_starting_structure(den, starting_cell, cell)
+	
+	if level_data != "":
+		var level = load(level_data)
+		grid.load_level_grid(level, bnet, grid.dimensions)
+	else:
+		grid.generate_hex_grid(grid.dimensions, grid.origin, grid.size)
+	grid.display_hex_grid(grid.origin)
+	
 	grid_bounds = grid.get_grid_bounds()
 
 func start_bnet():
