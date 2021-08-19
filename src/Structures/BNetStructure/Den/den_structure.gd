@@ -10,7 +10,7 @@ func add_to_bnet(p_bnet):
 	consuming_cell = cell
 	
 func starting_structure():
-	cell.bnet_acquire()
+	cell.bnet_acquire(bnet)
 
 func tick():
 	if consuming_cell.bunnies.reached_max_capacity():
@@ -27,7 +27,7 @@ func tick():
 
 func add_consuming_cell(p_cell: Cell):
 	consuming_cell = p_cell
-	consuming_cell.bnet_acquire()
+	consuming_cell.bnet_acquire(bnet)
 
 func cell_consumed(from: Cell, cell_consumed: Cell):
 	bnet.consumed_cells[cell_consumed.hex_coords] = cell_consumed

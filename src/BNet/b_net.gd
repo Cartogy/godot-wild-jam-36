@@ -46,8 +46,10 @@ func add_structure(structure: BNetStructure, hex_coord: Vector2, cell: Cell):
 	print_debug()
 	structure.place_on_cell(cell)
 	structure.add_to_bnet(self)
+	
 	add_child(structure)
 
 func add_starting_structure(structure: BNetStructure, hex_coord:Vector2, cell: Cell):
 	add_structure(structure, hex_coord, cell)
+	cell.connect("get_resources", self.actor_data, "add_resources")
 	structure.starting_structure()

@@ -56,6 +56,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MaxPopulation" type="Label" parent="CanvasLayer/BNetUI"]
+margin_left = 260.0
+margin_right = 313.0
+margin_bottom = 14.0
+
 [node name="Controller" parent="." instance=ExtResource( 2 )]
 
 [node name="BaseLevel" parent="." instance=ExtResource( 1 )]

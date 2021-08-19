@@ -30,6 +30,7 @@ var neighbours: Array = []
 
 # BNet variables to use
 var consumed: bool = false
+var bnet
 # If containing a cell to consume, this cell is a production cell.
 # TODO: Refactor into its own component
 var current_cell_consumption
@@ -139,7 +140,8 @@ func breadth_search_neighbours():
 func bnet_produce():
 	state_machine.change_state("BNetProduction")
 
-func bnet_acquire():
+func bnet_acquire(p_bnet):
+	bnet = p_bnet
 	state_machine.change_state("BNet")
 
 func available_cell():

@@ -33,6 +33,6 @@ script = ExtResource( 8 )
 
 [node name="BunnyFill" type="Node" parent="."]
 script = ExtResource( 6 )
-max_bunnies = 8
+max_bunnies = 7
 
 [node name="CellResources" parent="." instance=ExtResource( 9 )]
