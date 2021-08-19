@@ -2,12 +2,16 @@ extends Node2D
 class_name Cell
 
 
-export (Texture) var default
-export (Texture) var display
+export (Texture) var available_texture
+export (Texture) var bnet_texture
+export (Texture) var water_texture
+
+export (String) var starting_state = ""
 
 onready var state_machine = $StateMachine
 onready var bunnies = $BunnyFill
 onready var resources = $CellResources
+onready var sprite = $Sprite
 
 ## This cell is a D
 
@@ -43,6 +47,8 @@ signal get_resources(resources)
 
 func _ready():
 	state_machine.setup_state_machine()
+	if starting_state != "":
+		state_machine.change_state(starting_state)
 
 func add_neighbour(cell):
 	neighbours.append(cell)
@@ -172,8 +178,11 @@ func _draw():
 	draw_circle(real_hex_center-self.global_position, 2, Color(1,0,0))
 	_draw_neighbours()
 
-func triggered():
-	$Sprite.texture = display
+func bnet_tex():
+	sprite.texture = bnet_texture
 
-func deselect():
-	$Sprite.texture = default
+func available_tex():
+	sprite.texture = available_texture
+	
+func water_tex():
+	sprite.texture = water_texture

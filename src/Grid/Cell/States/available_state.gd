@@ -9,7 +9,7 @@ func handle_input(event):
 
 # What occurs when entering a state
 func enter():
-	cell.deselect()
+	cell.available_tex()
 
 # What occurs when exiting state
 func exit():

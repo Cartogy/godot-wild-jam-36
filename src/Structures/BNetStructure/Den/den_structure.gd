@@ -4,6 +4,9 @@ class_name DenStructure
 var consuming_cell
 var bnet
 
+func _ready():
+	structure_id = "den"
+
 func add_to_bnet(p_bnet):
 	bnet = p_bnet
 	# Make sure it produces in its current cell

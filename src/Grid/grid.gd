@@ -37,12 +37,13 @@ var neighbour_directions = [
 ]
 
 func _ready():
-	generate_hex_grid(dimensions, origin, size)
+	pass
+	#generate_hex_grid(dimensions, origin, size)
 
-	fill_neighbours(hexagon_coords, neighbour_directions)
+	#fill_neighbours(hexagon_coords, neighbour_directions)
 
-func pixel_to_hex(cursor: Vector2):
-	var frac_doubled = converter.pixel_to_doublewidth(cursor, origin, size)
+func pixel_to_hex(cursor: Vector2, p_origin: Vector2):
+	var frac_doubled = converter.pixel_to_doublewidth(cursor, p_origin, size)
 
 	# Round Hex Coords
 	#var axial = AxialCoordinate.new(q, r)
@@ -57,6 +58,24 @@ func pixel_to_hex(cursor: Vector2):
 
 	return double_width
 
+func display_hex_grid(origin: Vector2):
+	var dimension = dimensions
+	var p_size = size
+	
+	for y in dimension.y:
+		var row_mod = y % 2
+		var row = y
+		
+		for x in dimension.x:
+			var col = (x * 2) + row_mod
+			var d_coord = DoubleCoordinate.new(row,col)
+			# Ensure property holds for double width coordinate
+			assert((col + row) % 2 == 0)
+			
+			var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
+			var corners = make_hex_corners(center, p_size)
+			hex_corners.append(corners)
+	update()
 
 func generate_hex_grid(dimension: Vector2, origin: Vector2, p_size: Vector2):
 

@@ -5,8 +5,11 @@ class_name CellStructure
 A structure such as a Den, Town or any building.
 """
 
+export (String) var structure_id
+
 # Current cell it is on
 var cell: Cell
+
 
 func _ready():
 	pass

@@ -1,6 +1,5 @@
 extends CellState
 
-var bunnies
 
 func _ready():
 	pass
@@ -10,14 +9,11 @@ func handle_input(event):
 
 # What occurs when entering a state
 func enter():
-	cell.bnet_tex()
-	cell.emit_signal("get_resources", cell.resources)
+	cell.water_tex()
 
 # What occurs when exiting state
 func exit():
-	var population_to_decrease = cell.resources.population_amount
-	cell.bnet.actor_data.remove_max_population(population_to_decrease)
-	cell.disconnect("get_resources", cell.bnet.actor_data, "add_resources")
+	pass
 
 # Physics process for state
 func p_process(delta: float):
@@ -25,7 +21,6 @@ func p_process(delta: float):
 
 func setup():
 	cell = get_owner()
-	bunnies = cell.bunnies
 
 #######################
 # Cell State functions
