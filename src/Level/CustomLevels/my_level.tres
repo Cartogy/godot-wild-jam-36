@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/MapMaker/LevelData/level_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+level_data = {
+Vector2( 5, 3 ): {
+"cell_position": Vector2( 149.593, 122 ),
+"hex_coord": Vector2( 5, 3 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/Water.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/WaterDisplay.tscn"
+},
+Vector2( 9, 1 ): {
+"cell_position": Vector2( 229.267, 74 ),
+"hex_coord": Vector2( 9, 1 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/Water.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/WaterDisplay.tscn"
+}
+}
+grid_origin = Vector2( 50, -50 )

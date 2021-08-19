@@ -3,9 +3,13 @@ extends Node2D
 onready var grid = $Grid
 
 onready var panel = $CanvasLayer/Control/ScrollContainer/VBoxContainer
+onready var line_edit = $CanvasLayer/Control/LineEdit
+onready var cell_holder = $CellHolder
 export (Vector2) var origin = Vector2(0,0)
 
 var tile_option: PackedScene = preload("res://src/MapMaker/Selection/TileOption.tscn")
+
+const level_locations = "res://src/Level/CustomLevels/"
 
 # Path to pass to data
 var structures = {
@@ -14,12 +18,16 @@ var structures = {
 
 var tiles = {
 	"res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn": "res://assets/graphics/grass.png",
+	"res://src/MapMaker/TileDisplay/Cells/BNetDisplay.tscn": "res://assets/graphics/desert.png",
+	"res://src/MapMaker/TileDisplay/Cells/WaterDisplay.tscn": "res://assets/graphics/c_water.png"
 }
 
 var selected_tile: Node2D = null
 var selected_scene_path: String  = ""
 var converter = HexConversion.new()
 var level = LevelData.new()
+# Hex coord -> tile display
+var current_tiles: Dictionary
 
 func _ready():
 	make_tile_options(tiles)
@@ -32,6 +40,20 @@ func _input(event):
 				add_tile(selected_tile, self.get_global_mouse_position())
 				selected_tile = null
 				selected_scene_path = ""
+				
+		elif event.button_index == BUTTON_RIGHT and event.pressed:
+			if selected_tile != null:
+				selected_tile.queue_free()
+				selected_tile = null
+			else:
+				var hex_coord = grid.pixel_to_hex(self.get_global_mouse_position(), origin)
+				var pixel_center = converter.doublewidth_to_pixel(hex_coord, origin, grid.size)
+				
+				if level.level_data.has(hex_coord.to_vector()):
+					var tile: TileDisplay = current_tiles[hex_coord.to_vector()]
+					level.level_data.erase(hex_coord.to_vector())
+					tile.queue_free()
+		
 
 func _process(delta):
 	if selected_tile != null:
@@ -59,7 +81,7 @@ func tile_selected(scene_path):
 		old_tile.queue_free()
 	var scene: PackedScene = load(scene_path)
 	var tile = scene.instance()
-	add_child(tile)
+	cell_holder.add_child(tile)
 	selected_tile = tile
 	selected_scene_path = scene_path
 
@@ -68,27 +90,29 @@ func add_tile(cell: TileDisplay, cursor: Vector2):
 	var pixel_center = converter.doublewidth_to_pixel(hex_coord, origin, grid.size)
 	cell.global_position = pixel_center
 	
+	current_tiles[hex_coord.to_vector()] = selected_tile
 	level.add_cell(hex_coord, cell)
 
-func save_level(p_level: LevelData):
+func save_level(p_level: LevelData, file_to_save: String):
 	p_level.grid_origin = origin
-	ResourceSaver.save("res://src/Level/CustomLevels/test.tres", p_level)
+	ResourceSaver.save(file_to_save, p_level)
 	
-func load_level():
+func load_level(file_to_load):
 	var dir = Directory.new()
-	if not dir.file_exists("res://src/Level/CustomLevels/test.tres"):
+	if not dir.file_exists(file_to_load):
 		return false
-	
-	var level_save: LevelData = load("res://src/Level/CustomLevels/test.tres")
+	print_debug(file_to_load)
+	var level_save: LevelData = load(file_to_load)
 	
 	origin = level_save.grid_origin
 	for hex_coord in level_save.level_data.keys():
 		var cell_data:Dictionary = level_save.level_data[hex_coord]
-
 		spawn_cell(hex_coord, cell_data)
+
 		
 func spawn_cell(hex_coord: Vector2, cell_data: Dictionary):
 	var scene: PackedScene = load(cell_data.tile_display)
+	print_debug(cell_data)
 	var cell: TileDisplay = scene.instance()
 	
 	cell.hex_coord = cell_data.hex_coord
@@ -98,13 +122,34 @@ func spawn_cell(hex_coord: Vector2, cell_data: Dictionary):
 	cell.resource_path = cell_data.spec_resource_path
 	cell.self_scene = cell_data.tile_display
 	
-	self.add_child(cell)
+	current_tiles[hex_coord] = cell
+	level.add_cell(DoubleCoordinate.new(hex_coord.y, hex_coord.x), cell)
+	current_tiles[hex_coord] = cell
+	cell_holder.add_child(cell)
 	
-
+func clear_level():
+	level.clear()
+	current_tiles.clear()
+	for c in cell_holder.get_children():
+		c.queue_free()
 
 func _on_Button_pressed():
-	save_level(level)
+	line_edit.text
+	var file_location = level_locations + line_edit.text + ".tres"
+	if line_edit.text != "":
+		save_level(level, file_location)
+	else:
+		printerr("Enter a Save location")
 
 
 func _on_Save2_pressed():
-	load_level()
+	var file_location = level_locations + line_edit.text + ".tres"
+	if line_edit.text != "":
+		clear_level()
+		load_level(file_location)
+	else:
+		printerr("Enter a save location")
+
+
+func _on_Clear_pressed():
+	clear_level()

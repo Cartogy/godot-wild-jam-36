@@ -3,15 +3,18 @@
 [ext_resource path="res://src/MapMaker/Selection/tile_option.gd" type="Script" id=1]
 
 [node name="TileOption" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 6.0
+margin_bottom = 6.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="gui_input" from="." to="." method="_on_TileOption_gui_input"]

@@ -28,20 +28,64 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ScrollContainer"]
+custom_constants/separation = 50
 
 [node name="Save" type="Button" parent="CanvasLayer/Control"]
-margin_left = 899.18
-margin_top = 510.776
-margin_right = 911.18
-margin_bottom = 530.776
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -139.0
+margin_top = -51.0
+margin_right = -86.0
+margin_bottom = -25.0
 text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Load" type="Button" parent="CanvasLayer/Control"]
-margin_left = 835.2
-margin_top = 508.531
-margin_right = 876.2
-margin_bottom = 528.531
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -73.0
+margin_top = -52.0
+margin_right = -17.0
+margin_bottom = -24.0
 text = "Load"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -190.0
+margin_top = -66.0
+margin_right = 191.0
+margin_bottom = -25.0
+align = 1
+placeholder_text = "Enter Level Name to Load/Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clear" type="Button" parent="CanvasLayer/Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -198.0
+margin_top = -48.0
+margin_right = -151.0
+margin_bottom = -22.0
+text = "Clear"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CellHolder" type="Node2D" parent="."]
 
 [connection signal="pressed" from="CanvasLayer/Control/Save" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Load" to="." method="_on_Save2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Clear" to="." method="_on_Clear_pressed"]

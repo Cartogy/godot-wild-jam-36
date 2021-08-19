@@ -4,6 +4,9 @@ class_name LevelData
 export (Dictionary) var level_data: Dictionary = {}
 export (Vector2) var grid_origin: Vector2
 
+func clear():
+	level_data.clear()
+
 func add_cell(hex_coord: DoubleCoordinate, cell: TileDisplay):
 	
 	if level_data.has(hex_coord.to_vector()):
