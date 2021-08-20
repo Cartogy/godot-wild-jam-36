@@ -3,9 +3,12 @@ class_name TileEntity
 
 onready var state_machine = $StateMachine
 
+export (int) var damage = 1
+
 var hex_center: Vector2
 var hex_coord
 var cell: Cell
+var attacking_cell: Cell
 
 # If the player cen select it or not.
 var selectable: bool = false
@@ -45,3 +48,13 @@ func add_to_tile(_new_cell):
 
 func arrived_at(_p_cell):
 	pass
+
+#############
+## Attack
+#############
+
+func structure_alive_at(cell: Cell):
+	return cell.structure_is_alive()
+
+func damage_structure_at(cell: Cell, damage: int):
+	cell.damage_structure(damage)

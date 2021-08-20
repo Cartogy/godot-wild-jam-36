@@ -61,7 +61,11 @@ func append_bunny(bunny):
 
 func place_bunny_on_cell(bunny):
 	var cell: Cell = get_owner()
+	# Check if bunny already in cell
+	if self.bunnies_in_tile.has(bunny):
+		return
 	# Find somewhere else to place bunny
+	
 	if reached_max_capacity():
 		var next_available_cell = cell.breadth_search_neighbours()
 

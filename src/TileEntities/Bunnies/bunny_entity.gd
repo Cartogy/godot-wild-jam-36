@@ -35,6 +35,10 @@ func add_to_tile(new_cell):
 	var vector_to_position = new_cell.bunnies.calc_direction_placement()
 
 	goal = goal + vector_to_position
+	
+func get_position_in_tile(center: Vector2, cell: Cell):
+	var vector_to_position = cell.bunnies.calc_direction_placement()
+	return center + vector_to_position
 
 func debug_path(path: Array):
 	for c in path:

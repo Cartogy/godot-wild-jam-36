@@ -18,6 +18,8 @@ func enter():
 	paths = entity.cell_path
 	# get first cell to go to
 	current_goal_cell = paths.pop_front()
+	if current_goal_cell.state_machine.current_state.name == "Military":
+		start_attacking(current_goal_cell)
 	
 	goal = current_goal_cell.global_position
 
@@ -33,10 +35,15 @@ func p_process(delta: float):
 	# Arrived at cell
 	if direction.length() < current_goal_cell.hex_size.length() * 0.4:
 		if paths.size() > 0:
+			# Coming From
 			var old_cell = entity.cell
+			# arriving to
 			entity.cell = current_goal_cell
-
+			# Next goal
 			current_goal_cell = paths.pop_front()
+			
+			if current_goal_cell.state_machine.current_state.name == "Military":
+				start_attacking(current_goal_cell)
 
 			entity.arrival_from(old_cell, entity.cell, current_goal_cell)
 			goal = current_goal_cell.global_position
@@ -51,7 +58,9 @@ func p_process(delta: float):
 		direction = direction.normalized()
 		entity.move_and_slide(direction * entity.speed)
 
-
+func start_attacking(to_attack: Cell):
+	entity.attacking_cell = to_attack
+	emit_signal("change_state", "Attack")
 
 
 # In charge of setting up variables that the state will deal with

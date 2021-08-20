@@ -150,6 +150,13 @@ func structure_destroyed():
 func has_structure():
 	return structure != null
 
+func structure_is_alive():
+	return is_instance_valid(structure)
+
+func damage_structure(amount: int):
+	if structure_is_alive():
+		structure.damage(amount)
+
 ##############
 ## Edges
 ###############
