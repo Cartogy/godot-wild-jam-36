@@ -176,9 +176,13 @@ func load_level(file_to_load):
 	var level_save: LevelData = load(file_to_load)
 	
 	origin = level_save.grid_origin
+	# Load cells
 	for hex_coord in level_save.level_data.keys():
 		var cell_data:Dictionary = level_save.level_data[hex_coord]
 		spawn_cell(hex_coord, cell_data)
+		
+	for hex_coord in level_save.edge_data.keys():
+		
 
 		
 func spawn_cell(hex_coord: Vector2, cell_data: Dictionary):
