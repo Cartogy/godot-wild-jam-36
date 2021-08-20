@@ -22,7 +22,7 @@ func tick():
 	else:
 		#consuming_cell.add_bunny()
 		add_bunny(consuming_cell)
-			
+
 
 func add_consuming_cell(p_cell: Cell):
 	consuming_cell = p_cell

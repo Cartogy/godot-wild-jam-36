@@ -21,14 +21,14 @@ func _ready():
 	#var den = starting_den.instance()
 
 	#bnet.add_starting_structure(den, starting_cell, cell)
-	
+
 	if level_data != "":
 		var level = load(level_data)
 		grid.load_level_grid(level, bnet, mnet,grid.dimensions)
 	else:
 		grid.generate_hex_grid(grid.dimensions, grid.origin, grid.size)
 	grid.display_hex_grid(grid.origin)
-	
+
 	grid_bounds = grid.get_grid_bounds()
 
 func start_bnet():
