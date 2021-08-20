@@ -41,7 +41,6 @@ func p_process(delta: float):
 			entity.arrival_from(old_cell, entity.cell, current_goal_cell)
 			goal = current_goal_cell.global_position
 		else:
-			print_debug("Arrived")
 			entity.goal = current_goal_cell.global_position
 			entity.add_to_tile(current_goal_cell)
 			entity.cell = current_goal_cell
@@ -51,7 +50,7 @@ func p_process(delta: float):
 	else:
 		direction = direction.normalized()
 		entity.move_and_slide(direction * entity.speed)
-		print_debug(current_goal_cell.hex_size)
+
 
 
 
