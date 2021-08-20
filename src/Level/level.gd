@@ -33,7 +33,7 @@ func load_level():
 	else:
 		grid.generate_hex_grid(grid.dimensions, grid.origin, grid.size)
 		
-	grid.get_grid_bounds()
+	grid_bounds = grid.get_grid_bounds()
 	current_map_info = build_map_info(grid.hexagon_coords)
 	
 func start_bnet():
