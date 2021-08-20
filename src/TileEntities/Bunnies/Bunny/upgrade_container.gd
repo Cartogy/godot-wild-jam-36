@@ -1,7 +1,7 @@
 extends Node2D
 
 var upgrade_holders: Array
-var space_between_holders: Vector2 = Vector2(10,0)
+var space_between_holders: Vector2 = Vector2(70,0)
 
 func add_holder(holder: Node2D):
 	upgrade_holders.append(holder)
