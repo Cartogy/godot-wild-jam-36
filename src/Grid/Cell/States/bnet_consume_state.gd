@@ -11,6 +11,7 @@ func handle_input(event):
 # What occurs when entering a state
 func enter():
 	cell.bnet_tex()
+	cell.connect("get_resources", cell.bnet.actor_data, "add_resources")
 	cell.emit_signal("get_resources", cell.resources)
 
 # What occurs when exiting state

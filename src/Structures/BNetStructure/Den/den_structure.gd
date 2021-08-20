@@ -31,10 +31,9 @@ func add_consuming_cell(p_cell: Cell):
 
 func cell_consumed(from: Cell, cell_consumed: Cell):
 	bnet.consumed_cells[cell_consumed.hex_coords] = cell_consumed
-
+	print_debug(from)
 	var next_cell = from.breadth_search_neighbours()
-	if next_cell != null:
-		next_cell.connect("get_resources", bnet.actor_data, "add_resources")
+
 	if next_cell != null:
 		add_consuming_cell(next_cell)
 	else:
@@ -46,3 +45,10 @@ func add_bunny(to: Cell):
 
 	if to.state_machine.current_state.name == "BNet":
 		to.bunnies.add_bunny(real_hex_center, hex_coords, bnet)
+	elif to.state_machine.current_state.name == "Available":
+		to.bnet_acquire(bnet)
+		to.bunnies.add_bunny(real_hex_center, hex_coords, bnet)
+	else:
+		var next_cell = cell.breadth_search_neighbours()
+		if next_cell != null:
+			add_consuming_cell(next_cell)
