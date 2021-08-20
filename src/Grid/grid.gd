@@ -65,7 +65,7 @@ func load_level_grid(level: LevelData, bnet: BNet, mnet: MNet, dimension: Vector
 				hexagon_coords[d_coord.to_vector()] = water_cell
 
 	fill_neighbours(hexagon_coords, neighbour_directions)
-			
+
 
 func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 	var hex_coord: Vector2 = cell_data.hex_coord
@@ -73,7 +73,7 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 	var structure_path = cell_data.structure_path
 	var special_res_path = cell_data.spec_resource_path
 	var cell_position = cell_data.cell_position
-	
+
 	var center = converter.doublewidth_to_pixel(DoubleCoordinate.new(hex_coord.y, hex_coord.x), origin, size)
 
 	var cell_pack = load(cell_scene_path)
@@ -123,17 +123,17 @@ func pixel_to_hex(cursor: Vector2):
 func display_hex_grid(origin: Vector2):
 	var dimension = dimensions
 	var p_size = size
-	
+
 	for y in dimension.y:
 		var row_mod = y % 2
 		var row = y
-		
+
 		for x in dimension.x:
 			var col = (x * 2) + row_mod
 			var d_coord = DoubleCoordinate.new(row,col)
 			# Ensure property holds for double width coordinate
 			assert((col + row) % 2 == 0)
-			
+
 			var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
 			var corners = make_hex_corners(center, p_size)
 			hex_corners.append(corners)

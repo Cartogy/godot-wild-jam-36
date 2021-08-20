@@ -93,7 +93,7 @@ func _unhandled_input(event):
 
 
 			print_debug(selected_units)
-			
+
 			drag_start = cursor - (mouse_click_area/2)
 			drag_end = cursor + (mouse_click_area / 2)
 			update()
@@ -150,7 +150,7 @@ func move_units(units: Array, pixel: Vector2):
 	# Get goal
 	var hex_coord = hex_grid.pixel_to_hex(pixel)
 	var goal_cell = hex_grid.get_cell(hex_coord.to_vector())
-	
+
 	for u in units:
 		var paths = []
 		paths = HexPath.path_finding(u.cell, goal_cell, u.ignore_edge_obstacles, u.obstacles)

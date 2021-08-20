@@ -146,7 +146,7 @@ func structure_destroyed():
 	if structure != null:
 		structure = null
 		available_cell()
-		
+
 func has_structure():
 	return structure != null
 
@@ -156,7 +156,7 @@ func has_structure():
 
 func add_edge(direction: Vector2, edge: GridEdge):
 	edges[direction] = edge
-	
+
 func remove_edge(direction: Vector2):
 	if edges.has(direction):
 		var _val = edges.erase(direction)
@@ -209,9 +209,9 @@ func bnet_tex():
 
 func available_tex():
 	sprite.texture = available_texture
-	
+
 func water_tex():
 	sprite.texture = water_texture
-	
+
 func debug_tex():
 	sprite.texture = debug_texture
