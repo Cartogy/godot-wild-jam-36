@@ -69,8 +69,9 @@ func place_bunny_on_cell(bunny):
 			bunny.move_to([next_available_cell])
 	else:	# Place bunny in this tile
 		if bunnies_in_tile.size() == 0:
-			cell.connect("get_resources", bunny.bnet.actor_data, "add_resources")
-			cell.bnet_acquire(bunny.bnet)
+			if cell.state_machine.current_state.name != "Water":
+				cell.connect("get_resources", bunny.bnet.actor_data, "add_resources")
+				cell.bnet_acquire(bunny.bnet)
 		bunny.cell = cell
 		bunnies_in_tile.append(bunny)
 		print_debug("Bunny placed")

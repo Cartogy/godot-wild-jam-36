@@ -18,7 +18,6 @@ func enter():
 	paths = entity.cell_path
 	# get first cell to go to
 	current_goal_cell = paths.pop_front()
-	current_goal_cell.debug_cell()
 	
 	goal = current_goal_cell.global_position
 
@@ -38,7 +37,7 @@ func p_process(delta: float):
 			entity.cell = current_goal_cell
 
 			current_goal_cell = paths.pop_front()
-			current_goal_cell.debug_cell()
+
 			entity.arrival_from(old_cell, entity.cell, current_goal_cell)
 			goal = current_goal_cell.global_position
 		else:
