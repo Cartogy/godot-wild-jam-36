@@ -30,6 +30,10 @@ func add_edge(hex_coord_from: DoubleCoordinate, edge: EdgeDisplay):
 		else:
 			edge_data.get(from.append(direction))
 	else:
+		var data = create_edge_data(edge)
+		var dir_data = {
+			edge.direction: data
+		}
 		edge_data[from] = [edge.direction]
 
 func has_edge(hex_coord: Vector2, direction):
@@ -47,6 +51,16 @@ func create_dictionary(hex_coord: Vector2, cell: TileDisplay) -> Dictionary:
 		"spec_resource_path": cell.resource_path,
 		"cell_position": cell.global_position,
 		"tile_display": cell.self_scene,
+	}
+	
+	return template
+
+func create_edge_data(edge: EdgeDisplay) -> Dictionary:
+	var template = {
+		"edge_scene": edge.edge_scene,
+		"display_scene": edge.self_scene,
+		"direction": edge.direction
+		
 	}
 	
 	return template
