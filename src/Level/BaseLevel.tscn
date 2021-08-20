@@ -10,6 +10,7 @@
 script = ExtResource( 3 )
 
 [node name="Grid" parent="." instance=ExtResource( 2 )]
+DEBUG = false
 
 [node name="BNetView" parent="." instance=ExtResource( 1 )]
 

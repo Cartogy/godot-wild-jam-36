@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/MNet/mnet.gd"
 }, {
+"base": "Resource",
+"class": "MapInfo",
+"language": "GDScript",
+"path": "res://src/Level/LevelData/level_data.gd"
+}, {
 "base": "MarginContainer",
 "class": "MenuTab",
 "language": "GDScript",
@@ -216,6 +221,7 @@ _global_script_class_icons={
 "HexOrientation": "",
 "LevelData": "",
 "MNet": "",
+"MapInfo": "",
 "MenuTab": "",
 "MilitaryBase": "",
 "MilitaryGunner": "",

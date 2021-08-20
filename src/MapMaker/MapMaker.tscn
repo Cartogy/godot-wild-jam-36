@@ -11,6 +11,7 @@ script = ExtResource( 2 )
 origin = Vector2( 100, -100 )
 
 [node name="Grid" parent="." instance=ExtResource( 1 )]
+dimensions = Vector2( 10, 10 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

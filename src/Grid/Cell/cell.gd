@@ -48,6 +48,10 @@ signal consumption_complete(from, neighbour)
 signal new_bunny(to_cell)
 signal get_resources(resources)
 
+# Level notification for BNet
+signal consumed_cell()
+signal lost_cell()
+
 func _ready():
 	state_machine.setup_state_machine()
 	if starting_state != "":
@@ -171,6 +175,9 @@ func remove_edge(direction: Vector2):
 ################
 ## State
 ################
+
+func get_state() -> String:
+	return state_machine.current_state.name
 
 func bnet_produce():
 	state_machine.change_state("BNetProduction")

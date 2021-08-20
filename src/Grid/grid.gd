@@ -19,7 +19,7 @@ var cell_offset: Vector2 = Vector2(0,0)
 # Increate Y -> Stretch Vertically
 
 # Default value is according to the sprite
-export (Vector2) var size: Vector2 = Vector2(23,16)
+export (Vector2) var size: Vector2 = Vector2(24.2, 16)
 
 
 # Easy way to store hex coordinates
@@ -67,6 +67,10 @@ func load_level_grid(level: LevelData, bnet: BNet, mnet: MNet, dimension: Vector
 
 	fill_neighbours(hexagon_coords, neighbour_directions)
 
+func total_land_cells():
+	var amount_of_land
+	for c in hexagon_coords.values():
+		pass
 
 func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 	var hex_coord: Vector2 = cell_data.hex_coord

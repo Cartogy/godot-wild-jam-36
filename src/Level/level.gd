@@ -15,22 +15,27 @@ var starting_den: PackedScene = load("res://src/Structures/BNetStructure/Den/Den
 var grid_bounds: Rect2
 var CAMERA_MOVE_SPEED = 200
 
+# Level Info
+var current_map_info: MapInfo = null
+
 func _ready():
 	# Add starting cell
 	#var cell = grid.get_cell(starting_cell)
 	#var den = starting_den.instance()
 
 	#bnet.add_starting_structure(den, starting_cell, cell)
+	load_level()
 
+func load_level():
 	if level_data != "":
 		var level = load(level_data)
 		grid.load_level_grid(level, bnet, mnet,grid.dimensions)
 	else:
 		grid.generate_hex_grid(grid.dimensions, grid.origin, grid.size)
-	grid.display_hex_grid(grid.origin)
-
-	grid_bounds = grid.get_grid_bounds()
-
+		
+	grid.get_grid_bounds()
+	current_map_info = build_map_info(grid.hexagon_coords)
+	
 func start_bnet():
 	bnet.active = true
 	mnet.active = true
@@ -59,3 +64,47 @@ func _process(delta):
 	camera.position.x = min(max(camera.position.x, grid_bounds.position.x), grid_bounds.end.x)
 	camera.position.y = min(max(camera.position.y, grid_bounds.position.y), grid_bounds.end.y)
 
+#################
+## Cell notification
+#################
+
+func bnet_lost():
+	current_map_info.remove_consumed(1)
+	
+func bnet_gained():
+	current_map_info.add_consumed(1)
+	if is_game_over():
+		#Game over
+		print_debug("Game Over!!")
+		bnet.active = false
+		mnet.active = false
+		pass
+		
+func is_game_over():
+	return current_map_info.consumed_all()
+
+##################
+## Level Map Info
+##################
+
+func is_consumed(cell: Cell):
+	return cell.get_state() == "BNet"
+
+func is_land(cell: Cell):
+	if cell.get_state() != "Water":
+		return true
+	else: 
+		return false
+		
+func build_map_info(hex_cells: Dictionary) -> MapInfo:
+	var map_info = MapInfo.new()
+	for cell in hex_cells.values():
+		if is_consumed(cell):
+			map_info.add_consumed(1)
+		if is_land(cell):
+			map_info.add_to_total_land(1)
+			# allow them to notify when consumption occurs
+			cell.connect("consumed_cell", self, "bnet_gained")
+			cell.connect("lost_cell", self, "bnet_lost")
+			
+	return map_info
