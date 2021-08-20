@@ -13,7 +13,7 @@ func remove_edge():
 	
 	self.queue_free()
 
-func get_direction(from, to) -> Vector2:
+func get_direction(_from, to) -> Vector2:
 	var hex_direction = to.hex_coord - to.hex_coord
 	
 	return hex_direction

@@ -3,7 +3,7 @@ extends Node
 """
 Stores bunnies on tile
 """
-export (int) var max_bunnies
+export (int) var max_bunnies = 7
 var bunny_scene = preload("res://src/TileEntities/Bunnies/Bunny/Bunny.tscn")
 
 
@@ -80,7 +80,8 @@ func remove_bunny(bunny):
 		bunnies_in_tile.erase(bunny)
 		if bunnies_in_tile.size() == 0:
 			var cell: Cell = get_owner()
-			cell.available_cell()
+			if cell.has_structure() == false:
+				cell.available_cell()
 		print_debug("Bunny removed")
 
 func delete_bunnies(amount: int):

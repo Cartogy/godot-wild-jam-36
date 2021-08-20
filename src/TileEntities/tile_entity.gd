@@ -32,7 +32,7 @@ var goal: Vector2
 func _ready():
 	state_machine.setup_state_machine()
 
-func move_to(p_cell_path: Array):
+func move_to(_p_cell_path: Array):
 	pass
 		
 func _physics_process(delta):
@@ -40,8 +40,8 @@ func _physics_process(delta):
 	
 	
 
-func add_to_tile(new_cell: Cell):
+func add_to_tile(_new_cell):
 	pass
 
-func arrived_at(p_cell: Cell):
+func arrived_at(_p_cell):
 	pass

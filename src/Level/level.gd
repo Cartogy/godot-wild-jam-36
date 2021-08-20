@@ -5,6 +5,7 @@ export (bool) var DEBUG
 export (Vector2) var starting_cell
 
 onready var grid = $Grid
+onready var mnet = $MNet
 onready var bnet = $BNetView/BNet
 onready var camera = $Camera
 
@@ -23,7 +24,7 @@ func _ready():
 	
 	if level_data != "":
 		var level = load(level_data)
-		grid.load_level_grid(level, bnet, grid.dimensions)
+		grid.load_level_grid(level, bnet, mnet,grid.dimensions)
 	else:
 		grid.generate_hex_grid(grid.dimensions, grid.origin, grid.size)
 	grid.display_hex_grid(grid.origin)
@@ -32,9 +33,11 @@ func _ready():
 
 func start_bnet():
 	bnet.active = true
+	mnet.active = true
 
 func stop_bnet():
 	bnet.active = false
+	mnet.active = false
 
 func _on_Button_pressed():
 	start_bnet()

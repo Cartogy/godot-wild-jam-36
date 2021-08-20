@@ -10,7 +10,7 @@ signal change_state(next_state)
 func _ready():
 	pass
 
-func handle_input(event):
+func handle_input(_event):
 	pass
 
 # What occurs when entering a state

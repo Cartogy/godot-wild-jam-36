@@ -32,7 +32,7 @@ var real_hex_center: Vector2
 var neighbours: Array = []
 # Direction -> Edge
 var edges: Dictionary = {}
-
+var structure: CellStructure
 
 
 # BNet variables to use
@@ -125,6 +125,8 @@ func breadth_search_neighbours():
 			# Found neighbour to acquire next
 			if cell_rand.state_machine.current_state.name == "Available":
 				return cell_rand
+			elif cell_rand.state_machine.current_state.name == "BNet" and cell_rand.bunnies.reached_max_capacity() == false:
+				return cell_rand
 			else:
 				# Investigate later, if not already visited
 				if visited.has(cell_rand) == false and cell_rand.state_machine.current_state.name != "Water":
@@ -137,8 +139,16 @@ func breadth_search_neighbours():
 
 	return null
 ###############
-## Bunnies
+## Structures
 ###############
+
+func structure_destroyed():
+	if structure != null:
+		structure = null
+		available_cell()
+		
+func has_structure():
+	return structure != null
 
 ##############
 ## Edges
@@ -149,7 +159,7 @@ func add_edge(direction: Vector2, edge: GridEdge):
 	
 func remove_edge(direction: Vector2):
 	if edges.has(direction):
-		edges.erase(direction)
+		var _val = edges.erase(direction)
 
 ################
 ## State

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/MNet/mnet.gd" type="Script" id=1]
+
+[node name="MNet" type="Node2D"]
+script = ExtResource( 1 )
+tick_in_seconds = 2.5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true

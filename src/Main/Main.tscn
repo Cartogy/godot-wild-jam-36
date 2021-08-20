@@ -103,7 +103,7 @@ grid_hex_path = NodePath("../BaseLevel/Grid")
 
 [node name="BaseLevel" parent="." instance=ExtResource( 1 )]
 DEBUG = true
-level_data = "res://src/Level/CustomLevels/my_level.tres"
+level_data = "res://src/Level/CustomLevels/military_test.tres"
 
 [connection signal="pressed" from="CanvasLayer/Stop" to="BaseLevel" method="_on_Stop_pressed"]
 [connection signal="pressed" from="CanvasLayer/Begin" to="BaseLevel" method="_on_Button_pressed"]

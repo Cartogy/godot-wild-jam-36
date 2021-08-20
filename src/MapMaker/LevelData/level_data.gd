@@ -14,7 +14,7 @@ func clear():
 func add_cell(hex_coord: DoubleCoordinate, cell: TileDisplay):
 	
 	if level_data.has(hex_coord.to_vector()):
-		var old_cell = level_data[hex_coord.to_vector()]
+		var _old_cell = level_data[hex_coord.to_vector()]
 		level_data.erase(hex_coord.to_vector())
 		
 	var dict_values = create_dictionary(hex_coord.to_vector(), cell)

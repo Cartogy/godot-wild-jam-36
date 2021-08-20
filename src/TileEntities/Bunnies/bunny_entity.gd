@@ -1,7 +1,7 @@
 extends TileEntity
 class_name BunnyBase
 
-var on_cell: Cell
+var on_cell
 var bnet = null
 
 func _ready():
@@ -21,7 +21,7 @@ func move_to(p_cell_path: Array):
 
 		state_machine.change_state("Migrating")
 
-func arrived_at(p_cell: Cell):
+func arrived_at(p_cell):
 	p_cell.bunnies.place_bunny_on_cell(self)
 	print_debug("Arrived at Cell")
 
@@ -31,7 +31,7 @@ func die():
 	bnet.actor_data.remove_population(1)
 	self.queue_free()
 
-func add_to_tile(new_cell: Cell):
+func add_to_tile(new_cell):
 	new_cell.bunnies.place_bunny_on_cell(self)
 	var vector_to_position = new_cell.bunnies.calc_direction_placement()
 
@@ -41,5 +41,5 @@ func debug_path(path: Array):
 	for c in path:
 		c.debug_cell()
 		
-func to_normal(c: Cell):
+func to_normal(c):
 	c.available_cell()

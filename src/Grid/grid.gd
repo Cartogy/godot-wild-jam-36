@@ -43,7 +43,7 @@ func _ready():
 
 	#fill_neighbours(hexagon_coords, neighbour_directions)
 
-func load_level_grid(level: LevelData, bnet: BNet, dimension: Vector2):
+func load_level_grid(level: LevelData, bnet: BNet, mnet: MNet, dimension: Vector2):
 	var p_size = size
 
 	for y in dimension.y:
@@ -55,7 +55,7 @@ func load_level_grid(level: LevelData, bnet: BNet, dimension: Vector2):
 			var d_coord = DoubleCoordinate.new(row, col)
 
 			if level.level_data.has(d_coord.to_vector()):
-				create_level_cell(level.level_data[d_coord.to_vector()], bnet)
+				create_level_cell(level.level_data[d_coord.to_vector()], bnet, mnet)
 			else:
 				var water_cell = water_cell_scene.instance()
 				var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
@@ -67,7 +67,7 @@ func load_level_grid(level: LevelData, bnet: BNet, dimension: Vector2):
 	fill_neighbours(hexagon_coords, neighbour_directions)
 			
 
-func create_level_cell(cell_data: Dictionary, bnet: BNet):
+func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 	var hex_coord: Vector2 = cell_data.hex_coord
 	var cell_scene_path = cell_data.scene_path
 	var structure_path = cell_data.structure_path
@@ -92,6 +92,8 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet):
 		match structure.structure_id:
 			"den":
 				bnet.add_structure(structure, hex_coord, cell)
+			"gunner":
+				mnet.add_structure(structure, hex_coord, cell)
 
 
 	# Check if special res

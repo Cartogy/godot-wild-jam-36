@@ -21,7 +21,8 @@ var structures = {
 var tiles = {
 	"res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn": "res://assets/graphics/grass.png",
 	"res://src/MapMaker/TileDisplay/Cells/BNetDisplay.tscn": "res://assets/graphics/desert.png",
-	"res://src/MapMaker/TileDisplay/Cells/WaterDisplay.tscn": "res://assets/graphics/c_water.png"
+	"res://src/MapMaker/TileDisplay/Cells/WaterDisplay.tscn": "res://assets/graphics/c_water.png",
+	"res://src/MapMaker/TileDisplay/Cells/GunnerDisplay.tscn": "res://assets/graphics/desert_city.png",
 }
 
 var selected_entity: Node2D = null
@@ -50,7 +51,7 @@ func _input(event):
 					selected_entity = null
 				elif selected_entity is EdgeDisplay:
 					add_edge(selected_entity, self.get_global_mouse_position())
-					selected_entity = null			
+					selected_entity = null
 		# Remove Stuff
 		elif event.button_index == BUTTON_RIGHT and event.pressed:
 			if selected_entity != null:
