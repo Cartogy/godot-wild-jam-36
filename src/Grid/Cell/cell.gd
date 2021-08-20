@@ -135,10 +135,11 @@ func breadth_search_neighbours():
 
 	return null
 ###############
-## BNet
+## Bunnies
 ###############
 
-
+func add_bunny_to_cell(bunny):
+	bunnies.append_bunny(bunny)
 
 ################
 ## State

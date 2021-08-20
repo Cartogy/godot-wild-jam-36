@@ -3,6 +3,7 @@ class_name BNet
 """
 Responsible for ticking each cell that is being acquired.
 """
+var bunny_scene = preload("res://src/TileEntities/Bunnies/Bunny/Bunny.tscn")
 
 export (float) var tick_in_seconds = 1
 
@@ -37,8 +38,13 @@ func tick_cells():
 		c.tick()
 
 #####
-# Adding
+# API
 #####
+
+func add_bunny(cell: Cell, bunny: BunnyBase):
+	bunny.bnet = self
+	cell.bunnies.place_bunny_on_cell(bunny)
+
 
 func add_structure(structure: BNetStructure, hex_coord: Vector2, cell: Cell):
 

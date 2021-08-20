@@ -55,6 +55,9 @@ func add_bunny(center: Vector2, hex_coord: Vector2, bnet):
 
 
 	bnet.add_child(bunny)
+	
+func append_bunny(bunny):
+	bunnies_in_tile.append(bunny)
 
 func place_bunny_on_cell(bunny):
 	var cell: Cell = get_owner()
