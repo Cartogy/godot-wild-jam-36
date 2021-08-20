@@ -181,8 +181,9 @@ func load_level(file_to_load):
 		var cell_data:Dictionary = level_save.level_data[hex_coord]
 		spawn_cell(hex_coord, cell_data)
 		
-	for hex_coord in level_save.edge_data.keys():
-		
+	# TODO: Load Cells
+	#for hex_coord in level_save.edge_data.keys():
+	#	pass
 
 		
 func spawn_cell(hex_coord: Vector2, cell_data: Dictionary):

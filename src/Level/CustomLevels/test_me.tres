@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/MapMaker/LevelData/level_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+level_data = {
+Vector2( 6, 2 ): {
+"cell_position": Vector2( 169.512, 98 ),
+"hex_coord": Vector2( 6, 2 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/BNet.tscn",
+"spec_resource_path": "",
+"structure_path": "res://src/Structures/BNetStructure/Den/Den.tscn",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/BNetDisplay.tscn"
+},
+Vector2( 8, 0 ): {
+"cell_position": Vector2( 209.349, 50 ),
+"hex_coord": Vector2( 8, 0 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+}
+}
+edge_data = {
+Vector2( 5, 3 ): [ Vector2( -1, -1 ) ],
+Vector2( 7, 3 ): [ Vector2( 1, -1 ) ],
+Vector2( 9, 3 ): [ Vector2( 2, 0 ) ]
+}
+grid_origin = Vector2( 50, -50 )
