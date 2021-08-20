@@ -21,26 +21,38 @@ func add_cell(hex_coord: DoubleCoordinate, cell: TileDisplay):
 	level_data[hex_coord.to_vector()] = dict_values
 	
 func add_edge(hex_coord_from: DoubleCoordinate, edge: EdgeDisplay):
-	var from = hex_coord_from.to_vector()
-	
-	if edge_data.has(from):
+	# Get hex coord in vector
+	var hex_coord = hex_coord_from.to_vector()
+	# Check if hex has directions
+	if edge_data.has(hex_coord):
+		# Get edges in hex
+		# { dir0: data0,
+		#   dir1: data1,
+		# }
+		var hex_edges: Dictionary = edge_data[hex_coord]
+		# Check if direction is already placed
 		var direction = edge.direction
-		if edge_data.get(from).has(direction):
-			edge_data.get(from).erase(direction)
+		if hex_edges.has(direction) == false:
+			hex_edges[direction] = edge.build_data()
 		else:
-			edge_data.get(from.append(direction))
+			printerr("Already contains a barrier")
 	else:
-		var data = create_edge_data(edge)
-		var dir_data = {
-			edge.direction: data
+		edge_data[hex_coord] = {
+			edge.direction: edge.build_data()
 		}
-		edge_data[from] = [edge.direction]
+			
+func remove_edge(hex_coord_from: DoubleCoordinate, edge: EdgeDisplay):
+	var hex_coord = hex_coord_from.to_vector()
+	if edge_data.has(hex_coord):
+		var hex_edges: Dictionary = edge_data[hex_coord]
+		if hex_edges.has(edge.direction):
+			hex_edges.erase(edge.direction)
 
 func has_edge(hex_coord: Vector2, direction):
 	if edge_data.has(hex_coord):
-		for dir in edge_data[hex_coord]:
-			if direction == dir:
-				return true
+		var hex_edges = edge_data[hex_coord]
+		if hex_edges.has(direction):
+			return true
 	return false
 
 func create_dictionary(hex_coord: Vector2, cell: TileDisplay) -> Dictionary:
@@ -56,11 +68,6 @@ func create_dictionary(hex_coord: Vector2, cell: TileDisplay) -> Dictionary:
 	return template
 
 func create_edge_data(edge: EdgeDisplay) -> Dictionary:
-	var template = {
-		"edge_scene": edge.edge_scene,
-		"display_scene": edge.self_scene,
-		"direction": edge.direction
-		
-	}
+	var data = edge.build_data()
 	
-	return template
+	return data

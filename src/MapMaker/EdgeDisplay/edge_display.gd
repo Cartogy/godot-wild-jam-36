@@ -11,3 +11,15 @@ var self_scene
 
 func _ready():
 	self_scene = filename
+
+func build_data() -> Dictionary:
+	var data = {
+			"direction": direction,
+			"from": hex_coord_0,
+			"to": hex_coord_1,
+			"edge_scene": edge_scene,
+			"edge_position": self.global_position,
+			"tile_display": self_scene
+	}
+
+	return data

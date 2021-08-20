@@ -31,7 +31,7 @@ var converter = HexConversion.new()
 var level = LevelData.new()
 # Hex coord -> tile display
 var current_tiles: Dictionary
-# Hex Coord -> [Edges]
+# Hex Coord -> [EdgesDisplay]
 var current_edges: Dictionary
 
 func _ready():
@@ -65,11 +65,7 @@ func _input(event):
 					var tile: TileDisplay = current_tiles[hex_coord.to_vector()]
 					level.level_data.erase(hex_coord.to_vector())
 					tile.queue_free()
-				if level.edge_data.has(hex_coord.to_vector()):
-					level.edge_data.erase(hex_coord.to_vector())
-					for edge in current_edges[hex_coord.to_vector()]:
-						edge.queue_free()
-						current_edges.erase(hex_coord.to_vector())
+				remove_edge(hex_coord)
 						
 		
 
@@ -134,42 +130,64 @@ func add_tile(cell: TileDisplay, cursor: Vector2):
 	else:
 		printerr("Adding ontop of edge")
 	
+	
+###################
+## Edge interface
+###################
+	
+	
 func edge_selected(scene_path):
 	if selected_entity != null:
 		remove_child(selected_entity)
 		var old_tile = selected_entity
 		selected_entity = null
 		old_tile.queue_free()
+		
 	var scene: PackedScene = load(scene_path)
 	var edge = scene.instance()
 	edge_holder.add_child(edge)
 	selected_entity = edge
 	
 func add_edge(edge: EdgeDisplay, cursor: Vector2):
-	var hex_coord = grid.pixel_to_hex(self.get_global_mouse_position())
+	var hex_coord = grid.pixel_to_hex(cursor)
 	var edge_center = calculate_edge_position(hex_coord, edge.direction)
 
 	if level.has_edge(hex_coord.to_vector(), edge.direction) == false:
 		edge.global_position = edge_center
+		# Add edge data to level
+		edge.hex_coord_0 = hex_coord.to_vector()
+		edge.hex_coord_1 = hex_coord.to_vector() + edge.direction
 		level.add_edge(hex_coord, edge)
-		add_edge_to_holder(edge, hex_coord.to_vector())
+		# Store edge in scene for later manipulation
+		store_edge_in_tree(edge, hex_coord.to_vector())
 			
 		selected_entity = null
 	else:
-		printerr("Adding ontop of edge")
+		printerr("Edge already in place")
 		
+		
+func remove_edge(hex_coord: DoubleCoordinate):
+	var hex = hex_coord.to_vector()
+	var edges = edge_holder[hex]
+	
+	for e in edges:
+		level.remove_edge(e)
+		e.queue_free()
 
-func add_edge_to_holder(edge: EdgeDisplay, hex_coord: Vector2):
-	if edge_holder.has(hex_coord):
+func store_edge_in_tree(edge: EdgeDisplay, hex_coord: Vector2):
+	if current_edges.has(hex_coord):
 		# Get directions added
-		var directions: Dictionary = edge_holder.get(hex_coord)
-		# Add edege if not in coord
-		if directions.has(edge.direction) == false:
-			directions[hex_coord] = edge
+		var edges: Array = current_edges.get(hex_coord)
+		# Add edge if not in coord
+		if edges.has(edge) == false:
+			edges.append(edge)
 	else:	# Add edge
-		edge_holder[hex_coord] = {
-			edge.direction: edge
-		}
+		current_edges[hex_coord] = [edge]
+
+########################
+## Load/Save Interface
+#########################
+
 
 func save_level(p_level: LevelData, file_to_save: String):
 	p_level.grid_origin = origin
@@ -179,7 +197,6 @@ func load_level(file_to_load):
 	var dir = Directory.new()
 	if not dir.file_exists(file_to_load):
 		return false
-	print_debug(file_to_load)
 	var level_save: LevelData = load(file_to_load)
 	
 	origin = level_save.grid_origin
@@ -188,14 +205,16 @@ func load_level(file_to_load):
 		var cell_data:Dictionary = level_save.level_data[hex_coord]
 		spawn_cell(hex_coord, cell_data)
 		
-	# TODO: Load Cells
-	#for hex_coord in level_save.edge_data.keys():
-	#	pass
+	# TODO: Load Edges
+	for hex_coord in level_save.edge_data.keys():
+		var directions: Dictionary = level_save.edge_data.get(hex_coord)
+		for edge_data in directions.values():
+			spawn_edge(hex_coord, edge_data)
+			
 
 		
 func spawn_cell(hex_coord: Vector2, cell_data: Dictionary):
 	var scene: PackedScene = load(cell_data.tile_display)
-	print_debug(cell_data)
 	var cell: TileDisplay = scene.instance()
 	
 	cell.hex_coord = cell_data.hex_coord
@@ -209,6 +228,28 @@ func spawn_cell(hex_coord: Vector2, cell_data: Dictionary):
 	level.add_cell(DoubleCoordinate.new(hex_coord.y, hex_coord.x), cell)
 	current_tiles[hex_coord] = cell
 	cell_holder.add_child(cell)
+	
+func spawn_edge(hex_coord: Vector2, edge_data: Dictionary):
+	print_debug(edge_data)
+	var direction = edge_data.direction
+	var edge_position = edge_data.edge_position
+	var edge_scene = edge_data.edge_scene
+	var from = edge_data.from
+	var to = edge_data.to
+	var tile_display_scene = edge_data.tile_display
+	
+	var scene: PackedScene = load(tile_display_scene)
+	var edge: EdgeDisplay = scene.instance()
+	edge.global_position = edge_position
+	edge.direction = direction
+	edge.hex_coord_0 = from
+	edge.hex_coord_1 = to
+	edge.edge_scene = edge_scene
+	
+	store_edge_in_tree(edge, from)
+	edge_holder.add_child(edge)
+	
+	
 	
 func clear_level():
 	level.clear()
