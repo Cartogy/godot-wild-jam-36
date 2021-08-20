@@ -152,18 +152,24 @@ func add_edge(edge: EdgeDisplay, cursor: Vector2):
 	if level.has_edge(hex_coord.to_vector(), edge.direction) == false:
 		edge.global_position = edge_center
 		level.add_edge(hex_coord, edge)
-		if current_edges.has(hex_coord.to_vector()):
-			
-			current_edges[hex_coord.to_vector()].append(edge)
-		else:
-			current_edges[hex_coord.to_vector()] = [edge]
+		add_edge_to_holder(edge, hex_coord.to_vector())
 			
 		selected_entity = null
 	else:
 		printerr("Adding ontop of edge")
-	
+		
 
-	
+func add_edge_to_holder(edge: EdgeDisplay, hex_coord: Vector2):
+	if edge_holder.has(hex_coord):
+		# Get directions added
+		var directions: Dictionary = edge_holder.get(hex_coord)
+		# Add edege if not in coord
+		if directions.has(edge.direction) == false:
+			directions[hex_coord] = edge
+	else:	# Add edge
+		edge_holder[hex_coord] = {
+			edge.direction: edge
+		}
 
 func save_level(p_level: LevelData, file_to_save: String):
 	p_level.grid_origin = origin
