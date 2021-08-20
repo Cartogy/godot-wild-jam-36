@@ -11,7 +11,7 @@ var upgrade_select = preload("res://src/TileEntities/Bunnies/Bunny/Upgrades/Upgr
 
 func _ready():
 	#._ready()
-	obstacles = ["water"]
+	obstacles = ["Water"]
 	_fill_upgrades(bunny_upgrades)
 	hide_upgrades()
 	
@@ -39,7 +39,8 @@ func _fill_upgrades(upgr: Array):
 		upgrade_holder.set_texture(upgrade.tex)
 		
 		upgrade_holder.connect("selected", self, "_upgrade_bunny")
-		upgrades.add_child(upgrade_holder)
+		upgrades.add_holder(upgrade_holder)
+	upgrades.place_in_tree()
 		
 func pass_bunny_info(from: BunnyBase, to: BunnyBase):
 	to.hex_center = from.hex_center

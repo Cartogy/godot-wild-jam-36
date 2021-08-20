@@ -6,8 +6,13 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 	var came_from = {}
 	came_from[from] = null
 	
+	if obstacles.has(to.state_machine.current_state.name):
+		return []
+	
 	while frontier.size() > 0:
 		var current: Cell =  frontier.pop_front()
+		if current == to:
+			break
 		for next in current.neighbours:
 			if came_from.has(next) == false:
 				if an_obstacle(next, obstacles) == false:

@@ -164,6 +164,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Menu/Pause/Tabs/pause_tab.gd"
 }, {
+"base": "BunnyBase",
+"class": "ScubaBunny",
+"language": "GDScript",
+"path": "res://src/TileEntities/Bunnies/ScubaBunny/scuba_bunny.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
@@ -216,6 +221,7 @@ _global_script_class_icons={
 "MilitaryGunner": "",
 "MountainResource": "",
 "PauseTab": "",
+"ScubaBunny": "",
 "State": "",
 "TileDisplay": "",
 "TileEntity": "",

@@ -153,6 +153,7 @@ func move_units(units: Array, pixel: Vector2):
 	
 	for u in units:
 		var paths = []
+		print_debug(u.obstacles)
 		paths = HexPath.path_finding(u.cell, goal_cell, u.ignore_edge_obstacles, u.obstacles)
 		u.move_to(paths)
 

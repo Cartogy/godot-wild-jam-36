@@ -43,3 +43,6 @@ func debug_path(path: Array):
 		
 func to_normal(c):
 	c.available_cell()
+			
+func arrival_from(from, to, next):
+	pass

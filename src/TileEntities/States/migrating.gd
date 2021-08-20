@@ -23,10 +23,14 @@ func p_process(delta: float):
 
 	if direction.length() < entity.next_cell.hex_size.length() * 0.4:
 		if entity.cell_path.size() > 0:
+			var old_cell = entity.cell
+			
 			entity.cell = entity.next_cell
 			entity.next_cell = entity.cell_path.pop_front()
+			entity.arrival_from(old_cell, entity.cell, entity.next_cell)
 			goal = entity.next_cell.global_position
 			entity.goal = goal
+
 		else:
 			entity.add_to_tile(entity.next_cell)
 			entity.cell = entity.next_cell
