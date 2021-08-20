@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/MapMaker/EdgeDisplay/EdgeDisplay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="TopLeft" instance=ExtResource( 1 )]
+direction = Vector2( -1, -1 )
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0.98947, -0.154856 )
+rotation = 0.771436
+scale = Vector2( 0.116368, 0.587919 )
+texture = ExtResource( 2 )

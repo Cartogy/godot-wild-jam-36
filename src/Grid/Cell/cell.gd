@@ -30,6 +30,8 @@ var hex_coords: Vector2
 # for the sprite.
 var real_hex_center: Vector2
 var neighbours: Array = []
+# Direction -> Edge
+var edges: Dictionary = {}
 
 
 
@@ -138,8 +140,16 @@ func breadth_search_neighbours():
 ## Bunnies
 ###############
 
-func add_bunny_to_cell(bunny):
-	bunnies.append_bunny(bunny)
+##############
+## Edges
+###############
+
+func add_edge(direction: Vector2, edge: GridEdge):
+	edges[direction] = edge
+	
+func remove_edge(direction: Vector2):
+	if edges.has(direction):
+		edges.erase(direction)
 
 ################
 ## State
