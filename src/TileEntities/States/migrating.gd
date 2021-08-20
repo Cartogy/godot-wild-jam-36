@@ -2,6 +2,9 @@ extends State
 
 var entity: TileEntity
 var goal: Vector2
+var paths = []
+var current_goal_cell: Cell
+
 
 func _ready():
 	pass
@@ -11,34 +14,45 @@ func handle_input(event):
 
 # What occurs when entering a state
 func enter():
-	goal = entity.goal
+	# Gain reference to nodes
+	paths = entity.cell_path
+	# get first cell to go to
+	current_goal_cell = paths.pop_front()
+	current_goal_cell.debug_cell()
+	
+	goal = current_goal_cell.global_position
+
 
 # What occurs when exiting state
 func exit():
-	pass
+	paths = []
 
 # Physics process for state
 func p_process(delta: float):
 	var direction = goal - entity.global_position
 
-	if direction.length() < entity.next_cell.hex_size.length() * 0.4:
-		if entity.cell_path.size() > 0:
+	# Arrived at cell
+	if direction.length() < current_goal_cell.hex_size.length() * 0.4:
+		if paths.size() > 0:
 			var old_cell = entity.cell
-			
-			entity.cell = entity.next_cell
-			entity.next_cell = entity.cell_path.pop_front()
-			entity.arrival_from(old_cell, entity.cell, entity.next_cell)
-			goal = entity.next_cell.global_position
-			entity.goal = goal
+			entity.cell = current_goal_cell
 
+			current_goal_cell = paths.pop_front()
+			current_goal_cell.debug_cell()
+			entity.arrival_from(old_cell, entity.cell, current_goal_cell)
+			goal = current_goal_cell.global_position
 		else:
-			entity.add_to_tile(entity.next_cell)
-			entity.cell = entity.next_cell
-			entity.next_cell = null 
+			print_debug("Arrived")
+			entity.goal = current_goal_cell.global_position
+			entity.add_to_tile(current_goal_cell)
+			entity.cell = current_goal_cell
+			current_goal_cell = null
+
 			emit_signal("change_state", "MovingInCell")
 	else:
 		direction = direction.normalized()
 		entity.move_and_slide(direction * entity.speed)
+		print_debug(current_goal_cell.hex_size)
 
 
 

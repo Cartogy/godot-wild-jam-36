@@ -61,6 +61,7 @@ func load_level_grid(level: LevelData, bnet: BNet, mnet: MNet, dimension: Vector
 				var center = converter.doublewidth_to_pixel(d_coord, origin, p_size)
 
 				water_cell.global_position = center
+				water_cell.hex_size = p_size
 				add_child(water_cell)
 				hexagon_coords[d_coord.to_vector()] = water_cell
 
