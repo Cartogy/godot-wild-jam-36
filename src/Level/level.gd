@@ -17,6 +17,7 @@ var CAMERA_MOVE_SPEED = 200
 
 # Level Info
 var current_map_info: MapInfo = null
+var bnet_structure_info: MapStructureInfo = null
 
 func _ready():
 	# Add starting cell
@@ -34,7 +35,10 @@ func load_level():
 		grid.generate_hex_grid(grid.dimensions, grid.origin, grid.size)
 		
 	grid_bounds = grid.get_grid_bounds()
+	# Load cell maps
 	current_map_info = build_map_info(grid.hexagon_coords)
+	# reference den structures
+	bnet_structure_info = build_structure_info(bnet.production_structures)
 	
 func start_bnet():
 	bnet.active = true
@@ -64,6 +68,37 @@ func _process(delta):
 	camera.position.x = min(max(camera.position.x, grid_bounds.position.x), grid_bounds.end.x)
 	camera.position.y = min(max(camera.position.y, grid_bounds.position.y), grid_bounds.end.y)
 
+#####################
+## BNet Structures
+#####################
+
+func build_structure_info(structures: Dictionary) -> MapStructureInfo:
+	var structure_data = MapStructureInfo.new()
+	
+	for s in structures.values():
+		var bnet_struct: BNetStructure = s
+		# Allow buildings to notify when they stop producing
+		bnet_struct.connect("became_inept", self, "inept_structure")
+		bnet_struct.connect("no_longer_inept", self, "producing_structure")
+		structure_data.add_structure_total(1)
+		
+	return structure_data
+	
+func inept_structure():
+	bnet_structure_info.add_inept_structure(1)
+	if lost_level():
+		print_debug("You lost")
+		stop_bnet()
+	
+func producing_structure():
+	bnet_structure_info.remove_inept_structure(1)
+	
+func lost_level():
+	if bnet_structure_info.all_structures_inept():
+		return true
+	else:
+		return false
+
 #################
 ## Cell notification
 #################
@@ -73,14 +108,14 @@ func bnet_lost():
 	
 func bnet_gained():
 	current_map_info.add_consumed(1)
-	if is_game_over():
+	if won_level():
 		#Game over
-		print_debug("Game Over!!")
+		print_debug("You Won!!")
 		bnet.active = false
 		mnet.active = false
 		pass
 		
-func is_game_over():
+func won_level():
 	return current_map_info.consumed_all()
 
 ##################

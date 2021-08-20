@@ -11,6 +11,7 @@ script = ExtResource( 3 )
 
 [node name="Grid" parent="." instance=ExtResource( 2 )]
 DEBUG = false
+dimensions = Vector2( 10, 10 )
 
 [node name="BNetView" parent="." instance=ExtResource( 1 )]
 

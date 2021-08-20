@@ -9,9 +9,11 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 	if obstacles.has(to.state_machine.current_state.name):
 		return []
 	
+	var found_goal: bool = false
 	while frontier.size() > 0:
 		var current: Cell =  frontier.pop_front()
 		if current == to:
+			found_goal = true
 			break
 		for next in current.neighbours:
 			if came_from.has(next) == false:
@@ -19,16 +21,19 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 					frontier.append(next)
 					came_from[next] = current
 	
+	if found_goal:
 	# Find path to cell
-	var current: Cell = to
-	var path = []
-	while current != from:
-		path.append(current)
-		current = came_from[current]
-	#path.append(from)
-	path = reverse(path)
+		var current: Cell = to
+		var path = []
+		while current != from:
+			path.append(current)
+			current = came_from[current]
+		#path.append(from)
+		path = reverse(path)
 	
-	return path
+		return path
+	else:
+		return []
 
 func an_obstacle(cell: Cell, obstacles: Array):
 	var state = cell.state_machine.current_state.name

@@ -86,7 +86,8 @@ func remove_bunny(bunny):
 		if bunnies_in_tile.size() == 0:
 			var cell: Cell = get_owner()
 			if cell.has_structure() == false:
-				cell.available_cell()
+				if cell.get_state() != "Water":
+					cell.available_cell()
 		print_debug("Bunny removed")
 
 func delete_bunnies(amount: int):

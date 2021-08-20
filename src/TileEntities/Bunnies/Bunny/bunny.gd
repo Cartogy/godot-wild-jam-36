@@ -27,6 +27,7 @@ func _upgrade_bunny(upgrade: BunnyUpgrade):
 	var new_bunny = new_bunny_scene.instance()
 	pass_bunny_info(self, new_bunny)
 	
+	cell.bunnies.remove_bunny(self)
 	# Goodbye, bunny
 	self.queue_free()
 
