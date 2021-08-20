@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Grid/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/MapMaker/map_maker.gd" type="Script" id=2]
+[ext_resource path="res://src/MapMaker/Selection/EdgeOption/EdgeOptionTopLeft.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/MapMaker/Selection/EdgeOption/EdgeOptionMiddle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/MapMaker/Selection/EdgeOption/EdgeOptionTopRight.tscn" type="PackedScene" id=5]
 
 [node name="MapMaker" type="Node2D"]
 script = ExtResource( 2 )
@@ -23,6 +26,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -147.0
+margin_bottom = -314.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -84,7 +88,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ScrollContainer2" type="ScrollContainer" parent="CanvasLayer/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -161.0
+margin_top = 288.0
+margin_bottom = -100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ScrollContainer2"]
+margin_bottom = 120.0
+custom_constants/separation = 60
+
+[node name="EdgeOptionMiddle" parent="CanvasLayer/Control/ScrollContainer2/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="EdgeOptionTopLeft" parent="CanvasLayer/Control/ScrollContainer2/VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 60.0
+margin_right = 0.0
+margin_bottom = 60.0
+
+[node name="EdgeOptionTopRight" parent="CanvasLayer/Control/ScrollContainer2/VBoxContainer" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 120.0
+margin_right = 0.0
+margin_bottom = 120.0
+
 [node name="CellHolder" type="Node2D" parent="."]
+
+[node name="EdgeHolder" type="Node2D" parent="."]
 
 [connection signal="pressed" from="CanvasLayer/Control/Save" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Load" to="." method="_on_Save2_pressed"]
