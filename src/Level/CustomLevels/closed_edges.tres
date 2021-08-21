@@ -1,0 +1,123 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/MapMaker/LevelData/level_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+level_data = {
+Vector2( 3, 3 ): {
+"cell_position": Vector2( 162.873, 172 ),
+"hex_coord": Vector2( 3, 3 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 4, 2 ): {
+"cell_position": Vector2( 183.831, 148 ),
+"hex_coord": Vector2( 4, 2 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 4, 4 ): {
+"cell_position": Vector2( 183.831, 196 ),
+"hex_coord": Vector2( 4, 4 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 5, 3 ): {
+"cell_position": Vector2( 204.789, 172 ),
+"hex_coord": Vector2( 5, 3 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/BNet.tscn",
+"spec_resource_path": "",
+"structure_path": "res://src/Structures/BNetStructure/Den/Den.tscn",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/BNetDisplay.tscn"
+},
+Vector2( 6, 2 ): {
+"cell_position": Vector2( 225.747, 148 ),
+"hex_coord": Vector2( 6, 2 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 6, 4 ): {
+"cell_position": Vector2( 225.747, 196 ),
+"hex_coord": Vector2( 6, 4 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 7, 3 ): {
+"cell_position": Vector2( 246.705, 172 ),
+"hex_coord": Vector2( 7, 3 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+}
+}
+edge_data = {
+Vector2( 3, 3 ): {
+Vector2( 2, 0 ): {
+"direction": Vector2( 2, 0 ),
+"edge_position": Vector2( 183.831, 172 ),
+"edge_scene": "res://src/Grid/Edge/Middle.tscn",
+"from": Vector2( 3, 3 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/Middle.tscn",
+"to": Vector2( 5, 3 )
+}
+},
+Vector2( 4, 4 ): {
+Vector2( 1, -1 ): {
+"direction": Vector2( 1, -1 ),
+"edge_position": Vector2( 194.31, 184 ),
+"edge_scene": "res://src/Grid/Edge/TopRight.tscn",
+"from": Vector2( 4, 4 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/TopRight.tscn",
+"to": Vector2( 5, 3 )
+}
+},
+Vector2( 5, 3 ): {
+Vector2( -1, -1 ): {
+"direction": Vector2( -1, -1 ),
+"edge_position": Vector2( 194.31, 160 ),
+"edge_scene": "res://src/Grid/Edge/TopLeft.tscn",
+"from": Vector2( 5, 3 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/TopLeft.tscn",
+"to": Vector2( 4, 2 )
+},
+Vector2( 1, -1 ): {
+"direction": Vector2( 1, -1 ),
+"edge_position": Vector2( 215.268, 160 ),
+"edge_scene": "res://src/Grid/Edge/TopRight.tscn",
+"from": Vector2( 5, 3 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/TopRight.tscn",
+"to": Vector2( 6, 2 )
+},
+Vector2( 2, 0 ): {
+"direction": Vector2( 2, 0 ),
+"edge_position": Vector2( 225.747, 172 ),
+"edge_scene": "res://src/Grid/Edge/Middle.tscn",
+"from": Vector2( 5, 3 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/Middle.tscn",
+"to": Vector2( 7, 3 )
+}
+},
+Vector2( 6, 4 ): {
+Vector2( -1, -1 ): {
+"direction": Vector2( -1, -1 ),
+"edge_position": Vector2( 215.268, 184 ),
+"edge_scene": "res://src/Grid/Edge/TopLeft.tscn",
+"from": Vector2( 6, 4 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/TopLeft.tscn",
+"to": Vector2( 5, 3 )
+}
+}
+}
+grid_origin = Vector2( 100, -100 )
