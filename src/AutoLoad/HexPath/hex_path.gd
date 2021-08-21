@@ -6,6 +6,8 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 	var came_from = {}
 	came_from[from] = null
 	
+	if to == null:
+		return []
 	print_debug(from.edge_data.edges)
 	print_debug(to.edge_data.edges)
 	
