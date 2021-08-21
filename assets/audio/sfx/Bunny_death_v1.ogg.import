@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bunny_death_v1.ogg-323f1cad0d9a75f1567f5d91c5a1cbcb.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Bunny_death_v1.ogg"
+dest_files=[ "res://.import/Bunny_death_v1.ogg-323f1cad0d9a75f1567f5d91c5a1cbcb.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

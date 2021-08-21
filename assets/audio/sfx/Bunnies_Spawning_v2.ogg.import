@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bunnies_Spawning_v2.ogg-08c0ba2b9d94e559f99d5dccfaea07de.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Bunnies_Spawning_v2.ogg"
+dest_files=[ "res://.import/Bunnies_Spawning_v2.ogg-08c0ba2b9d94e559f99d5dccfaea07de.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

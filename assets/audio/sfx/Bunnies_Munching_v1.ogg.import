@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bunnies_Munching_v1.ogg-6e2fc3fc950e7ba20acbbf1496beebd1.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Bunnies_Munching_v1.ogg"
+dest_files=[ "res://.import/Bunnies_Munching_v1.ogg-6e2fc3fc950e7ba20acbbf1496beebd1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
