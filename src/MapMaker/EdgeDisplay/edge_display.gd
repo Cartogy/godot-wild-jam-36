@@ -6,6 +6,7 @@ export (Vector2) var direction
 export (Vector2) var hex_coord_0
 export (Vector2) var hex_coord_1
 export (String, FILE, "*.tscn") var edge_scene
+export (String, FILE, "*.tscn") var tile_display
 
 var self_scene
 
@@ -19,7 +20,7 @@ func build_data() -> Dictionary:
 			"to": hex_coord_1,
 			"edge_scene": edge_scene,
 			"edge_position": self.global_position,
-			"tile_display": self_scene
+			"tile_display": tile_display
 	}
 
 	return data

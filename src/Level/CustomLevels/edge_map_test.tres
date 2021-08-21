@@ -173,8 +173,36 @@ Vector2( -1, -1 ): {
 "edge_position": Vector2( 131.437, 136 ),
 "edge_scene": "res://src/Grid/Edge/TopLeft.tscn",
 "from": Vector2( 2, 2 ),
-"tile_display": "res://src/MapMaker/EdgeDisplay/TopLeft.tscn",
+"tile_display": null,
 "to": Vector2( 1, 1 )
+}
+},
+Vector2( 4, 2 ): {
+Vector2( -1, -1 ): {
+"direction": Vector2( -1, -1 ),
+"edge_position": Vector2( 173.352, 136 ),
+"edge_scene": "res://src/Grid/Edge/TopLeft.tscn",
+"from": Vector2( 4, 2 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/TopLeft.tscn",
+"to": Vector2( 3, 1 )
+},
+Vector2( 1, -1 ): {
+"direction": Vector2( 1, -1 ),
+"edge_position": Vector2( 194.31, 136 ),
+"edge_scene": "res://src/Grid/Edge/TopRight.tscn",
+"from": Vector2( 4, 2 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/TopRight.tscn",
+"to": Vector2( 5, 1 )
+}
+},
+Vector2( 5, 3 ): {
+Vector2( 2, 0 ): {
+"direction": Vector2( 2, 0 ),
+"edge_position": Vector2( 225.747, 172 ),
+"edge_scene": "res://src/Grid/Edge/Middle.tscn",
+"from": Vector2( 5, 3 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/Middle.tscn",
+"to": Vector2( 7, 3 )
 }
 }
 }

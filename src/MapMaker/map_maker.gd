@@ -164,6 +164,7 @@ func add_edge(edge: EdgeDisplay, cursor: Vector2):
 		# Add edge data to level
 		edge.hex_coord_0 = hex_coord.to_vector()
 		edge.hex_coord_1 = hex_coord.to_vector() + edge.direction
+
 		level.add_edge(hex_coord, edge)
 		# Store edge in scene for later manipulation
 		store_edge_in_tree(edge, hex_coord.to_vector())
@@ -215,8 +216,10 @@ func load_level(file_to_load):
 		
 	# TODO: Load Edges
 	for hex_coord in level_save.edge_data.keys():
+		print_debug(level_save.edge_data)
 		var directions: Dictionary = level_save.edge_data.get(hex_coord)
 		for edge_data in directions.values():
+			print_debug(edge_data)
 			spawn_edge(hex_coord, edge_data)
 			
 
@@ -255,6 +258,8 @@ func spawn_edge(hex_coord: Vector2, edge_data: Dictionary):
 	edge.edge_scene = edge_scene
 	
 	store_edge_in_tree(edge, from)
+	var hex_coord_d = DoubleCoordinate.new(from.y, from.x)
+	level.add_edge(hex_coord_d, edge)
 	edge_holder.add_child(edge)
 	
 	
