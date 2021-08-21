@@ -11,7 +11,7 @@
 radius = 6.94662
 height = 10.8688
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "attack"
 length = 1.5
 loop = true
@@ -53,7 +53,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "idle"
 length = 0.75
 loop = true
@@ -141,9 +141,10 @@ tracks/2/keys = {
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
-texture = ExtResource( 5 )
+texture = ExtResource( 2 )
 hframes = 8
 vframes = 2
+frame = 11
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0.0884895, -4.33071 )
@@ -152,7 +153,10 @@ shape = SubResource( 1 )
 [node name="DestroyBarrier" type="Node" parent="StateMachine" index="4"]
 script = ExtResource( 4 )
 
+[node name="Timer" type="Timer" parent="StateMachine/DestroyBarrier" index="0"]
+one_shot = true
+
 [node name="AnimationPlayer" parent="." index="3"]
-anims/attack = SubResource( 5 )
-anims/idle = SubResource( 6 )
+anims/attack = SubResource( 2 )
+anims/idle = SubResource( 3 )
 anims/move = SubResource( 4 )

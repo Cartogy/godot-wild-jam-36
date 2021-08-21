@@ -17,3 +17,5 @@ func check_collision(amount: int):
 func destroy_barrier():
 	if barrier_to_destroy != null:
 		barrier_to_destroy.remove_edge()
+
+	

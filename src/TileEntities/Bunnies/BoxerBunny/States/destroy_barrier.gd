@@ -1,6 +1,8 @@
 extends State
 
 var entity
+var animation_time = 1.5
+onready var timer = $Timer
 
 func _ready():
 	pass
@@ -10,6 +12,7 @@ func handle_input(event):
 
 # What occurs when entering a state
 func enter():
+	timer.start()
 	# Play animation
 	animation_to_implement()
 
@@ -19,7 +22,9 @@ func exit():
 
 # Physics process for state
 func p_process(delta: float):
-	pass
+	if timer.is_stopped():
+		entity.destroy_barrier()
+		emit_signal("change_state", "Migrating")
 
 
 # In charge of setting up variables that the state will deal with
@@ -28,6 +33,7 @@ func setup():
 	entity = get_owner()
 	
 func animation_to_implement():
+	entity.animation_player.play("attack")
 	# Have animation do the following in some way
-	entity.destroy_barrier()
-	emit_signal("change_state", "Migrating")
+	#entity.destroy_barrier()
+	#emit_signal("change_state", "Migrating")
