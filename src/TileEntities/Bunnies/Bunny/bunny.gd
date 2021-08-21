@@ -35,6 +35,7 @@ func _upgrade_bunny(upgrade: BunnyUpgrade):
 		# Goodbye, bunny
 		self.queue_free()
 	else:
+		print_debug("Cant buy upgrade")
 		hide_upgrades()
 		
 func buy_upgrade(p_cell: Cell, upgrade: BunnyUpgrade):

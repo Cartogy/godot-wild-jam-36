@@ -22,6 +22,8 @@ func consume_resource() -> int:
 	return resource_gained
 
 func consume_special_resource() -> int:
+	if special_res == null:
+		return 0
 	var res_gained = special_res
 	var amount = special_res.amount
 	special_res.amount = 0
