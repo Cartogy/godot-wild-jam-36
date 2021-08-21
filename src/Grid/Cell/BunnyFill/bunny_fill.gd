@@ -89,9 +89,20 @@ func remove_bunny(bunny):
 					cell.available_cell()
 
 func remove_all_bunnies():
-	for b in bunnies_in_tile:
-		var bunny: BunnyBase = b
-		bunny.die()
+	var i = 0
+	print_debug(bunnies_in_tile.size())
+	
+	while bunnies_in_tile.size() > 0:
+		var b: BunnyBase = bunnies_in_tile.pop_front()
+		remove_bunny(b)
+		b.die()
+	
+	var cell: Cell = get_owner()
+	if cell.has_structure() == false:
+		if cell.get_state() != "Water":
+			cell.available_cell()
+	
+	
 
 func delete_bunnies(amount: int):
 	for i in amount:
