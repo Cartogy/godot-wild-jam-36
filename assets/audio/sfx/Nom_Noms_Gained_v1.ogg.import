@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Nom_Noms_Gained_v1.ogg-15b47fb859225552856e690d2b598a17.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Nom_Noms_Gained_v1.ogg"
+dest_files=[ "res://.import/Nom_Noms_Gained_v1.ogg-15b47fb859225552856e690d2b598a17.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

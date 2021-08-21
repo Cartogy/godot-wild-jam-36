@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Buff_Bunny_Smash_v2.ogg-7c0beed6385aa5f8a22b9af2b4fecb7c.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Buff_Bunny_Smash_v2.ogg"
+dest_files=[ "res://.import/Buff_Bunny_Smash_v2.ogg-7c0beed6385aa5f8a22b9af2b4fecb7c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Aqua_Bunny_Swim_v1.ogg-a2ccb4b801d39a52a25cf9a97b4431cf.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Aqua_Bunny_Swim_v1.ogg"
+dest_files=[ "res://.import/Aqua_Bunny_Swim_v1.ogg-a2ccb4b801d39a52a25cf9a97b4431cf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

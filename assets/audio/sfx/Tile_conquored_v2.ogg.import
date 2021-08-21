@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tile_conquored_v2.ogg-1975cd37b99a3a30e9b4ba80a8d107da.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Tile_conquored_v2.ogg"
+dest_files=[ "res://.import/Tile_conquored_v2.ogg-1975cd37b99a3a30e9b4ba80a8d107da.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
