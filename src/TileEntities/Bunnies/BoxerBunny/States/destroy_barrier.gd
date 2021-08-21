@@ -12,13 +12,14 @@ func handle_input(event):
 
 # What occurs when entering a state
 func enter():
-	timer.start()
+	if timer.is_stopped():
+		timer.start()
 	# Play animation
 	animation_to_implement()
 
 # What occurs when exiting state
 func exit():
-	entity.barrier_to_destroy = null
+	pass
 
 # Physics process for state
 func p_process(delta: float):

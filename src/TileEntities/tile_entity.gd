@@ -68,7 +68,7 @@ func damage_structure_at(cell: Cell, damage: int):
 ############
 
 # called in physics process
-func check_collision(amount: int):
+func check_collision(amount: int, from: Cell, to: Cell):
 	pass
 
 

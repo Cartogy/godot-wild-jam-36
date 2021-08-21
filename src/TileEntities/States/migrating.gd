@@ -61,7 +61,7 @@ func p_process(delta: float):
 		direction = direction.normalized()
 		entity.move_and_slide(direction * entity.speed)
 		# Do collision if implemented
-		entity.check_collision(entity.get_slide_count())
+		entity.check_collision(entity.get_slide_count(), entity.cell, current_goal_cell)
 
 func start_attacking(to_attack: Cell):
 	entity.attacking_cell = to_attack
