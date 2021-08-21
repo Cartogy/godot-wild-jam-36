@@ -21,10 +21,12 @@ func consume_resource() -> int:
 	
 	return resource_gained
 
-func consume_special_resource() -> CellSpecialResource:
+func consume_special_resource() -> int:
 	var res_gained = special_res
+	var amount = special_res.amount
+	special_res.amount = 0
 
-	return res_gained
+	return amount
 
 func consumed_special_res():
 	return special_res.consumed()

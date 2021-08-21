@@ -10,11 +10,12 @@ signal update_max_pop(new_amount)
 
 func add_resources(res: CellResource):
 	var nom_noms = res.consume_resource()
-	var special:CellSpecialResource = res.consume_special_resource()
+	var special_res_consumed:int = res.consume_special_resource()
+	
+	print_debug(special_res_consumed)
 	
 	var total_gained = nom_noms
-	if special != null:
-		total_gained += special.amount
+	total_gained += special_res_consumed
 		
 	total_resources += total_gained
 	emit_signal("update_res", total_resources)
