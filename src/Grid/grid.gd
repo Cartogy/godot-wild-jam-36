@@ -146,13 +146,13 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 			"gunner":
 				mnet.add_structure(structure, hex_coord, cell)
 
-
+	add_child(cell)
 	# Check if special res
 	if special_res_path != "":
 		var special_res = load(special_res_path)
-		cell.special_res = special_res
+		cell.add_special_resource(special_res)
 	hexagon_coords[hex_coord] = cell
-	add_child(cell)
+
 
 
 func pixel_to_hex(cursor: Vector2):

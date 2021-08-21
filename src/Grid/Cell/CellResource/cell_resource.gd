@@ -6,6 +6,9 @@ export (int) var resource_amount: int = 5
 export (int) var population_amount: int = 7
 var special_res: CellSpecialResource = null
 
+func add_special_res(res: CellSpecialResource):
+	special_res = res
+
 func set_resource_amout(amount: int):
 	resource_amount = amount
 

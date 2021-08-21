@@ -122,6 +122,6 @@ func select_structure(structure_name: String):
 
 func get_level_data():
 	if level == null:
-		return "res://src/Level/CustomLevels/edge_map_test.tres"
+		return "res://src/Level/CustomLevels/special_res_test.tres"
 	else:
 		return level.data

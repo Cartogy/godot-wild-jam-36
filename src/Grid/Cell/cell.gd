@@ -146,6 +146,7 @@ func breadth_search_neighbours():
 	
 func set_texture(tex: Texture):
 	sprite.texture = tex
+
 	
 	
 ###############
@@ -166,6 +167,14 @@ func structure_is_alive():
 func damage_structure(amount: int):
 	if structure_is_alive():
 		structure.damage(amount)
+
+##############
+## Resources
+##############
+
+func add_special_resource(special_res: CellSpecialResource):
+	resources.add_special_res(special_res)
+	set_texture(special_res.res_texture)
 
 ##############
 ## Edges
