@@ -23,6 +23,8 @@ var tiles = {
 	"res://src/MapMaker/TileDisplay/Cells/BNetDisplay.tscn": "res://assets/graphics/desert.png",
 	"res://src/MapMaker/TileDisplay/Cells/WaterDisplay.tscn": "res://assets/graphics/c_water.png",
 	"res://src/MapMaker/TileDisplay/Cells/GunnerDisplay.tscn": "res://assets/graphics/desert_city.png",
+	"res://src/MapMaker/TileDisplay/Cells/MountainDisplay.tscn": "res://assets/graphics/mountain.png",
+	"res://src/MapMaker/TileDisplay/Cells/ForestDisplay.tscn": "res://assets/graphics/forest.png",
 }
 
 var selected_entity: Node2D = null

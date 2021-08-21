@@ -23,6 +23,11 @@ func consume_resource() -> int:
 
 func consume_special_resource() -> CellSpecialResource:
 	var res_gained = special_res
-	special_res = null
 
 	return res_gained
+
+func consumed_special_res():
+	return special_res.consumed()
+	
+func has_special_res():
+	return special_res != null

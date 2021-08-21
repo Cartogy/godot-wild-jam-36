@@ -143,6 +143,11 @@ func breadth_search_neighbours():
 			amount_left -= 1
 
 	return null
+	
+func set_texture(tex: Texture):
+	sprite.texture = tex
+	
+	
 ###############
 ## Structures
 ###############
@@ -222,10 +227,22 @@ func _draw():
 	#_draw_neighbours()
 
 func bnet_tex():
-	sprite.texture = bnet_texture
+	if resources.has_special_res():
+		var tex = resources.special_res.get_bnet_consumed_texture()
+		set_texture(tex)
+	else:
+		set_texture(bnet_texture)
 
 func available_tex():
-	sprite.texture = available_texture
+	var tex
+	if resources.has_special_res():
+		if resources.consumed_special_res():
+			tex = resources.special_res.get_consumed_texture()
+		else:
+			tex = resources.special_res.get_res_texture()
+		set_texture(tex)
+	else:
+		set_texture(available_texture)
 
 func water_tex():
 	sprite.texture = water_texture
