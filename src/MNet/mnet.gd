@@ -29,4 +29,5 @@ func add_structure(structure: MilitaryBase, hex_coord: Vector2, cell):
 	military_base[hex_coord] = structure
 
 func remove_structure(structure: MilitaryBase):
-	pass
+	var cell = structure.cell
+	military_base.erase(cell.hex_coords)

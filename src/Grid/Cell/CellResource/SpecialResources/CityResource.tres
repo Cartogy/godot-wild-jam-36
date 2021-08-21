@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://src/Grid/Cell/CellResource/SpecialResources/city_resource.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/city.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/desert_city.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/grass.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+res_texture = ExtResource( 2 )
+consumed_texture = ExtResource( 4 )
+consumed_bnet_texture = ExtResource( 3 )
+amount = 0

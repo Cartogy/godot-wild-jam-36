@@ -80,10 +80,10 @@ Vector2( 2, 0 ): {
 Vector2( 2, 2 ): {
 "cell_position": Vector2( 141.916, 148 ),
 "hex_coord": Vector2( 2, 2 ),
-"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
-"spec_resource_path": "",
+"scene_path": "res://src/Grid/Cell/CellScenes/CityCell.tscn",
+"spec_resource_path": "res://src/Grid/Cell/CellResource/SpecialResources/CityResource.tres",
 "structure_path": "",
-"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/CityDisplay.tscn"
 },
 Vector2( 2, 4 ): {
 "cell_position": Vector2( 141.916, 196 ),
@@ -482,14 +482,6 @@ Vector2( 2, 0 ): {
 }
 },
 Vector2( 2, 2 ): {
-Vector2( -1, -1 ): {
-"direction": Vector2( -1, -1 ),
-"edge_position": Vector2( 131.437, 136 ),
-"edge_scene": "res://src/Grid/Edge/TopLeft.tscn",
-"from": Vector2( 2, 2 ),
-"tile_display": "res://src/MapMaker/EdgeDisplay/TopLeft.tscn",
-"to": Vector2( 1, 1 )
-}
 },
 Vector2( 2, 6 ): {
 Vector2( 1, -1 ): {
