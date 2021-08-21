@@ -28,5 +28,6 @@ func setup():
 	entity = get_owner()
 	
 func animation_to_implement():
+	# Have animation do the following in some way
 	entity.destroy_barrier()
 	emit_signal("change_state", "Migrating")

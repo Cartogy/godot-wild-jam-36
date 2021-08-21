@@ -22,7 +22,6 @@ func move_to(p_cell_path: Array):
 
 func arrived_at(p_cell):
 	p_cell.bunnies.place_bunny_on_cell(self)
-	print_debug("Arrived at Cell")
 
 func die():
 	if cell != null:
@@ -47,5 +46,5 @@ func debug_path(path: Array):
 func to_normal(c):
 	c.available_cell()
 			
-func arrival_from(from, to, next):
+func arrival_from(from, next):
 	pass

@@ -1,6 +1,6 @@
 extends State
 
-export (int) var speed = 10
+export (int) var attack_movement_speed = 10
 
 var attack_cell
 var current_cell
@@ -37,7 +37,7 @@ func p_process(delta: float):
 		if direction.length() > 0.3:
 			direction = direction.normalized()
 		
-			entity.move_and_slide(direction * speed)
+			entity.move_and_slide(direction * attack_movement_speed)
 		else:
 			moving_to_edge = false
 	else:

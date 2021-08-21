@@ -4,6 +4,7 @@ class_name TileEntity
 onready var state_machine = $StateMachine
 
 export (int) var damage = 1
+export (float) var speed: float = 15
 
 var hex_center: Vector2
 var hex_coord
@@ -17,7 +18,7 @@ var selectable: bool = false
 var migrating: bool = false
 var moving_to_
 
-var speed: float = 15
+
 
 # How far it can go from the center when idle
 var max_radius_idle: float

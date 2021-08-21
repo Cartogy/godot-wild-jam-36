@@ -92,8 +92,6 @@ func _unhandled_input(event):
 					bunny = null
 
 
-			print_debug(selected_units)
-
 			drag_start = cursor - (mouse_click_area/2)
 			drag_end = cursor + (mouse_click_area / 2)
 			update()
@@ -153,9 +151,8 @@ func move_units(units: Array, pixel: Vector2):
 
 	for u in units:
 		var paths = []
-		print_debug(u.obstacles)
+
 		paths = HexPath.path_finding(u.cell, goal_cell, u.ignore_edge_obstacles, u.obstacles)
-		print_debug(paths)
 		u.move_to(paths)
 
 

@@ -78,7 +78,6 @@ func place_bunny_on_cell(bunny):
 				cell.bnet_acquire(bunny.bnet)
 		bunny.cell = cell
 		bunnies_in_tile.append(bunny)
-		print_debug("Bunny placed")
 
 func remove_bunny(bunny):
 	if bunnies_in_tile.has(bunny):
@@ -88,7 +87,6 @@ func remove_bunny(bunny):
 			if cell.has_structure() == false:
 				if cell.get_state() != "Water":
 					cell.available_cell()
-		print_debug("Bunny removed")
 
 func delete_bunnies(amount: int):
 	for i in amount:
