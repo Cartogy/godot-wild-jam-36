@@ -3,7 +3,7 @@ extends State
 var entity: TileEntity
 var goal: Vector2
 var paths = []
-var current_goal_cell: Cell
+var current_goal_cell: Cell = null
 
 
 func _ready():
@@ -16,12 +16,6 @@ func handle_input(event):
 func enter():
 	# Gain reference to nodes
 	paths = entity.cell_path
-	# get first cell to go to
-	current_goal_cell = paths.pop_front()
-	if current_goal_cell.state_machine.current_state.name == "Military":
-		start_attacking(current_goal_cell)
-	
-	goal = current_goal_cell.global_position
 
 
 # What occurs when exiting state
@@ -30,6 +24,12 @@ func exit():
 
 # Physics process for state
 func p_process(delta: float):
+
+	if current_goal_cell == null:
+		current_goal_cell = paths.pop_front()
+		if current_goal_cell.get_state() == "Military":
+			start_attacking(current_goal_cell)
+		goal = current_goal_cell.global_position
 	var direction = goal - entity.global_position
 
 	# Arrived at cell
@@ -57,6 +57,8 @@ func p_process(delta: float):
 	else:
 		direction = direction.normalized()
 		entity.move_and_slide(direction * entity.speed)
+		# Do collision if implemented
+		entity.check_collision(entity.get_slide_count())
 
 func start_attacking(to_attack: Cell):
 	entity.attacking_cell = to_attack

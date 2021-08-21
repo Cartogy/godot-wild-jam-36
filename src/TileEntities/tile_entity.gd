@@ -58,3 +58,13 @@ func structure_alive_at(cell: Cell):
 
 func damage_structure_at(cell: Cell, damage: int):
 	cell.damage_structure(damage)
+	
+############
+## Collision behaviour
+############
+
+# called in physics process
+func check_collision(amount: int):
+	pass
+		
+	

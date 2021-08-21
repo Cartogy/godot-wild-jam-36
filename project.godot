@@ -114,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/MapMaker/EdgeDisplay/edge_display.gd"
 }, {
-"base": "Node2D",
+"base": "StaticBody2D",
 "class": "GridEdge",
 "language": "GDScript",
 "path": "res://src/Grid/Edge/edge.gd"

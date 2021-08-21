@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Grid/Edge/Edge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.906245, 3.1371 )
 
 [node name="TopLeft" instance=ExtResource( 1 )]
 
@@ -10,3 +13,7 @@ position = Vector2( -0.0042457, -0.00465512 )
 rotation = -0.767945
 scale = Vector2( 0.107884, 0.0343576 )
 texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = 0.764454
+shape = SubResource( 1 )
