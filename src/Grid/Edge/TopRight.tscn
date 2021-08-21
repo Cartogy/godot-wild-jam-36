@@ -6,7 +6,7 @@
 [node name="TopRight" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0.000862267, -0.00459599 )
+position = Vector2( -0.0212348, 0.011977 )
 rotation = 0.652753
-scale = Vector2( 0.0276824, 0.00309104 )
+scale = Vector2( 0.0616327, 0.0264633 )
 texture = ExtResource( 2 )

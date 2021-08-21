@@ -6,6 +6,6 @@
 [node name="Middle" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0.0073683, 0.0597899 )
-scale = Vector2( 0.00660577, 0.0404567 )
+position = Vector2( 0.0190737, 0.0363784 )
+scale = Vector2( 0.0281878, 0.241645 )
 texture = ExtResource( 2 )

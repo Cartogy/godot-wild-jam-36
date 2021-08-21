@@ -6,7 +6,7 @@ var cell_1
 
 func build_edge(from, to):
 	cell_0 = from
-	cell_0 = to
+	cell_1 = to
 
 	var c0_to_c1 = get_direction(from, to)
 	var c1_to_c0 = get_direction(to, from)
@@ -23,7 +23,7 @@ func remove_edge():
 	
 	self.queue_free()
 
-func get_direction(_from, to) -> Vector2:
-	var hex_direction = to.hex_coord - to.hex_coord
+func get_direction(from, to) -> Vector2:
+	var hex_direction = to.hex_coords - from.hex_coords
 	
 	return hex_direction
