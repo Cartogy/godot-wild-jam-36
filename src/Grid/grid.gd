@@ -167,7 +167,6 @@ func pixel_to_hex(cursor: Vector2):
 
 	# Convert back to original coordinate system
 	var double_width = converter.cube_to_double_width(round_cube)
-	print_debug(double_width.to_vector())
 
 	return double_width
 

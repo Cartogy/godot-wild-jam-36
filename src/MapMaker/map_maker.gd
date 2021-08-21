@@ -48,7 +48,6 @@ func _input(event):
 			if selected_entity != null:
 				if selected_entity is TileDisplay:
 					add_tile(selected_entity, self.get_global_mouse_position())
-					selected_entity = null
 				elif selected_entity is EdgeDisplay:
 					add_edge(selected_entity, self.get_global_mouse_position())
 					selected_entity = null
@@ -122,11 +121,17 @@ func tile_selected(scene_path):
 func add_tile(cell: TileDisplay, cursor: Vector2):
 	var hex_coord = grid.pixel_to_hex(self.get_global_mouse_position())
 	var pixel_center = converter.doublewidth_to_pixel(hex_coord, origin, grid.size)
-	cell.global_position = pixel_center
+	var copy_cell_pack: PackedScene = load(cell.self_scene)
+	
+	var copy_cell = copy_cell_pack.instance()
+	copy_cell.global_position = pixel_center
+	
+	
 	
 	if level.level_data.has(hex_coord.to_vector()) == false:
-		current_tiles[hex_coord.to_vector()] = selected_entity
-		level.add_cell(hex_coord, cell)
+		current_tiles[hex_coord.to_vector()] = copy_cell
+		cell_holder.add_child(copy_cell)
+		level.add_cell(hex_coord, copy_cell)
 	else:
 		printerr("Adding ontop of edge")
 	
@@ -168,11 +173,12 @@ func add_edge(edge: EdgeDisplay, cursor: Vector2):
 		
 func remove_edge(hex_coord: DoubleCoordinate):
 	var hex = hex_coord.to_vector()
-	var edges = edge_holder[hex]
-	
-	for e in edges:
-		level.remove_edge(e)
-		e.queue_free()
+	if current_edges.has(hex):
+		# Hex Coord -> [EdgesDisplay]
+		var edge_displays: Array = current_edges[hex]
+		for e in edge_displays:
+			level.remove_edge(hex_coord, e)
+			e.queue_free()
 
 func store_edge_in_tree(edge: EdgeDisplay, hex_coord: Vector2):
 	if current_edges.has(hex_coord):
