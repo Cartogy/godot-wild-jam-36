@@ -11,7 +11,7 @@
 radius = 8.33145
 height = 0.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "attack"
 loop = true
 step = 0.125
@@ -40,7 +40,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "idle"
 loop = true
 step = 0.125
@@ -98,7 +98,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "swim"
 loop = true
 step = 0.125
@@ -140,7 +140,7 @@ position = Vector2( 0.528499, -4.26008 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="3"]
-anims/attack = SubResource( 5 )
-anims/idle = SubResource( 6 )
+anims/attack = SubResource( 2 )
+anims/idle = SubResource( 3 )
 anims/move = SubResource( 4 )
-anims/swim = SubResource( 7 )
+anims/swim = SubResource( 5 )
