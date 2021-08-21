@@ -126,7 +126,7 @@ func breadth_search_neighbours(from: Cell):
 					return cell_rand
 				else:
 					# Investigate later, if not already visited
-					if visited.has(cell_rand) == false and cell_rand.state_machine.current_state.name != "Water":
+					if visited.has(cell_rand) == false and (cell_rand.get_state() != "Water" and cell_rand.get_state() != "Military"):
 						ns_queue.append(cell_rand)
 				# remove random cell. No need to look at it again.
 				# Avoids getting the same cell twice.
