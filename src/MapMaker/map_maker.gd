@@ -22,9 +22,11 @@ var tiles = {
 	"res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn": "res://assets/graphics/grass.png",
 	"res://src/MapMaker/TileDisplay/Cells/BNetDisplay.tscn": "res://assets/graphics/desert.png",
 	"res://src/MapMaker/TileDisplay/Cells/WaterDisplay.tscn": "res://assets/graphics/c_water.png",
-	"res://src/MapMaker/TileDisplay/Cells/GunnerDisplay.tscn": "res://assets/graphics/desert_city.png",
+	"res://src/MapMaker/TileDisplay/Cells/GunnerDisplay.tscn": "res://assets/graphics/military_turret.png",
 	"res://src/MapMaker/TileDisplay/Cells/MountainDisplay.tscn": "res://assets/graphics/mountain.png",
 	"res://src/MapMaker/TileDisplay/Cells/ForestDisplay.tscn": "res://assets/graphics/forest.png",
+	"res://src/MapMaker/TileDisplay/Cells/MilitaryNukeDisplay.tscn": "res://assets/graphics/military_nuke.png",
+	"res://src/MapMaker/TileDisplay/Cells/MilitaryGasDisplay.tscn": "res://assets/graphics/military_gas.png",
 }
 
 var selected_entity: Node2D = null

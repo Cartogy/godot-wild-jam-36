@@ -24,5 +24,9 @@ func tick_base():
 func add_structure(structure: MilitaryBase, hex_coord: Vector2, cell):
 	structure.place_on_cell(cell)
 	structure.add_to_mnet(self)
+	structure.net = self
 	add_child(structure)
 	military_base[hex_coord] = structure
+
+func remove_structure(structure: MilitaryBase):
+	pass

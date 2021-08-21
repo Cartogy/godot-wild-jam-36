@@ -285,6 +285,22 @@ Vector2( 9, 5 ): {
 "structure_path": "",
 "tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
 },
+Vector2( 10, 2 ): {
+"cell_position": Vector2( 309.578, 148 ),
+"hex_coord": Vector2( 10, 2 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 10, 4 ): {
+"cell_position": Vector2( 309.578, 196 ),
+"hex_coord": Vector2( 10, 4 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
 Vector2( 10, 6 ): {
 "cell_position": Vector2( 309.578, 244 ),
 "hex_coord": Vector2( 10, 6 ),
@@ -292,6 +308,46 @@ Vector2( 10, 6 ): {
 "spec_resource_path": "res://src/Grid/Cell/CellResource/SpecialResources/MountainResource.tres",
 "structure_path": "",
 "tile_display": "res://src/MapMaker/TileDisplay/Cells/MountainDisplay.tscn"
+},
+Vector2( 11, 1 ): {
+"cell_position": Vector2( 330.536, 124 ),
+"hex_coord": Vector2( 11, 1 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 11, 3 ): {
+"cell_position": Vector2( 330.536, 172 ),
+"hex_coord": Vector2( 11, 3 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 11, 5 ): {
+"cell_position": Vector2( 330.536, 220 ),
+"hex_coord": Vector2( 11, 5 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 13, 1 ): {
+"cell_position": Vector2( 372.452, 124 ),
+"hex_coord": Vector2( 13, 1 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/Military.tscn",
+"spec_resource_path": "",
+"structure_path": "res://src/Structures/MNetStructure/MilitaryGas/MilitaryGas.tscn",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/MilitaryGasDisplay.tscn"
+},
+Vector2( 13, 5 ): {
+"cell_position": Vector2( 372.452, 220 ),
+"hex_coord": Vector2( 13, 5 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/AvailableCell.tscn",
+"spec_resource_path": "",
+"structure_path": "",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
 },
 Vector2( 14, 2 ): {
 "cell_position": Vector2( 393.409, 148 ),
@@ -332,6 +388,14 @@ Vector2( 15, 5 ): {
 "spec_resource_path": "",
 "structure_path": "",
 "tile_display": "res://src/MapMaker/TileDisplay/Cells/AvailableDisplay.tscn"
+},
+Vector2( 15, 7 ): {
+"cell_position": Vector2( 414.367, 268 ),
+"hex_coord": Vector2( 15, 7 ),
+"scene_path": "res://src/Grid/Cell/CellScenes/Military.tscn",
+"spec_resource_path": "",
+"structure_path": "res://src/Structures/MNetStructure/MilitaryNuke/MilitaryNuke.tscn",
+"tile_display": "res://src/MapMaker/TileDisplay/Cells/MilitaryNukeDisplay.tscn"
 },
 Vector2( 16, 2 ): {
 "cell_position": Vector2( 435.325, 148 ),
@@ -445,6 +509,16 @@ Vector2( 2, 0 ): {
 "from": Vector2( 3, 3 ),
 "tile_display": "res://src/MapMaker/EdgeDisplay/Middle.tscn",
 "to": Vector2( 5, 3 )
+}
+},
+Vector2( 11, 5 ): {
+Vector2( 2, 0 ): {
+"direction": Vector2( 2, 0 ),
+"edge_position": Vector2( 351.494, 220 ),
+"edge_scene": "res://src/Grid/Edge/Middle.tscn",
+"from": Vector2( 11, 5 ),
+"tile_display": "res://src/MapMaker/EdgeDisplay/Middle.tscn",
+"to": Vector2( 13, 5 )
 }
 }
 }

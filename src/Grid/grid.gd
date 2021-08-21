@@ -146,6 +146,10 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 				bnet.add_structure(structure, hex_coord, cell)
 			"gunner":
 				mnet.add_structure(structure, hex_coord, cell)
+			"gas":
+				mnet.add_structure(structure, hex_coord, cell)
+			"nuke":
+				mnet.add_structure(structure, hex_coord, cell)
 
 	add_child(cell)
 	# Check if special res

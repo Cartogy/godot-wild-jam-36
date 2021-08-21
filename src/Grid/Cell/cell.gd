@@ -155,18 +155,20 @@ func set_texture(tex: Texture):
 
 func structure_destroyed():
 	if structure != null:
-		structure = null
-		available_cell()
+		set_texture(structure.conquered_sprite)
+		conquered_cell()
 
 func has_structure():
 	return structure != null
 
 func structure_is_alive():
-	return is_instance_valid(structure)
+	return structure.health >0
 
 func damage_structure(amount: int):
 	if structure_is_alive():
 		structure.damage(amount)
+	else:
+		structure_destroyed()
 
 ##############
 ## Resources
@@ -214,6 +216,9 @@ func water_cell():
 
 func debug_cell():
 	state_machine.change_state("Debug")
+	
+func conquered_cell():
+	state_machine.change_state("Conquered")
 
 ################
 ## DEBUG ZONE
@@ -255,6 +260,9 @@ func available_tex():
 
 func water_tex():
 	sprite.texture = water_texture
+
+func conquered_tex(tex):
+	set_texture(tex)
 
 func debug_tex():
 	sprite.texture = debug_texture

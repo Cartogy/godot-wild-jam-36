@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Structures/MNetStructure/MilitaryGunner/military_gunner.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/Hex_Fire.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/desert_military_turret.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/military_turret.png" type="Texture" id=3]
 
 [node name="MilitaryGunner" type="Node2D"]
 script = ExtResource( 1 )
 structure_id = "gunner"
+conquered_sprite = ExtResource( 2 )
+military_texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.166855, -11.1793 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
