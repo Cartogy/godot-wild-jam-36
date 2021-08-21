@@ -13,7 +13,7 @@
 radius = 5.45254
 
 [sub_resource type="Animation" id=4]
-resource_name = "eating"
+resource_name = "attack"
 loop = true
 step = 0.125
 tracks/0/type = "value"
@@ -106,7 +106,7 @@ bunny_upgrades = [ ExtResource( 5 ), ExtResource( 6 ) ]
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 8 )
 hframes = 8
-frame = 3
+frame = 7
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
@@ -117,6 +117,6 @@ z_index = 2
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/eating = SubResource( 4 )
+anims/attack = SubResource( 4 )
 anims/idle = SubResource( 2 )
 anims/move = SubResource( 3 )

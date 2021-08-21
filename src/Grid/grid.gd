@@ -38,6 +38,7 @@ var neighbour_directions = [
 ]
 
 func _ready():
+	Flow.grid = self
 	pass
 	#generate_hex_grid(dimensions, origin, size)
 
