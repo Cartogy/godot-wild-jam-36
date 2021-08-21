@@ -159,7 +159,8 @@ func move_units(units: Array, pixel: Vector2):
 
 func debug_path(path: Array):
 	for c in path:
-		c.debug_cell()
+		print_debug(c.get_state())
+		#c.debug_cell()
 
 func add_bunny_path(path_dict: Dictionary, bunny_name: String, entity: BunnyBase, cell: Cell, goal_cell: Cell):
 	var paths = []

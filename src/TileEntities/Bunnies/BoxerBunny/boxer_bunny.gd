@@ -5,6 +5,7 @@ var barrier_to_destroy: GridEdge = null
 
 func _ready():
 	ignore_edge_obstacles = true
+	obstacles = ["Water"]
 
 func check_collision(amount: int, from: Cell, to: Cell):
 	for i in amount:

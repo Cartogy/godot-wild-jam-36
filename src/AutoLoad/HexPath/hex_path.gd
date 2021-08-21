@@ -8,8 +8,6 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 	
 	if to == null:
 		return []
-	print_debug(from.edge_data.edges)
-	print_debug(to.edge_data.edges)
 	
 	if obstacles.has(to.state_machine.current_state.name):
 		return []
@@ -29,10 +27,10 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 				else:	# Check for edges
 					var direction = next.hex_coords - current.hex_coords
 					if current.has_edge(direction) == false:
-						frontier.append(next)
-						came_from[next] = current
+						if an_obstacle(next, obstacles) == false:
+							frontier.append(next)
+							came_from[next] = current
 					
-	
 	if found_goal:
 	# Find path to cell
 		var current: Cell = to
@@ -46,6 +44,11 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 		return path
 	else:
 		return []
+
+func debug_path(p: Array):
+	for c in p:
+		if an_obstacle(c, ["Water"]):
+			print_debug("Water cell in path")
 
 func an_obstacle(cell: Cell, obstacles: Array):
 	var state = cell.state_machine.current_state.name
