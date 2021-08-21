@@ -20,6 +20,12 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 				if an_obstacle(next, obstacles) == false:
 					frontier.append(next)
 					came_from[next] = current
+				# Check for barriers
+				elif ignore_edges == false:
+					var direction = came_from[next].hex_coords - current.hex_coords
+					if current.has_edge(direction) == false:
+						frontier.append(next)
+						came_from[next] = current
 	
 	if found_goal:
 	# Find path to cell

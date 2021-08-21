@@ -31,7 +31,6 @@ var hex_coords: Vector2
 var real_hex_center: Vector2
 var neighbours: Array = []
 # Direction -> Edge
-var edges: Dictionary = {}
 var structure: CellStructure
 
 
@@ -43,6 +42,8 @@ var bnet
 var current_cell_consumption
 
 
+## DATA
+var edge_data = CellEdgeData.new()
 
 signal consumption_complete(from, neighbour)
 signal new_bunny(to_cell)
@@ -165,12 +166,14 @@ func damage_structure(amount: int):
 ## Edges
 ###############
 
-func add_edge(direction: Vector2, edge: GridEdge):
-	edges[direction] = edge
+func add_edge(direction: Vector2):
+	edge_data.add_edge(direction, self)
 
 func remove_edge(direction: Vector2):
-	if edges.has(direction):
-		var _val = edges.erase(direction)
+	edge_data.remove_edge(direction, self)
+
+func has_edge(direction: Vector2):
+	return edge_data.has_edge(direction)
 
 ################
 ## State

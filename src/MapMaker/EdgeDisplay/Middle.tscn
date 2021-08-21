@@ -5,6 +5,7 @@
 
 [node name="Middle" instance=ExtResource( 1 )]
 direction = Vector2( 2, 0 )
+edge_scene = "res://src/Grid/Edge/Middle.tscn"
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0.314984, -0.157485 )

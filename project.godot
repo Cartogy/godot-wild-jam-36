@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/MapMaker/LevelData/cell_data.gd"
 }, {
+"base": "Resource",
+"class": "CellEdgeData",
+"language": "GDScript",
+"path": "res://src/Grid/Cell/CellEdgeData/cell_edge_data.gd"
+}, {
 "base": "Node",
 "class": "CellResource",
 "language": "GDScript",
@@ -211,6 +216,7 @@ _global_script_class_icons={
 "BunnyUpgrade": "",
 "Cell": "",
 "CellData": "",
+"CellEdgeData": "",
 "CellResource": "",
 "CellSpecialResource": "",
 "CellState": "",

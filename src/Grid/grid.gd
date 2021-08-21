@@ -67,6 +67,11 @@ func load_level_grid(level: LevelData, bnet: BNet, mnet: MNet, dimension: Vector
 
 	fill_neighbours(hexagon_coords, neighbour_directions)
 
+func load_edges(level: LevelData):
+	var edge_data = level.edge_data
+	print_debug("Edge Data")
+	print_debug(edge_data)
+
 func total_land_cells():
 	var amount_of_land
 	for c in hexagon_coords.values():

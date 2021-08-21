@@ -31,6 +31,7 @@ func load_level():
 	if level_data != "":
 		var level = load(level_data)
 		grid.load_level_grid(level, bnet, mnet,grid.dimensions)
+		grid.load_edges(level)
 	else:
 		grid.generate_hex_grid(grid.dimensions, grid.origin, grid.size)
 		
