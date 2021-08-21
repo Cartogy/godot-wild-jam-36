@@ -5,6 +5,7 @@ var goal: Vector2
 var paths = []
 var current_goal_cell: Cell = null
 
+var min_distance_perc = 0.2
 
 func _ready():
 	pass
@@ -34,7 +35,7 @@ func p_process(delta: float):
 	var direction = goal - entity.global_position
 
 	# Arrived at cell
-	if direction.length() < current_goal_cell.hex_size.length() * 0.4:
+	if direction.length() < current_goal_cell.hex_size.length() * min_distance_perc:
 		if paths.size() > 0:
 			# Coming From
 			var old_cell = entity.cell
