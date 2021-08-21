@@ -12,8 +12,6 @@ func add_resources(res: CellResource):
 	var nom_noms = res.consume_resource()
 	var special_res_consumed:int = res.consume_special_resource()
 	
-	print_debug(special_res_consumed)
-	
 	var total_gained = nom_noms
 	total_gained += special_res_consumed
 		

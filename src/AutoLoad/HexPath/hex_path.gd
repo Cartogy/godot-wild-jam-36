@@ -9,7 +9,10 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 	if to == null:
 		return []
 	
-	if obstacles.has(to.state_machine.current_state.name):
+	if obstacles.has(to.get_state()):
+		return []
+	# Can not click directly on water. Only acrross
+	elif to.get_state() == "Water":
 		return []
 	
 	var found_goal: bool = false

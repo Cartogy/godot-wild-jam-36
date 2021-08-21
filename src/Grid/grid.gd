@@ -63,6 +63,7 @@ func load_level_grid(level: LevelData, bnet: BNet, mnet: MNet, dimension: Vector
 
 				water_cell.global_position = center
 				water_cell.hex_size = p_size
+				water_cell.visible = false
 				add_child(water_cell)
 				hexagon_coords[d_coord.to_vector()] = water_cell
 
@@ -155,6 +156,8 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 
 	add_child(cell)
 	# Check if special res
+	if cell.get_state() == "Water":
+		cell.visible = false
 	if special_res_path != "":
 		var special_res = load(special_res_path)
 		cell.add_special_resource(special_res)

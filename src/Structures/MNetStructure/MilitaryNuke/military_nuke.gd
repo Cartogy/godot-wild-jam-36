@@ -42,7 +42,6 @@ func find_cell():
 	var layer = layers_to_search[rand_layer]
 	while rand_layer >= 0:
 		for c in layer:
-			print_debug(c.get_state())
 			if c.get_state() == "BNet":
 				return c
 		rand_layer -= 1
