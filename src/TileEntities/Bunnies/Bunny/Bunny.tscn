@@ -1,18 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/TileEntities/Bunnies/Bunny/bunny.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/Bunny_Idle.png" type="Texture" id=2]
 [ext_resource path="res://src/TileEntities/TileEntity.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/TileEntities/Bunnies/Bunny/upgrade_container.gd" type="Script" id=4]
 [ext_resource path="res://src/TileEntities/Bunnies/UpgradeData/BoxerBunny.tres" type="Resource" id=5]
 [ext_resource path="res://src/TileEntities/Bunnies/UpgradeData/ScubaBunny.tres" type="Resource" id=6]
-[ext_resource path="res://assets/graphics/Bunny_Hop.png" type="Texture" id=7]
 [ext_resource path="res://assets/graphics/Bunny_Eating.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.45254
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "eating"
 loop = true
 step = 0.125
@@ -38,40 +36,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 8 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
-loop = true
-step = 0.125
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 2 ) ]
+"values": [ null ]
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "move"
 loop = true
 step = 0.125
 tracks/0/type = "value"
@@ -96,7 +64,35 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ) ]
+"values": [ null ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+step = 0.125
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
 }
 
 [node name="Bunny" instance=ExtResource( 3 )]
@@ -117,6 +113,6 @@ z_index = 2
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/eating = SubResource( 4 )
-anims/idle = SubResource( 2 )
-anims/move = SubResource( 3 )
+anims/eating = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/move = SubResource( 4 )

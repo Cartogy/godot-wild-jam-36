@@ -16,6 +16,8 @@ func set_upgrade(p_upgrade: BunnyUpgrade):
 func set_texture(tex: Texture):
 	$Sprite.texture= tex
 
+func get_cost() -> int:
+	return upgrade.res_cost
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:

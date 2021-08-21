@@ -23,13 +23,30 @@ func hide_upgrades():
 	upgrades.visible = false
 
 func _upgrade_bunny(upgrade: BunnyUpgrade):
+	var cost = upgrade.get_cost()
+	var bnet_data = bnet.actor_data
+	
+	var total_nom_noms = bnet_data.total_resources
+	if cost <= total_nom_noms:
+		bnet_data.remove_resources(cost)
+	
+		buy_upgrade(cell, upgrade)
+
+		# Goodbye, bunny
+		self.queue_free()
+	else:
+		hide_upgrades()
+		
+func buy_upgrade(p_cell: Cell, upgrade: BunnyUpgrade):
+	
 	var new_bunny_scene: PackedScene = load(upgrade.scene_path)
 	var new_bunny = new_bunny_scene.instance()
 	pass_bunny_info(self, new_bunny)
 
-	cell.bunnies.remove_bunny(self)
-	# Goodbye, bunny
-	self.queue_free()
+	p_cell.bunnies.remove_bunny(self)
+	
+func can_not_buy_upgrades():
+	hide_upgrades()
 
 func _fill_upgrades(upgr: Array):
 	for u in upgr:
