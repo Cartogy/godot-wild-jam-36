@@ -3,7 +3,7 @@
 [ext_resource path="res://src/BNet/b_net.gd" type="Script" id=1]
 [ext_resource path="res://src/ActorData/actor_data.gd" type="Script" id=2]
 
-[node name="BNet" type="Node2D"]
+[node name="BNet" type="YSort"]
 script = ExtResource( 1 )
 tick_in_seconds = 0.2
 
