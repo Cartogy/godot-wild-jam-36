@@ -6,6 +6,9 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 	var came_from = {}
 	came_from[from] = null
 	
+	print_debug(from.edge_data.edges)
+	print_debug(to.edge_data.edges)
+	
 	if obstacles.has(to.state_machine.current_state.name):
 		return []
 	
@@ -17,15 +20,16 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 			break
 		for next in current.neighbours:
 			if came_from.has(next) == false:
-				if an_obstacle(next, obstacles) == false:
-					frontier.append(next)
-					came_from[next] = current
-				# Check for barriers
-				elif ignore_edges == false:
-					var direction = came_from[next].hex_coords - current.hex_coords
+				if ignore_edges:
+					if an_obstacle(next, obstacles) == false:
+						frontier.append(next)
+						came_from[next] = current
+				else:	# Check for edges
+					var direction = next.hex_coords - current.hex_coords
 					if current.has_edge(direction) == false:
 						frontier.append(next)
 						came_from[next] = current
+					
 	
 	if found_goal:
 	# Find path to cell
