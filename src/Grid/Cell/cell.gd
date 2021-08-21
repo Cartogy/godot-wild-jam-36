@@ -147,6 +147,12 @@ func breadth_search_neighbours():
 func set_texture(tex: Texture):
 	sprite.texture = tex
 
+###############
+## Bunny Fill
+###############
+
+func remove_all_bunnies():
+	bunnies.remove_all_bunnies()
 	
 	
 ###############

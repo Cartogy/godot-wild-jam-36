@@ -148,8 +148,10 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 				mnet.add_structure(structure, hex_coord, cell)
 			"gas":
 				mnet.add_structure(structure, hex_coord, cell)
+				structure.grid = self
 			"nuke":
 				mnet.add_structure(structure, hex_coord, cell)
+				structure.grid = self
 
 	add_child(cell)
 	# Check if special res

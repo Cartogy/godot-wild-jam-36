@@ -88,6 +88,11 @@ func remove_bunny(bunny):
 				if cell.get_state() != "Water":
 					cell.available_cell()
 
+func remove_all_bunnies():
+	for b in bunnies_in_tile:
+		var bunny: BunnyBase = b
+		bunny.die()
+
 func delete_bunnies(amount: int):
 	for i in amount:
 		var bunny = bunnies_in_tile[i]

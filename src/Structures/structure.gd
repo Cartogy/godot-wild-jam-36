@@ -14,6 +14,7 @@ export (Texture) var conquered_sprite
 var cell
 var hex_coord
 var net
+var grid
 
 
 func _ready():
