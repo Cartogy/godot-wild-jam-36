@@ -5,6 +5,7 @@ export (String) var INITIAL_STATE
 var states: Dictionary = {}
 var current_state: State
 
+signal changed_state(state)
 
 func _ready():
 	# All its childrens are states
@@ -27,6 +28,7 @@ func change_state(next_state):
 	current_state.exit()
 	current_state = states[next_state]
 	current_state.enter()
+	emit_signal("changed_state", next_state)
 
 func setup_state_machine():
 	for s in states.values():

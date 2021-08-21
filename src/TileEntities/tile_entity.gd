@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name TileEntity
 
+onready var sprite = $Sprite
 onready var state_machine = $StateMachine
 onready var animation_player = $AnimationPlayer
 
@@ -35,6 +36,7 @@ var goal: Vector2
 
 
 func _ready():
+	state_machine.connect("changed_state", self, "_on_state_changed")
 	state_machine.setup_state_machine()
 
 func move_to(_p_cell_path: Array):
@@ -69,4 +71,7 @@ func damage_structure_at(cell: Cell, damage: int):
 func check_collision(amount: int):
 	pass
 
+
+func _on_state_changed(next_state):
+	pass
 

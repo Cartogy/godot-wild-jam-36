@@ -5,6 +5,8 @@ var on_cell
 var bnet = null
 
 func _ready():
+	if animation_player.has_animation("idle"):
+		animation_player.play("idle")
 	selectable = true
 	if bnet != null:
 		bnet.actor_data.add_population(1)
@@ -14,13 +16,17 @@ func move_to(p_cell_path: Array):
 		if cell != null:
 			cell.bunnies.remove_bunny(self)
 		#cell = null
+		var first_cell = p_cell_path[0]
+		if first_cell.global_position.x < global_position.x:
+			sprite.scale.x = -1
+		else:
+			sprite.scale.x = 1
 		cell_path = p_cell_path.duplicate()
-
-
 
 		state_machine.change_state("Migrating")
 
 func arrived_at(p_cell):
+
 	p_cell.bunnies.place_bunny_on_cell(self)
 
 func die():
@@ -34,7 +40,7 @@ func add_to_tile(new_cell):
 	var vector_to_position = new_cell.bunnies.calc_direction_placement()
 
 	goal = goal + vector_to_position
-	
+
 func get_position_in_tile(center: Vector2, cell: Cell):
 	var vector_to_position = cell.bunnies.calc_direction_placement()
 	return center + vector_to_position
@@ -42,9 +48,21 @@ func get_position_in_tile(center: Vector2, cell: Cell):
 func debug_path(path: Array):
 	for c in path:
 		c.debug_cell()
-		
+
 func to_normal(c):
 	c.available_cell()
-			
+
 func arrival_from(from, next):
 	pass
+
+func _on_state_changed(next_state):
+
+	if next_state == "Migrating" or next_state == "MovingInCell":
+		if animation_player.has_animation("move"):
+			animation_player.play("move")
+	elif next_state == "Idle":
+		if animation_player.has_animation("idle"):
+			animation_player.play("idle")
+	elif next_state == "Attack":
+		if animation_player.has_animation("attack"):
+			animation_player.play("attack")
