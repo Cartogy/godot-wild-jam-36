@@ -24,6 +24,7 @@ func add_edge(hex_coord_from: DoubleCoordinate, edge: EdgeDisplay):
 	# Get hex coord in vector
 	var hex_coord = hex_coord_from.to_vector()
 	# Check if hex has directions
+	print_debug(edge.build_data())
 	if edge_data.has(hex_coord):
 		# Get edges in hex
 		# { dir0: data0,
