@@ -23,7 +23,9 @@ var _game_scenes := {
 	STATE.MENU: preload("res://src/Menu/Menu.tscn"),
 	STATE.GAME: preload("res://src/Main/Main.tscn"),
 }
-var _game_state : int = STATE.MENU
+var _game_state : int = STATE.GAME
+
+var level = null
 
 var selected_structure = null
 
@@ -31,6 +33,9 @@ onready var _options_loader := $OptionsLoader
 
 func _ready():
 	var _error := load_settings()
+
+func set_game_state_menu():
+	_game_state = STATE.MENU
 
 func load_settings() -> int:
 	print("----- (Re)loading game settings from file -----")
@@ -58,7 +63,7 @@ func _unhandled_input(event : InputEvent):
 
 	match _game_state:
 		STATE.GAME:
-			if InputMap.has_action("toggle_paused") and event.is_action_pressed("toggle_paused"):
+			if InputMap.has_action("ui_cancel") and event.is_action_pressed("ui_cancel"):
 				if selected_structure:
 					selected_structure = null
 				else:
@@ -84,6 +89,7 @@ func deferred_reload_current_scene() -> void:
 func change_scene_to(key : int) -> void:
 	if _game_scenes.has(key):
 		var packed_scene = _game_scenes[key]
+
 		_game_state = key
 
 		var error := get_tree().change_scene_to(packed_scene)
@@ -101,8 +107,8 @@ func go_to_game() -> void:
 func go_to_menu() -> void:
 	change_scene_to(STATE.MENU)
 
-func new_game() -> void:
-	go_to_game()
+func start_level() -> void:
+	change_scene_to(STATE.GAME)
 
 
 func can_afford_building(structure_name: String) -> bool:
@@ -112,3 +118,10 @@ func select_structure(structure_name: String):
 	if can_afford_building(structure_name):
 		selected_structure = structure_name
 		print("Selected building ", structure_name)
+
+
+func get_level_data():
+	if level == null:
+		return "res://src/Level/CustomLevels/edge_map_test.tres"
+	else:
+		return level.data

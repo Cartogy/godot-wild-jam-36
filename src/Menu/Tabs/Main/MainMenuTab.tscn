@@ -20,39 +20,39 @@ __meta__ = {
 }
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 128.0
+margin_top = 92.0
 margin_right = 1024.0
-margin_bottom = 428.0
+margin_bottom = 392.0
 custom_constants/margin_top = 0
 custom_constants/margin_bottom = 300
 
-[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 304.0
-margin_top = 452.0
-margin_right = 720.0
-margin_bottom = 472.0
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_left = 436.0
+margin_top = 416.0
+margin_right = 588.0
+margin_bottom = 508.0
 size_flags_horizontal = 4
 custom_constants/separation = 16
 alignment = 1
 
 [node name="NewButton" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_right = 128.0
+margin_right = 152.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 128, 0 )
-text = "START GAME"
+text = "START ANNIHILATION"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_left = 144.0
-margin_right = 272.0
-margin_bottom = 20.0
+margin_top = 36.0
+margin_right = 152.0
+margin_bottom = 56.0
 rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 3
 text = "SETTINGS"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_left = 288.0
-margin_right = 416.0
-margin_bottom = 20.0
+margin_top = 72.0
+margin_right = 152.0
+margin_bottom = 92.0
 rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 3
 text = "QUIT"

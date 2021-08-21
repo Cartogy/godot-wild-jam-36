@@ -1,0 +1,135 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Menu/Tabs/LevelSelect/level_select_tab.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="LevelSelectTab" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+tab_type = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+custom_constants/separation = 150
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 83.0
+margin_right = 290.0
+margin_bottom = 600.0
+mouse_filter = 2
+custom_constants/margin_right = 20
+custom_constants/margin_top = 50
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 187.0
+margin_bottom = 580.0
+
+[node name="BackButton" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+margin_right = 167.0
+margin_bottom = 20.0
+text = "RETURN TO MAIN MENU"
+
+[node name="Levels" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+margin_left = 103.0
+margin_top = 50.0
+margin_right = 103.0
+margin_bottom = 580.0
+mouse_filter = 2
+size_flags_horizontal = 4
+custom_constants/separation = 16
+alignment = 1
+
+[node name="LevelInfo" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 440.0
+margin_right = 940.0
+margin_bottom = 600.0
+size_flags_horizontal = 4
+custom_constants/separation = 16
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/LevelInfo"]
+margin_top = 50.0
+margin_right = 500.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 500, 500 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LevelInfo/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 493.0
+margin_bottom = 493.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 466.0
+margin_bottom = 466.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionImage" type="TextureRect" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/CenterContainer"]
+margin_left = 191.0
+margin_top = 191.0
+margin_right = 255.0
+margin_bottom = 255.0
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="Control" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 466.0
+margin_bottom = 466.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer"]
+anchor_right = 1.0
+margin_bottom = 847.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionTitle" type="Label" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 446.0
+margin_bottom = 14.0
+align = 1
+valign = 1
+uppercase = true
+
+[node name="MissionExplanation" type="Label" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 446.0
+margin_bottom = 83.0
+text = "Lorem ipsum dolores is a bitch she knew something was up yet she didn't tell anyone omgf why didn't she say something and why does she like to eat carrots oh my it's always the friggin carrots and bunnies like carrots and dolores is a bunny"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -20.0
+text = "DEPLOY BUNNIES"
+__meta__ = {
+"_edit_use_anchors_": false
+}

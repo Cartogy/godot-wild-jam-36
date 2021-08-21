@@ -87,31 +87,31 @@ func create_barrier(directions: Dictionary, hex_to_cell: Dictionary):
 		var edge_scene_path = edge_data.edge_scene
 		var from = edge_data.from
 		var to = edge_data.to
-		
+
 		var from_cell: Cell = hex_to_cell[from]
 		var to_cell: Cell = hex_to_cell[to]
-		
+
 		var edge_scene: PackedScene = load(edge_scene_path)
 		var edge: GridEdge = edge_scene.instance()
-		
+
 		var edge_center = get_edge_center(from_cell.global_position, to_cell.global_position)
-		
+
 		edge.build_edge(from_cell, to_cell)
 		edge.global_position = edge_center
 		edge.z_index = 5
-		
+
 		self.add_child(edge)
-		
+
 # Returns the mid position between edges
 func get_edge_center(from: Vector2, to: Vector2) -> Vector2:
 	var direction = to - from
 	var mid_v = direction / 2
-	
+
 	var mid_point = from + mid_v
-	
+
 	return mid_point
-	
-		
+
+
 
 func total_land_cells():
 	var amount_of_land

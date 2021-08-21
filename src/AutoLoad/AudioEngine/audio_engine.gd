@@ -13,11 +13,17 @@ var current_background_player = null
 
 
 const tracks = {
-	
+	"menu": "res://assets/audio/music/GWJ36_Main_Theme_loopable_v1.ogg",
+	"game": "res://assets/audio/music/GWJ36_Main_Theme_loopable_v1.ogg",
 }
 
 const sfx = {
-	
+	"munch": "res://assets/audio/sfx/Bunnies_Munching_v1.ogg",
+	"spawn": "res://assets/audio/sfx/Bunnies_Spawning_v2.ogg",
+	"death": "res://assets/audio/sfx/Bunny_death_v1.ogg",
+	"hop": "res://assets/audio/sfx/Bunny_hop_v1.ogg",
+	"defeat": "res://assets/audio/sfx/GWJ36_Losing_Tune_v1.ogg",
+	"victory": "res://assets/audio/sfx/GWJ36_Winning_Tune_v2.ogg",
 }
 
 

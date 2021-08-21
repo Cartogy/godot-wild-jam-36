@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/forest.png-72251beba438a2ee136eb77e86c6e2d2.stex"
+path="res://.import/Scuba_Idle.png-8b400d4d409ab66b24cfe12aad491713.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/forest.png"
-dest_files=[ "res://.import/forest.png-72251beba438a2ee136eb77e86c6e2d2.stex" ]
+source_file="res://assets/graphics/Scuba_Idle.png"
+dest_files=[ "res://.import/Scuba_Idle.png-8b400d4d409ab66b24cfe12aad491713.stex" ]
 
 [params]
 

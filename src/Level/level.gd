@@ -9,7 +9,6 @@ onready var mnet = $MNet
 onready var bnet = $BNetView/BNet
 onready var camera = $Camera
 
-export (String, FILE, "*.tres") var level_data
 var starting_den: PackedScene = load("res://src/Structures/BNetStructure/Den/Den.tscn")
 
 var grid_bounds: Rect2
@@ -20,6 +19,7 @@ var current_map_info: MapInfo = null
 var bnet_structure_info: MapStructureInfo = null
 
 func _ready():
+	AudioEngine.play_background_music("game")
 	# Add starting cell
 	#var cell = grid.get_cell(starting_cell)
 	#var den = starting_den.instance()
@@ -28,19 +28,20 @@ func _ready():
 	load_level()
 
 func load_level():
+	var level_data = Flow.get_level_data()
 	if level_data != "":
 		var level = load(level_data)
 		grid.load_level_grid(level, bnet, mnet,grid.dimensions)
 		grid.load_edges(level, grid.hexagon_coords)
 	else:
 		grid.generate_hex_grid(grid.dimensions, grid.origin, grid.size)
-		
+
 	grid_bounds = grid.get_grid_bounds()
 	# Load cell maps
 	current_map_info = build_map_info(grid.hexagon_coords)
 	# reference den structures
 	bnet_structure_info = build_structure_info(bnet.production_structures)
-	
+
 func start_bnet():
 	bnet.active = true
 	mnet.active = true
@@ -75,25 +76,25 @@ func _process(delta):
 
 func build_structure_info(structures: Dictionary) -> MapStructureInfo:
 	var structure_data = MapStructureInfo.new()
-	
+
 	for s in structures.values():
 		var bnet_struct: BNetStructure = s
 		# Allow buildings to notify when they stop producing
 		bnet_struct.connect("became_inept", self, "inept_structure")
 		bnet_struct.connect("no_longer_inept", self, "producing_structure")
 		structure_data.add_structure_total(1)
-		
+
 	return structure_data
-	
+
 func inept_structure():
 	bnet_structure_info.add_inept_structure(1)
 	if lost_level():
 		print_debug("You lost")
 		stop_bnet()
-	
+
 func producing_structure():
 	bnet_structure_info.remove_inept_structure(1)
-	
+
 func lost_level():
 	if bnet_structure_info.all_structures_inept():
 		return true
@@ -106,7 +107,7 @@ func lost_level():
 
 func bnet_lost():
 	current_map_info.remove_consumed(1)
-	
+
 func bnet_gained():
 	current_map_info.add_consumed(1)
 	if won_level():
@@ -115,7 +116,7 @@ func bnet_gained():
 		bnet.active = false
 		mnet.active = false
 		pass
-		
+
 func won_level():
 	return current_map_info.consumed_all()
 
@@ -129,9 +130,9 @@ func is_consumed(cell: Cell):
 func is_land(cell: Cell):
 	if cell.get_state() != "Water":
 		return true
-	else: 
+	else:
 		return false
-		
+
 func build_map_info(hex_cells: Dictionary) -> MapInfo:
 	var map_info = MapInfo.new()
 	for cell in hex_cells.values():
@@ -142,5 +143,5 @@ func build_map_info(hex_cells: Dictionary) -> MapInfo:
 			# allow them to notify when consumption occurs
 			cell.connect("consumed_cell", self, "bnet_gained")
 			cell.connect("lost_cell", self, "bnet_lost")
-			
+
 	return map_info

@@ -259,6 +259,13 @@ Flow="*res://src/AutoLoad/Flow.tscn"
 AudioEngine="*res://src/AutoLoad/AudioEngine/AudioEngine.tscn"
 HexPath="*res://src/AutoLoad/HexPath/HexPath.tscn"
 
+[importer_defaults]
+
+texture={
+"detect_3d": false,
+"flags/filter": false
+}
+
 [input]
 
 left_click={

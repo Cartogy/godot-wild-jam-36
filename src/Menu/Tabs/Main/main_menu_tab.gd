@@ -21,13 +21,12 @@ func _ready():
 	_error =_new_button.connect("pressed", self, "_on_new_button_pressed")
 
 
-
 func _on_settings_button_pressed():
 	emit_signal("button_pressed", TABS.SETTINGS)
 
 
 func _on_new_button_pressed():
-	Flow.new_game()
+	emit_signal("button_pressed", TABS.LEVEL_SELECT)
 
 func _on_button_mouse_entered():
 	pass

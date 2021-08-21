@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name TileEntity
 
 onready var state_machine = $StateMachine
+onready var animation_player = $AnimationPlayer
 
 export (int) var damage = 1
 export (float) var speed: float = 15
@@ -38,11 +39,11 @@ func _ready():
 
 func move_to(_p_cell_path: Array):
 	pass
-		
+
 func _physics_process(delta):
 	state_machine.run_p_process(delta)
-	
-	
+
+
 
 func add_to_tile(_new_cell):
 	pass
@@ -59,7 +60,7 @@ func structure_alive_at(cell: Cell):
 
 func damage_structure_at(cell: Cell, damage: int):
 	cell.damage_structure(damage)
-	
+
 ############
 ## Collision behaviour
 ############
@@ -67,5 +68,5 @@ func damage_structure_at(cell: Cell, damage: int):
 # called in physics process
 func check_collision(amount: int):
 	pass
-		
-	
+
+

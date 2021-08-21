@@ -44,7 +44,7 @@ func cell_consumed(from: Cell, cell_consumed: Cell):
 	bnet.consumed_cells[cell_consumed.hex_coords] = cell_consumed
 	var next_cell = self.breadth_search_neighbours(from)
 
-	
+
 	if next_cell != null:
 		# Found a cell to produce
 		if state != States.PRODUCING:
@@ -54,7 +54,7 @@ func cell_consumed(from: Cell, cell_consumed: Cell):
 		# Did not find cell to produce
 		if state != States.INEPT:
 			state_to_inept()
-		
+
 
 func add_bunny(to: Cell):
 	var real_hex_center = to.real_hex_center
@@ -72,7 +72,7 @@ func add_bunny(to: Cell):
 
 func state_to_inept():
 	emit_signal("became_inept")
-	
+
 func state_to_producing():
 	emit_signal("no_longer_inept")
 

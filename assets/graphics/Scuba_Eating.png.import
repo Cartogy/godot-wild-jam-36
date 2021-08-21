@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/forest.png-72251beba438a2ee136eb77e86c6e2d2.stex"
+path="res://.import/Scuba_Eating.png-57daa5abb6460c19c6134ec9ce240033.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/forest.png"
-dest_files=[ "res://.import/forest.png-72251beba438a2ee136eb77e86c6e2d2.stex" ]
+source_file="res://assets/graphics/Scuba_Eating.png"
+dest_files=[ "res://.import/Scuba_Eating.png-57daa5abb6460c19c6134ec9ce240033.stex" ]
 
 [params]
 

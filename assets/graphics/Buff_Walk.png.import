@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/forest.png-72251beba438a2ee136eb77e86c6e2d2.stex"
+path="res://.import/Buff_Walk.png-9e1fa93cd70633dec0bece5c798f6e22.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/forest.png"
-dest_files=[ "res://.import/forest.png-72251beba438a2ee136eb77e86c6e2d2.stex" ]
+source_file="res://assets/graphics/Buff_Walk.png"
+dest_files=[ "res://.import/Buff_Walk.png-9e1fa93cd70633dec0bece5c798f6e22.stex" ]
 
 [params]
 
