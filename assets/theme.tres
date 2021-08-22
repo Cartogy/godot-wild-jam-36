@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/graphics/button_pressed.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/panel.png" type="Texture" id=6]
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 13.1672
@@ -15,7 +15,7 @@ margin_right = 10.2412
 margin_top = 18.5317
 margin_bottom = 13.8326
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 14.6709
@@ -23,7 +23,7 @@ margin_right = 12.9942
 margin_top = 19.2817
 margin_bottom = 18.3176
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 13.4354
@@ -31,7 +31,7 @@ margin_right = 11.5823
 margin_top = 17.1418
 margin_bottom = 19.4582
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 14.9643
@@ -39,7 +39,7 @@ margin_right = 13.6439
 margin_top = 20.686
 margin_bottom = 18.9254
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 7.54707
@@ -47,7 +47,7 @@ margin_right = 8.78053
 margin_top = 13.3799
 margin_bottom = 11.9164
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 8.38232
@@ -55,21 +55,21 @@ margin_right = 8.98105
 margin_top = 13.1722
 margin_bottom = 13.1722
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 1 )
 
 [resource]
-default_font = SubResource( 1 )
+default_font = SubResource( 7 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
-Button/styles/disabled = SubResource( 2 )
+Button/styles/disabled = SubResource( 1 )
 Button/styles/focus = null
-Button/styles/hover = SubResource( 3 )
-Button/styles/normal = SubResource( 4 )
-Button/styles/pressed = SubResource( 5 )
-Panel/styles/panel = SubResource( 6 )
-PanelContainer/styles/panel = SubResource( 7 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
+Panel/styles/panel = SubResource( 5 )
+PanelContainer/styles/panel = SubResource( 6 )
