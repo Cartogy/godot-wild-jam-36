@@ -7,12 +7,16 @@ var kill_per_gas = 4
 var max_ticks_per_gas = 2
 var ticks_before_gas = 0
 
+var killed_per_tick = 0
+
 func tick():
 	if ticks_before_gas == 0:
 		attack()
 	else:
 		fuel_gas()
 	
+
+
 
 func attack():
 	var adjacent_cells = cell.neighbours
@@ -25,9 +29,13 @@ func attack():
 			reset_gas()
 			n.remove_bunny_amount(kill_per_gas)
 
+
+
 	
 func reset_gas():
 	ticks_before_gas = max_ticks_per_gas
 	
 func fuel_gas():
 	ticks_before_gas -= 1
+
+
