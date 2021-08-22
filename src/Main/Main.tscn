@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Level/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Controller/Controller.tscn" type="PackedScene" id=2]
@@ -16,6 +16,11 @@
 [ext_resource path="res://assets/theme.tres" type="Theme" id=14]
 [ext_resource path="res://src/UI/Transition/Transition.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Main/main.gd" type="Script" id=16]
+[ext_resource path="res://assets/fonts/pixellari.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://assets/graphics/warning.png" type="Texture" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 17 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 16 )
@@ -152,13 +157,51 @@ texture = ExtResource( 12 )
 stretch_mode = 1
 
 [node name="Count" type="Label" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/Population"]
+modulate = Color( 0.996078, 0.996078, 0.996078, 1 )
 margin_left = -7.84186
 margin_top = 12.7194
 margin_right = 67.1581
 margin_bottom = 31.7194
+custom_fonts/font = SubResource( 1 )
 text = "0/0"
 align = 2
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning1" type="TextureRect" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/Population"]
+margin_left = 99.6119
+margin_top = -3.0395
+margin_right = 113.612
+margin_bottom = 36.9605
+rect_min_size = Vector2( 14, 40 )
+texture = ExtResource( 18 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning2" type="TextureRect" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/Population"]
+margin_left = 119.793
+margin_top = -3.0395
+margin_right = 133.793
+margin_bottom = 36.9605
+rect_min_size = Vector2( 14, 40 )
+texture = ExtResource( 18 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning3" type="TextureRect" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/Population"]
+margin_left = 139.555
+margin_top = -2.61906
+margin_right = 153.555
+margin_bottom = 37.3809
+rect_min_size = Vector2( 14, 40 )
+texture = ExtResource( 18 )
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

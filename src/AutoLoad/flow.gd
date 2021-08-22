@@ -183,7 +183,7 @@ func can_place_den(cursor: DoubleCoordinate):
 
 func get_level_data():
 	if level == null:
-		return "res://src/Level/CustomLevels/main_level_test.tres"
+		return "res://src/Level/CustomLevels/level_1.tres"
 	else:
 		return level.data
 
