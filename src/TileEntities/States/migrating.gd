@@ -17,6 +17,7 @@ func handle_input(event):
 func enter():
 	# Gain reference to nodes
 	paths = entity.cell_path
+	current_goal_cell = null
 
 
 # What occurs when exiting state
