@@ -32,7 +32,7 @@ func p_process(delta: float):
 		if current_goal_cell.get_state() == "Military":
 			start_attacking(current_goal_cell)
 		goal = current_goal_cell.global_position
-		entity.arrival_from(entity.cell, current_goal_cell)
+		entity.arrival_from(entity.cell, null, current_goal_cell)
 	var direction = goal - entity.global_position
 
 	# Arrived at cell
@@ -42,10 +42,10 @@ func p_process(delta: float):
 			var old_cell = entity.cell
 			# arriving to
 			entity.cell = current_goal_cell
-			entity.arrival_from(entity.cell, current_goal_cell)
 			# Next goal
 			current_goal_cell = paths.pop_front()
 			
+			entity.arrival_from(old_cell, entity.cell, current_goal_cell)
 			if current_goal_cell.state_machine.current_state.name == "Military":
 				start_attacking(current_goal_cell)
 
