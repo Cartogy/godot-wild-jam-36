@@ -26,6 +26,8 @@ var shift: bool = false
 var selecting_upgrades: bool = false
 var bunny: Bunny
 
+var elapsed_time = 0.0
+
 
 onready var structures = {
 	"barracks": preload("res://src/Structures/BNetStructure/Barracks/Barracks.tscn"),
@@ -156,7 +158,8 @@ func drag_select(event: InputEventMouseButton):
 
 func hide_upgrades():
 	for s in selected_units:
-		s.hide_upgrades()
+		if s.has_method("hide_upgrades"):
+			s.hide_upgrades()
 
 func reset_box():
 	cursor = Vector2.ZERO

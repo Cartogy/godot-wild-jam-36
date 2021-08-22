@@ -39,6 +39,8 @@ var selected_structure = null
 
 onready var _options_loader := $OptionsLoader
 
+var elapsed_time = 0.0
+
 func _ready():
 	var _error := load_settings()
 
@@ -136,10 +138,13 @@ func get_level_data():
 
 
 func won_game():
+	loaded_level.stop_bnet()
+	win_screen.update_time()
 	win_screen.visible = true
 
 
 func lost_game():
+	loaded_level.stop_bnet()
 	lose_screen.visible = true
 
 

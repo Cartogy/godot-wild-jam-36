@@ -9,9 +9,10 @@ onready var time = $MarginContainer/HBoxContainer/Time/Time
 
 var population_count = 0
 var max_population = 0
-var elapsed_time = 0.0
+
 
 func _ready():
+	Flow.elapsed_time = 0.0
 	Flow.b_net_ui = self
 
 func update_resources(res: int):
@@ -32,6 +33,7 @@ func update_max_population(max_pop: int):
 
 
 func _process(delta):
-	elapsed_time += delta
+	Flow.elapsed_time += delta
 
+	var elapsed_time = Flow.elapsed_time
 	time.text = str(int(elapsed_time / 3600)).pad_zeros(2) + ":" + str(int(fmod(elapsed_time / 60, 60))).pad_zeros(2) + ":" + str(int(fmod(elapsed_time, 60))).pad_zeros(2)

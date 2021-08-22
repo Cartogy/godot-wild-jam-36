@@ -269,9 +269,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -79.5
+margin_top = -100.5
 margin_right = 100.0
-margin_bottom = 79.5
+margin_bottom = 100.5
 custom_constants/separation = 30
 alignment = 1
 __meta__ = {
@@ -298,7 +298,7 @@ autowrap = true
 [node name="NextLevelButton" type="Button" parent="CanvasLayer/Control/WinScreen/VBoxContainer"]
 margin_top = 149.0
 margin_right = 200.0
-margin_bottom = 171.0
+margin_bottom = 201.6
 text = "SELECT NEXT MISSION"
 
 [node name="LoseScreen" type="Control" parent="CanvasLayer/Control"]
@@ -327,10 +327,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -79.5
-margin_right = 100.0
-margin_bottom = 79.5
+margin_left = -150.0
+margin_top = -148.0
+margin_right = 150.0
+margin_bottom = 148.0
 custom_constants/separation = 30
 alignment = 1
 __meta__ = {
@@ -338,7 +338,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/LoseScreen/VBoxContainer"]
-margin_right = 200.0
+margin_right = 300.0
 margin_bottom = 16.0
 text = "DEFEAT..."
 align = 1
@@ -346,18 +346,20 @@ valign = 1
 
 [node name="Information" type="Label" parent="CanvasLayer/Control/LoseScreen/VBoxContainer"]
 margin_top = 46.0
-margin_right = 200.0
-margin_bottom = 119.0
-rect_min_size = Vector2( 200, 0 )
-text = "While our bunny forces were not victorious today, we must not give up! For all that is nommy in this world."
+margin_right = 300.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 300, 0 )
+text = "Alas, we could not contain our forces and a bunny revolution broke out!
+
+While our bunny forces were not victorious today, we must not give up! Try to spread your bunnies better, or, if necessary, sacrifice some unruly bunnies for the greater good. We shall remember them as we dance on the human bodies."
 align = 1
 valign = 1
 autowrap = true
 
 [node name="ReplayLevelButton" type="Button" parent="CanvasLayer/Control/LoseScreen/VBoxContainer"]
-margin_top = 149.0
-margin_right = 200.0
-margin_bottom = 171.0
+margin_top = 244.0
+margin_right = 300.0
+margin_bottom = 296.6
 text = "TRY AGAIN"
 
 [node name="Transition" parent="CanvasLayer/Control" instance=ExtResource( 15 )]
