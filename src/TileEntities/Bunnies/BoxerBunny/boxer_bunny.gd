@@ -14,6 +14,8 @@ func check_collision(amount: int, from: Cell, to: Cell):
 		if collision.collider is GridEdge:
 			if is_blocking_path(collision.collider, from, to):
 				barrier_to_destroy = collision.collider
+				# Keep moving
+				self.cell_path.push_front(to)
 				state_machine.change_state("DestroyBarrier")
 
 func destroy_barrier():

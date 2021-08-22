@@ -22,7 +22,8 @@ func enter():
 
 # What occurs when exiting state
 func exit():
-	paths = []
+	pass
+	#paths = []
 
 # Physics process for state
 func p_process(delta: float):
