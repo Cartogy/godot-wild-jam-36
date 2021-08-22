@@ -138,7 +138,7 @@ frame = 6
 shape = SubResource( 1 )
 
 [node name="Upgrades" type="Node2D" parent="." index="3"]
-position = Vector2( -21.8514, -39.9947 )
+position = Vector2( -0.117765, -28.9704 )
 z_index = 2
 script = ExtResource( 4 )
 
