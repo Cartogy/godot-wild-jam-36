@@ -40,4 +40,5 @@ func add_max_population(amount: int):
 
 func remove_max_population(amount: int):
 	max_population -= amount
+	print_debug("Max pop", max_population)
 	emit_signal("update_max_pop", max_population)

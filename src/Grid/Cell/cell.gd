@@ -232,7 +232,8 @@ func bnet_produce():
 
 func bnet_acquire(p_bnet):
 	bnet = p_bnet
-	state_machine.change_state("BNet")
+	if get_state() != "BNet":
+		state_machine.change_state("BNet")
 
 func available_cell():
 	state_machine.change_state("Available")
