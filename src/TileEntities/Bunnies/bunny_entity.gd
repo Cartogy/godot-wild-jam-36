@@ -66,3 +66,10 @@ func _on_state_changed(next_state):
 	elif next_state == "Attack":
 		if animation_player.has_animation("attack"):
 			animation_player.play("attack")
+
+
+func attack_effect():
+	pass
+	
+func hop_effect():
+	pass

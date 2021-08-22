@@ -29,3 +29,6 @@ func is_blocking_path(edge: GridEdge, from, to):
 		return true
 	else:
 		return false
+
+func attack_effect():
+	AudioEngine.play_effect("smash-attack")

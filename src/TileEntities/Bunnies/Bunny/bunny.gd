@@ -74,3 +74,10 @@ func pass_bunny_info(from: BunnyBase, to: BunnyBase):
 	to.bnet.add_child(to)
 
 	to.arrived_at(to.cell)
+
+
+func hop_effect():
+	AudioEngine.play_effect("hop")
+	
+func attack_effect():
+	AudioEngine.play_effect("munch")

@@ -40,6 +40,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ ExtResource( 8 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_effect"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 loop = true
@@ -96,15 +110,29 @@ tracks/1/keys = {
 "update": 1,
 "values": [ ExtResource( 7 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.375 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hop_effect"
+} ]
+}
 
 [node name="Bunny" instance=ExtResource( 3 )]
 script = ExtResource( 1 )
 bunny_upgrades = [ ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="Sprite" parent="." index="0"]
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 hframes = 8
-frame = 7
+frame = 6
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )

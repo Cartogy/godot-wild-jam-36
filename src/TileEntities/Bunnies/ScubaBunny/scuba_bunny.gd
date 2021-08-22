@@ -11,3 +11,12 @@ func arrival_from(from, next):
 	elif next.get_state() == "Available" or next.get_state() == "BNet":
 			# implement surfacing animation
 			print_debug("Scuba bunny surfacing")
+
+func swim_effect():
+	AudioEngine.play_effect("aqua-hop")
+
+func hop_effect():
+	AudioEngine.play_effect("hop")
+	
+func attack_effect():
+	AudioEngine.play_effect("munch")

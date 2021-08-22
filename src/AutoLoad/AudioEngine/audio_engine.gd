@@ -13,7 +13,7 @@ var current_background_player = null
 
 
 const tracks = {
-	"menu": "res://assets/audio/music/GWJ36_Main_Theme_loopable_v1.ogg",
+	"menu": "res://assets/audio/music/GWJ36_Menu_Loopable.ogg",
 	"game": "res://assets/audio/music/GWJ36_Main_Theme_loopable_v1.ogg",
 }
 
@@ -24,6 +24,16 @@ const sfx = {
 	"hop": "res://assets/audio/sfx/Bunny_hop_v1.ogg",
 	"defeat": "res://assets/audio/sfx/GWJ36_Losing_Tune_v1.ogg",
 	"victory": "res://assets/audio/sfx/GWJ36_Winning_Tune_v2.ogg",
+	"aqua-hop": "res://assets/audio/sfx/Aqua_Bunny_Swim_v1.ogg",
+	"smash-attack": "res://assets/audio/sfx/Buff_Bunny_Smash_v2.ogg",
+	"den-construction": "res://assets/audio/sfx/Den_construction_v2.ogg",
+	"tile-consumed": "res://assets/audio/sfx/Tile_conquored_v2.ogg",
+	"tile-lost": "res://assets/audio/sfx/Tile_unconquored_v1.ogg",
+	"gas": "res://assets/audio/sfx/gas_v3.ogg",
+	"gunshot": "res://assets/audio/sfx/Gunshot_v1.ogg",
+	"nom-nom": "res://assets/audio/sfx/Nom_Noms_Gained_v1.ogg",
+	"won": "res://assets/audio/sfx/GWJ36_Winning_Tune_v2.ogg",
+	"lost": "res://assets/audio/sfx/GWJ36_Losing_Tune_v1.ogg",
 }
 
 
