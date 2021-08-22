@@ -146,3 +146,6 @@ script = ExtResource( 4 )
 anims/attack = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/move = SubResource( 4 )
+
+[node name="SelectedIndicator" parent="." index="5"]
+frame = 1

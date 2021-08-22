@@ -142,11 +142,11 @@ func won_level():
 ## BNet actor info
 ###################
 
-func max_updated():
+func max_updated(_x):
 	if bnet.actor_data.max_population < bnet.actor_data.total_population:
 		game_over()
 
-func bunnies_updated():
+func bunnies_updated(_x):
 	if bnet.actor_data.max_population < bnet.actor_data.total_population:
 		game_over()
 
