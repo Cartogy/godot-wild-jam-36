@@ -120,9 +120,9 @@ func breadth_search_neighbours(from: Cell):
 
 			if has_edge(c, cell_rand) == false:
 			# Found neighbour to acquire next
-				if cell_rand.state_machine.current_state.name == "Available":
-					return cell_rand
-				elif cell_rand.state_machine.current_state.name == "BNet" and cell_rand.bunnies.reached_max_capacity() == false:
+				#if cell_rand.state_machine.current_state.name == "Available":
+				#	return cell_rand
+				if cell_rand.state_machine.current_state.name == "BNet" and cell_rand.bunnies.reached_max_capacity() == false:
 					return cell_rand
 				else:
 					# Investigate later, if not already visited

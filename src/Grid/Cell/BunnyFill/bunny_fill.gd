@@ -61,6 +61,9 @@ func append_bunny(bunny):
 
 func place_bunny_on_cell(bunny):
 	var cell: Cell = get_owner()
+	var hex_center = cell.global_position
+	var hex_size = cell.hex_size
+
 	# Check if bunny already in cell
 	if self.bunnies_in_tile.has(bunny):
 		return
@@ -77,16 +80,33 @@ func place_bunny_on_cell(bunny):
 				cell.connect("get_resources", bunny.bnet.actor_data, "add_resources")
 				cell.bnet_acquire(bunny.bnet)
 		bunny.cell = cell
+		#var bunny_id = bunnies_in_tile.size() + 1
+		#var vector_to_position = get_cell_position(hex_center, hex_size, bunny_id, default_percentage, percentage_increase)
+		#bunny.goal = hex_center + vector_to_position
 		bunnies_in_tile.append(bunny)
 
 func remove_bunny(bunny):
 	if bunnies_in_tile.has(bunny):
 		bunnies_in_tile.erase(bunny)
+		move_bunnies_along()
 		if bunnies_in_tile.size() == 0:
 			var cell: Cell = get_owner()
 			if cell.has_structure() == false:
 				if cell.get_state() != "Water":
 					cell.available_cell()
+					
+func move_bunnies_along():
+	var id = 1
+	var cell: Cell = get_owner()
+
+	var hex_center = cell.global_position
+	var hex_size = cell.hex_size
+	
+	for b in bunnies_in_tile:
+		var vector_to_position = get_cell_position(hex_center, hex_size, id, default_percentage, percentage_increase)
+		var new_goal = hex_center + vector_to_position
+		b.shift_in_cell(new_goal)
+		id += 1
 
 func remove_all_bunnies():
 	var i = 0

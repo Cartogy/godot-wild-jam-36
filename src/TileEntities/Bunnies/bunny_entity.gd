@@ -36,8 +36,8 @@ func die():
 	self.queue_free()
 
 func add_to_tile(new_cell):
-	new_cell.bunnies.place_bunny_on_cell(self)
 	var vector_to_position = new_cell.bunnies.calc_direction_placement()
+	new_cell.bunnies.place_bunny_on_cell(self)
 
 	goal = goal + vector_to_position
 
