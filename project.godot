@@ -283,6 +283,11 @@ Flow="*res://src/AutoLoad/Flow.tscn"
 AudioEngine="*res://src/AutoLoad/AudioEngine/AudioEngine.tscn"
 HexPath="*res://src/AutoLoad/HexPath/HexPath.tscn"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep_height"
+
 [importer_defaults]
 
 texture={
