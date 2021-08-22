@@ -49,7 +49,7 @@ func _physics_process(delta):
 func shift_in_cell(new_goal: Vector2):
 	goal = new_goal
 	state_machine.change_state("MovingInCell")
-	
+
 func add_to_tile(_new_cell):
 	pass
 

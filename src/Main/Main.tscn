@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Level/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Controller/Controller.tscn" type="PackedScene" id=2]
@@ -9,12 +9,27 @@
 [ext_resource path="res://src/UI/StructureButton.gd" type="Script" id=7]
 [ext_resource path="res://src/UI/WinScreen.gd" type="Script" id=8]
 [ext_resource path="res://src/UI/LoseScreen.gd" type="Script" id=9]
+[ext_resource path="res://assets/graphics/UI_Num_Num.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/UI_land.png" type="Texture" id=11]
+[ext_resource path="res://assets/graphics/UI_population.png" type="Texture" id=12]
+[ext_resource path="res://assets/graphics/UI_time.png" type="Texture" id=13]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=14]
 
 [node name="Main" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Stop" type="Button" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stop" type="Button" parent="CanvasLayer/Control"]
+visible = false
 margin_left = 218.295
 margin_top = 26.9087
 margin_right = 346.295
@@ -24,9 +39,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 3 )]
+[node name="PauseMenu" parent="CanvasLayer/Control" instance=ExtResource( 3 )]
 
-[node name="Begin" type="Button" parent="CanvasLayer"]
+[node name="Begin" type="Button" parent="CanvasLayer/Control"]
 margin_left = 27.7795
 margin_top = 27.7795
 margin_right = 152.78
@@ -36,7 +51,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BNetUI" type="Control" parent="CanvasLayer"]
+[node name="BNetUI" type="Control" parent="CanvasLayer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -45,7 +60,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Resources" type="Label" parent="CanvasLayer/BNetUI"]
+[node name="Resources" type="Label" parent="CanvasLayer/Control/BNetUI"]
+visible = false
 margin_right = 233.0
 margin_bottom = 111.0
 align = 2
@@ -53,7 +69,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Population" type="Label" parent="CanvasLayer/BNetUI"]
+[node name="Population" type="Label" parent="CanvasLayer/Control/BNetUI"]
+visible = false
 margin_left = 290.0
 margin_right = 570.0
 margin_bottom = 74.0
@@ -61,7 +78,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MaxPopulation" type="Label" parent="CanvasLayer/BNetUI"]
+[node name="MaxPopulation" type="Label" parent="CanvasLayer/Control/BNetUI"]
+visible = false
 margin_left = 260.0
 margin_right = 313.0
 margin_bottom = 14.0
@@ -69,29 +87,152 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BuildingTab" type="Control" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/BNetUI"]
+anchor_right = 1.0
+margin_bottom = 18.0
+mouse_filter = 2
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/BNetUI/MarginContainer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 1044.0
+margin_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 1024, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/separation = 100
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Land" type="TextureRect" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer"]
+margin_left = 140.0
+margin_right = 256.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 116, 36 )
+texture = ExtResource( 11 )
+stretch_mode = 1
+
+[node name="Green" type="Label" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/Land"]
+margin_left = 7.0
+margin_top = 10.0
+margin_right = 30.0
+margin_bottom = 34.0
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Desert" type="Label" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/Land"]
+margin_left = 52.1081
+margin_top = 11.5946
+margin_right = 79.1081
+margin_bottom = 31.5946
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NomNom" type="TextureRect" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer"]
+margin_left = 356.0
+margin_right = 452.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 96, 36 )
+texture = ExtResource( 10 )
+stretch_mode = 1
+
+[node name="Nom" type="Label" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/NomNom"]
+margin_left = 16.0
+margin_top = 12.0
+margin_right = 53.0
+margin_bottom = 34.0
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Population" type="TextureRect" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer"]
+margin_left = 552.0
+margin_right = 668.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 116, 36 )
+texture = ExtResource( 12 )
+stretch_mode = 1
+
+[node name="Count" type="Label" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/Population"]
+margin_left = 16.8899
+margin_top = 12.9449
+margin_right = 68.8899
+margin_bottom = 31.9449
+text = "0/0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="TextureRect" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer"]
+margin_left = 768.0
+margin_right = 884.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 116, 36 )
+texture = ExtResource( 13 )
+stretch_mode = 1
+
+[node name="Time" type="Label" parent="CanvasLayer/Control/BNetUI/MarginContainer/HBoxContainer/Time"]
+margin_left = 6.65283
+margin_top = 12.2735
+margin_right = 76.6528
+margin_bottom = 32.2735
+text = "00:00:00"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildingTab" type="Control" parent="CanvasLayer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.6837
+margin_top = 0.280617
+margin_right = -1.68372
+margin_bottom = 0.28064
 mouse_filter = 2
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BuildingTab"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/BuildingTab"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -106.0
 mouse_filter = 2
 custom_constants/margin_right = 20
-custom_constants/margin_top = 20
+custom_constants/margin_top = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BuildingTab/MarginContainer"]
-margin_top = 20.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/BuildingTab/MarginContainer"]
+margin_top = 50.0
 margin_right = 86.0
 margin_bottom = 600.0
 mouse_filter = 2
@@ -99,7 +240,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Barracks" type="TextureRect" parent="CanvasLayer/BuildingTab/MarginContainer/VBoxContainer"]
+[node name="Barracks" type="TextureRect" parent="CanvasLayer/Control/BuildingTab/MarginContainer/VBoxContainer"]
 margin_right = 86.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 86, 64 )
@@ -108,18 +249,23 @@ expand = true
 script = ExtResource( 7 )
 structure_name = "den"
 
-[node name="Label" type="Label" parent="CanvasLayer/BuildingTab/MarginContainer/VBoxContainer/Barracks"]
-margin_left = -4.38324
-margin_top = 64.5889
-margin_right = 84.6168
-margin_bottom = 78.5889
+[node name="Label" type="Label" parent="CanvasLayer/Control/BuildingTab/MarginContainer/VBoxContainer/Barracks"]
+margin_top = 52.0
+margin_right = 86.0
+margin_bottom = 68.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 0
 text = "Build Den"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WinScreen" type="Control" parent="CanvasLayer"]
+[node name="WinScreen" type="Control" parent="CanvasLayer/Control"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -128,7 +274,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/WinScreen"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/WinScreen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.25989
@@ -140,7 +286,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WinScreen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/WinScreen"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -155,14 +301,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/WinScreen/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/WinScreen/VBoxContainer"]
 margin_right = 200.0
 margin_bottom = 14.0
 text = "VICTORY!!!"
 align = 1
 valign = 1
 
-[node name="Information" type="Label" parent="CanvasLayer/WinScreen/VBoxContainer"]
+[node name="Information" type="Label" parent="CanvasLayer/Control/WinScreen/VBoxContainer"]
 margin_top = 44.0
 margin_right = 200.0
 margin_bottom = 109.0
@@ -172,13 +318,13 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="NextLevelButton" type="Button" parent="CanvasLayer/WinScreen/VBoxContainer"]
+[node name="NextLevelButton" type="Button" parent="CanvasLayer/Control/WinScreen/VBoxContainer"]
 margin_top = 139.0
 margin_right = 200.0
 margin_bottom = 159.0
 text = "SELECT NEXT MISSION"
 
-[node name="LoseScreen" type="Control" parent="CanvasLayer"]
+[node name="LoseScreen" type="Control" parent="CanvasLayer/Control"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -187,7 +333,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/LoseScreen"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/LoseScreen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.25989
@@ -199,7 +345,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LoseScreen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LoseScreen"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -214,14 +360,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/LoseScreen/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/LoseScreen/VBoxContainer"]
 margin_right = 200.0
 margin_bottom = 14.0
 text = "DEFEAT..."
 align = 1
 valign = 1
 
-[node name="Information" type="Label" parent="CanvasLayer/LoseScreen/VBoxContainer"]
+[node name="Information" type="Label" parent="CanvasLayer/Control/LoseScreen/VBoxContainer"]
 margin_top = 44.0
 margin_right = 200.0
 margin_bottom = 109.0
@@ -231,7 +377,7 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="ReplayLevelButton" type="Button" parent="CanvasLayer/LoseScreen/VBoxContainer"]
+[node name="ReplayLevelButton" type="Button" parent="CanvasLayer/Control/LoseScreen/VBoxContainer"]
 margin_top = 139.0
 margin_right = 200.0
 margin_bottom = 159.0
@@ -245,7 +391,7 @@ grid_hex_path = NodePath("../BaseLevel/Grid")
 [node name="Camera" parent="BaseLevel" index="4"]
 position = Vector2( 196.221, 100.113 )
 
-[connection signal="pressed" from="CanvasLayer/Stop" to="BaseLevel" method="_on_Stop_pressed"]
-[connection signal="pressed" from="CanvasLayer/Begin" to="BaseLevel" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Stop" to="BaseLevel" method="_on_Stop_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Begin" to="BaseLevel" method="_on_Button_pressed"]
 
 [editable path="BaseLevel"]

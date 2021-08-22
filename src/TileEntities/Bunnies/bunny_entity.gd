@@ -71,6 +71,6 @@ func _on_state_changed(next_state):
 
 func attack_effect():
 	pass
-	
+
 func hop_effect():
 	pass

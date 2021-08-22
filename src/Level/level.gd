@@ -25,6 +25,7 @@ func _ready():
 	#var den = starting_den.instance()
 
 	#bnet.add_starting_structure(den, starting_cell, cell)
+	Flow.loaded_level = self
 	load_level()
 
 func load_level():

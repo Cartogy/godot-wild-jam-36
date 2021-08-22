@@ -89,7 +89,7 @@ func get_units_clicked(p_cursor: Vector2) -> Array:
 	var unit_collision = space.intersect_shape(query)
 
 	return unit_collision
-	
+
 func drag_select(event: InputEventMouseButton):
 	if event.pressed:
 		if structure_selected():
@@ -108,17 +108,17 @@ func drag_select(event: InputEventMouseButton):
 		var units = space.intersect_shape(query)
 		selected_units = filter_units(units)
 		cursor = drag_end
-		
+
 		update()
 		reset_box()
-		
-		
+
+
 func reset_box():
 	cursor = Vector2.ZERO
 	drag_start = Vector2.ZERO
 	drag_end = Vector2.ZERO
 	update()
-		
+
 func structure_selected() -> bool:
 	if Flow.selected_structure:
 		var cell_coordinate = hex_grid.pixel_to_hex(get_global_mouse_position())
@@ -129,7 +129,7 @@ func structure_selected() -> bool:
 			var structure = structures[Flow.selected_structure].instance()
 			Flow.b_net.add_structure(structure, cell_coordinate.to_vector(), cell)
 			Flow.selected_structure = null
-		return true 
+		return true
 	return false
 
 func individual_unit_selection(event: InputEvent):

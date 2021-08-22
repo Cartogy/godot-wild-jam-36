@@ -98,14 +98,14 @@ func remove_bunny(bunny):
 			if cell.has_structure() == false:
 				if cell.get_state() != "Water":
 					cell.available_cell()
-					
+
 func move_bunnies_along():
 	var id = 1
 	var cell: Cell = get_owner()
 
 	var hex_center = cell.global_position
 	var hex_size = cell.hex_size
-	
+
 	for b in bunnies_in_tile:
 		var vector_to_position = get_cell_position(hex_center, hex_size, id, default_percentage, percentage_increase)
 		var new_goal = hex_center + vector_to_position

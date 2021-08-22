@@ -78,6 +78,6 @@ func pass_bunny_info(from: BunnyBase, to: BunnyBase):
 
 func hop_effect():
 	AudioEngine.play_effect("hop")
-	
+
 func attack_effect():
 	AudioEngine.play_effect("munch")

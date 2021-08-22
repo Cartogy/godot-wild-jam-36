@@ -5,16 +5,16 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 	frontier.append(from)
 	var came_from = {}
 	came_from[from] = null
-	
+
 	if to == null:
 		return []
-	
+
 	if obstacles.has(to.get_state()):
 		return []
 	# Can not click directly on water. Only acrross
 	elif to.get_state() == "Water":
 		return []
-	
+
 	var found_goal: bool = false
 	while frontier.size() > 0:
 		var current: Cell =  frontier.pop_front()
@@ -33,7 +33,7 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 						if an_obstacle(next, obstacles) == false:
 							frontier.append(next)
 							came_from[next] = current
-					
+
 	if found_goal:
 	# Find path to cell
 		var current: Cell = to
@@ -43,7 +43,7 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 			current = came_from[current]
 		#path.append(from)
 		path = reverse(path)
-	
+
 		return path
 	else:
 		return []

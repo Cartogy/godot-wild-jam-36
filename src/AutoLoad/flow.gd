@@ -31,6 +31,7 @@ var _game_state : int = STATE.GAME
 var menu_tab = null
 
 var level = null
+var loaded_level = null
 
 var selected_structure = null
 

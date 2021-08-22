@@ -16,7 +16,7 @@ func _process(delta):
 			else:
 				animation_player.play("move")
 			transitioning = false
-		
+
 
 func arrival_from(from, to, next):
 	var cell_to
@@ -24,7 +24,7 @@ func arrival_from(from, to, next):
 		cell_to = from
 	else:
 		cell_to = to
-	
+
 	if next != null:
 		distance_to_cell_edge = (next.global_position - cell_to.global_position) / 2
 		if cell_to.get_state() == "Water" and is_land(next):
@@ -48,10 +48,10 @@ func swim_effect():
 
 func hop_effect():
 	AudioEngine.play_effect("hop")
-	
+
 func attack_effect():
 	AudioEngine.play_effect("munch")
-	
+
 func is_land(cell) -> bool:
 	if cell.get_state() == "Available" or cell.get_state() == "BNet" or cell.get_state() == "Conquered" or cell.get_state() == "Military":
 		return true

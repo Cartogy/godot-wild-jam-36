@@ -159,8 +159,8 @@ func remove_bunny_amount(amount: int):
 
 func has_bunnies():
 	return bunnies.has_bunnies()
-	
-	
+
+
 ###############
 ## Structures
 ###############

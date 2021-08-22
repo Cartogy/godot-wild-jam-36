@@ -11,13 +11,13 @@ func reset():
 # When building the level. DONT USER OTHER THAN THAT PURPOSE
 func add_to_total_land(amount: int):
 	total_land_cells += 1
-	
+
 func add_consumed(amount: int):
 	current_land_consumed += 1
-	
+
 func remove_consumed(amount: int):
 	current_land_consumed -= amount
-	
+
 func consumed_all() -> bool:
 	if total_land_cells <= current_land_consumed:
 		return true

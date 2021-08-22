@@ -13,10 +13,10 @@ func add_structure_total(amount: int):
 
 func add_inept_structure(amount: int):
 	current_inept_structure += 1
-	
+
 func remove_inept_structure(amount: int):
 	current_inept_structure -= 1
-	
+
 # Game over condition
 func all_structures_inept() -> bool:
 	return total_structures <= current_inept_structure
