@@ -10,10 +10,13 @@ signal update_max_pop(new_amount)
 
 func add_resources(res: CellResource):
 	var nom_noms = res.consume_resource()
+
 	var special_res_consumed:int = res.consume_special_resource()
+	# We have not consumed this tile before
+	if special_res_consumed != 0:
+		AudioEngine.play_effect("nom-nom")
 	
-	var total_gained = nom_noms
-	total_gained += special_res_consumed
+	var total_gained = special_res_consumed
 		
 	total_resources += total_gained
 	emit_signal("update_res", total_resources)

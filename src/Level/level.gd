@@ -89,6 +89,7 @@ func build_structure_info(structures: Dictionary) -> MapStructureInfo:
 func inept_structure():
 	bnet_structure_info.add_inept_structure(1)
 	if lost_level():
+		AudioEngine.play_effect("lost")
 		print_debug("You lost")
 		stop_bnet()
 
@@ -106,12 +107,15 @@ func lost_level():
 #################
 
 func bnet_lost():
+	AudioEngine.play_effect("tile-lost")
 	current_map_info.remove_consumed(1)
 
 func bnet_gained():
+	AudioEngine.play_effect("tile-consumed")
 	current_map_info.add_consumed(1)
 	if won_level():
 		#Game over
+		AudioEngine.play_effect("won")
 		print_debug("You Won!!")
 		bnet.active = false
 		mnet.active = false

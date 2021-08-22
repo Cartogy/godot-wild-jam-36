@@ -4,7 +4,7 @@ var cell_scene = preload("res://src/Grid/Cell/Cell.tscn")
 const water_cell_scene = preload("res://src/Grid/Cell/CellScenes/Water.tscn")
 
 export (bool) var DEBUG = false
-export (Vector2) var dimensions = Vector2(10,10)
+export (Vector2) var dimensions = Vector2(15,15)
 
 # Where the grid starts
 export (Vector2) var origin: Vector2 = Vector2(0,0)

@@ -33,6 +33,7 @@ func die():
 	if cell != null:
 		cell.bunnies.remove_bunny(self)
 	bnet.actor_data.remove_population(1)
+	AudioEngine.play_effect("death")
 	self.queue_free()
 
 func add_to_tile(new_cell):
