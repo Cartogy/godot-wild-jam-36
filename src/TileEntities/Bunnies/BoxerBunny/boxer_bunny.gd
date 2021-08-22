@@ -21,7 +21,7 @@ func destroy_barrier():
 		barrier_to_destroy.remove_edge()
 		barrier_to_destroy = null
 
-	
+
 func is_blocking_path(edge: GridEdge, from, to):
 	if edge.cell_0 == from and edge.cell_1 == to:
 		return true

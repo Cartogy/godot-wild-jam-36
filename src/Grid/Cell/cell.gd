@@ -143,7 +143,7 @@ func breadth_search_neighbours():
 			amount_left -= 1
 
 	return null
-	
+
 func set_texture(tex: Texture):
 	sprite.texture = tex
 
@@ -228,7 +228,7 @@ func water_cell():
 
 func debug_cell():
 	state_machine.change_state("Debug")
-	
+
 func conquered_cell():
 	state_machine.change_state("Conquered")
 

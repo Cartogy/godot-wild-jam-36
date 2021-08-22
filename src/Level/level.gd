@@ -91,6 +91,7 @@ func inept_structure():
 	if lost_level():
 		AudioEngine.play_effect("lost")
 		print_debug("You lost")
+		Flow.lost_game()
 		stop_bnet()
 
 func producing_structure():
@@ -119,6 +120,7 @@ func bnet_gained():
 		print_debug("You Won!!")
 		bnet.active = false
 		mnet.active = false
+		Flow.won_game()
 		pass
 
 func won_level():

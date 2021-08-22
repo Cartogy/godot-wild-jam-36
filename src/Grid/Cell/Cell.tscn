@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/Grid/Cell/cell.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/grass.png" type="Texture" id=2]
@@ -15,8 +15,15 @@
 [ext_resource path="res://assets/graphics/debug.png" type="Texture" id=13]
 [ext_resource path="res://src/Grid/Cell/States/opposition_state.gd" type="Script" id=14]
 [ext_resource path="res://src/tools/StateMachine/state.gd" type="Script" id=15]
+[ext_resource path="res://assets/graphics/Hex_Outline_Beach.png" type="Texture" id=16]
+[ext_resource path="res://assets/graphics/Hex_Outline_White.png" type="Texture" id=17]
+[ext_resource path="res://assets/graphics/Hex_Outline_Blue1.png" type="Texture" id=18]
+[ext_resource path="res://assets/graphics/Hex_Outline_Blue3.png" type="Texture" id=19]
+[ext_resource path="res://assets/graphics/Hex_Outline_Blue2.png" type="Texture" id=20]
+[ext_resource path="res://assets/graphics/Hex_Outline_Blue4.png" type="Texture" id=21]
 
 [node name="Cell" type="Node2D"]
+z_as_relative = false
 script = ExtResource( 1 )
 available_texture = ExtResource( 2 )
 bnet_texture = ExtResource( 3 )
@@ -54,3 +61,30 @@ script = ExtResource( 15 )
 script = ExtResource( 6 )
 
 [node name="CellResources" parent="." instance=ExtResource( 9 )]
+
+[node name="Outline" type="Node2D" parent="."]
+z_index = -2
+
+[node name="Beach" type="Sprite" parent="Outline"]
+z_index = -1
+texture = ExtResource( 16 )
+
+[node name="WaterLine" type="Sprite" parent="Outline"]
+z_index = -2
+texture = ExtResource( 17 )
+
+[node name="Blue1" type="Sprite" parent="Outline"]
+z_index = -3
+texture = ExtResource( 18 )
+
+[node name="Blue2" type="Sprite" parent="Outline"]
+z_index = -4
+texture = ExtResource( 20 )
+
+[node name="Blue3" type="Sprite" parent="Outline"]
+z_index = -5
+texture = ExtResource( 19 )
+
+[node name="Blue4" type="Sprite" parent="Outline"]
+z_index = -6
+texture = ExtResource( 21 )

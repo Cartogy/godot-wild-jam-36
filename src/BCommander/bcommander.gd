@@ -26,7 +26,8 @@ var bunny: Bunny
 
 
 onready var structures = {
-	"barracks": preload("res://src/Structures/BNetStructure/Barracks/Barracks.tscn")
+	"barracks": preload("res://src/Structures/BNetStructure/Barracks/Barracks.tscn"),
+	"den": preload("res://src/Structures/BNetStructure/Den/Den.tscn"),
 }
 
 

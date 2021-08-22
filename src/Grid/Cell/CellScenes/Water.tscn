@@ -7,4 +7,8 @@
 starting_state = "Water"
 
 [node name="Sprite" parent="." index="0"]
+visible = false
 texture = ExtResource( 2 )
+
+[node name="Outline" parent="." index="4"]
+visible = false

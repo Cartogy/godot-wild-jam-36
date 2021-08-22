@@ -49,7 +49,7 @@ func convert_scale_to_db(scale: float):
 
 var background_audio = null
 
-export var MAX_SIMULTANEOUS_EFFECTS = 5
+export var MAX_SIMULTANEOUS_EFFECTS = 10
 
 
 func _ready():

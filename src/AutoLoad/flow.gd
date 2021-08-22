@@ -11,6 +11,8 @@ const DEFAULT_CONTEXT_PATH := "res://default_context.json"
 ### PUBLIC VARIABLES ###
 var pause_menu : Control = null
 var b_net_ui: Control = null
+var win_screen: Control = null
+var lose_screen: Control = null
 var b_net: BNet = null
 var grid = null
 
@@ -25,6 +27,8 @@ var _game_scenes := {
 	STATE.GAME: preload("res://src/Main/Main.tscn"),
 }
 var _game_state : int = STATE.GAME
+
+var menu_tab = null
 
 var level = null
 
@@ -126,3 +130,16 @@ func get_level_data():
 		return "res://src/Level/CustomLevels/main_level_test.tres"
 	else:
 		return level.data
+
+
+func won_game():
+	win_screen.visible = true
+
+
+func lost_game():
+	lose_screen.visible = true
+
+func go_to_level_select():
+	menu_tab = "level"
+	change_scene_to(STATE.MENU)
+

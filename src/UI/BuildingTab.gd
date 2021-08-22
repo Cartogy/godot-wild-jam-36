@@ -1,6 +1,6 @@
 extends Control
 
-onready var buttons = $VBoxContainer.get_children()
+onready var buttons = $MarginContainer/VBoxContainer.get_children()
 
 
 func _ready():
