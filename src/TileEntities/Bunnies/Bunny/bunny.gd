@@ -71,8 +71,8 @@ func pass_bunny_info(from: BunnyBase, to: BunnyBase):
 	to.on_cell = from.on_cell
 
 	to.global_position = from.global_position
+	to.z_index = from.z_index
 	to.bnet.add_child(to)
-
 	to.arrived_at(to.cell)
 
 
