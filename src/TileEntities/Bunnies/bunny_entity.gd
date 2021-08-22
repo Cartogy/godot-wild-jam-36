@@ -33,6 +33,10 @@ func die():
 	if cell != null:
 		cell.bunnies.remove_bunny(self)
 	bnet.actor_data.remove_population(1)
+
+	# haxx
+	Flow.b_commander.notify_death(self)
+
 	AudioEngine.play_effect("death")
 	self.queue_free()
 

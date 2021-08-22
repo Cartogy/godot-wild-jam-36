@@ -34,15 +34,24 @@ onready var structures = {
 
 
 func _ready():
+	Flow.b_commander = self
 	update()
 	if hex_grid_path != "":
 		hex_grid = get_node(hex_grid_path)
 
 
+func notify_death(bunny):
+	if bunny in selected_units:
+		selected_units.erase(bunny)
+	if bunny in units_with_selection:
+		units_with_selection.erase(bunny)
 
 func update_selection():
 	var units_to_remove = []
 	for unit in units_with_selection:
+		if unit == null:
+				units_to_remove.append(unit)
+				continue
 		if unit in selected_units:
 			unit.set_selected()
 		else:

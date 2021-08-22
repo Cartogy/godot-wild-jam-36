@@ -15,6 +15,7 @@ var win_screen: Control = null
 var lose_screen: Control = null
 var transition: Control = null
 var b_net: BNet = null
+var b_commander = null
 var grid = null
 
 # Is the game currently in editor mode? or not?

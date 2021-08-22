@@ -86,13 +86,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MissionImage" type="TextureRect" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/CenterContainer"]
-margin_left = 191.0
-margin_top = 191.0
-margin_right = 255.0
-margin_bottom = 255.0
-texture = ExtResource( 2 )
-
 [node name="VBoxContainer" type="Control" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
@@ -100,24 +93,49 @@ margin_right = 466.0
 margin_bottom = 466.0
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer"]
 anchor_right = 1.0
-margin_bottom = 847.0
+anchor_bottom = 1.0
+margin_bottom = -38.0
+rect_min_size = Vector2( 446, 400 )
+scroll_horizontal_enabled = false
+scroll_deadzone = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MissionTitle" type="Label" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+margin_right = 446.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 446, 0 )
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionTitle" type="Label" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_right = 446.0
 margin_bottom = 14.0
 align = 1
 valign = 1
 uppercase = true
 
-[node name="MissionExplanation" type="Label" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 18.0
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 30.0
 margin_right = 446.0
-margin_bottom = 83.0
+margin_bottom = 94.0
+
+[node name="MissionImage" type="TextureRect" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer"]
+margin_left = 191.0
+margin_right = 255.0
+margin_bottom = 64.0
+texture = ExtResource( 2 )
+
+[node name="MissionExplanation" type="Label" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 110.0
+margin_right = 446.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 446, 0 )
 text = "Lorem ipsum dolores is a bitch she knew something was up yet she didn't tell anyone omgf why didn't she say something and why does she like to eat carrots oh my it's always the friggin carrots and bunnies like carrots and dolores is a bunny"
 autowrap = true
 __meta__ = {
