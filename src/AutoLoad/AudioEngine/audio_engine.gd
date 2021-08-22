@@ -34,6 +34,8 @@ const sfx = {
 	"nom-nom": "res://assets/audio/sfx/Nom_Noms_Gained_v1.ogg",
 	"won": "res://assets/audio/sfx/GWJ36_Winning_Tune_v2.ogg",
 	"lost": "res://assets/audio/sfx/GWJ36_Losing_Tune_v1.ogg",
+	"rocket-blastoff": "res://assets/audio/sfx/rocket_blast_off_v1.ogg",
+	"rocket-landing": "res://assets/audio/sfx/rocket_landing_explosion_v1.ogg"
 }
 
 

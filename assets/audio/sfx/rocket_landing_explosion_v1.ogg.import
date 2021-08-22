@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rocket_landing_explosion_v1.ogg-659924fd67867789c0041bee1f60aa2b.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/rocket_landing_explosion_v1.ogg"
+dest_files=[ "res://.import/rocket_landing_explosion_v1.ogg-659924fd67867789c0041bee1f60aa2b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
