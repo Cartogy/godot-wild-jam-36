@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://src/Menu/Tabs/Main/MainMenuTab.tscn" type="PackedScene" id=2]
@@ -6,6 +6,14 @@
 [ext_resource path="res://src/Menu/Tabs/Settings/SettingsMenuTab.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Menu/Tabs/LevelSelect/LevelSelectTab.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/theme.tres" type="Theme" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -26,6 +34,10 @@ anchor_bottom = 1.0
 margin_left = -1.0
 margin_right = -1.0
 theme = ExtResource( 6 )
+custom_styles/tab_fg = SubResource( 1 )
+custom_styles/tab_disabled = SubResource( 2 )
+custom_styles/tab_bg = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 tabs_visible = false
 script = ExtResource( 3 )
 __meta__ = {
@@ -33,21 +45,15 @@ __meta__ = {
 }
 
 [node name="MainMenuTab" parent="CanvasLayer/TabContainer" instance=ExtResource( 2 )]
-margin_left = 4.0
-margin_top = 8.0
-margin_right = -4.0
-margin_bottom = -4.0
 
 [node name="SettingsMenuTab" parent="CanvasLayer/TabContainer" instance=ExtResource( 4 )]
 visible = false
 margin_left = 4.0
-margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="LevelSelectTab" parent="CanvasLayer/TabContainer" instance=ExtResource( 5 )]
 visible = false
 margin_left = 4.0
-margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
