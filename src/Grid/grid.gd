@@ -161,7 +161,7 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 		cell.visible = false
 	if special_res_path != "":
 		var special_res = load(special_res_path)
-		cell.add_special_resource(special_res)
+		cell.add_special_resource(special_res.duplicate())
 	hexagon_coords[hex_coord] = cell
 
 
