@@ -21,6 +21,8 @@ func path_finding(from: Cell, to: Cell, ignore_edges: bool, obstacles: Array) ->
 		if current == to:
 			found_goal = true
 			break
+		if current == null:
+			continue
 		for next in current.neighbours:
 			if came_from.has(next) == false:
 				if ignore_edges:
