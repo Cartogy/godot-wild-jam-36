@@ -47,6 +47,7 @@ func p_process(delta: float):
 			
 			entity.arrival_from(old_cell, entity.cell, current_goal_cell)
 			if current_goal_cell.state_machine.current_state.name == "Military":
+				entity.cell.add_bunny(entity)
 				start_attacking(current_goal_cell)
 
 			
@@ -68,6 +69,10 @@ func start_attacking(to_attack: Cell):
 	entity.attacking_cell = to_attack
 	emit_signal("change_state", "Attack")
 
+func military_nearby(cell):
+	for n in cell.neighbours:
+		if n.get_state() == "Military":
+			n.bunny_nearby(entity)
 
 # In charge of setting up variables that the state will deal with
 ## (e.g. setting custom variables)

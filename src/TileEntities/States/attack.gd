@@ -1,6 +1,9 @@
 extends State
 
 export (int) var attack_movement_speed = 10
+export (float) var attack_rate = 0.8
+
+onready var attack_timer = $Timer
 
 var attack_cell
 var current_cell
@@ -18,6 +21,8 @@ func handle_input(event):
 # What occurs when entering a state
 func enter():
 	attack_cell = entity.attacking_cell
+	attack_cell.being_attacked(entity)
+	
 	current_cell = entity.cell
 	var direction = attack_cell.global_position - current_cell.global_position
 	var half_dir = direction / 2
@@ -28,7 +33,7 @@ func enter():
 
 # What occurs when exiting state
 func exit():
-	pass
+	attack_cell.not_being_attacked_by(entity)
 
 # Physics process for state
 func p_process(delta: float):
@@ -46,7 +51,9 @@ func p_process(delta: float):
 
 func attack_structure():
 	if entity.structure_alive_at(attack_cell):
-		entity.damage_structure_at(attack_cell, entity.damage)
+		if attack_timer.is_stopped():
+			attack_timer.start(attack_rate)
+			entity.damage_structure_at(attack_cell, entity.damage)
 	else:
 		attack_finished()
 		
