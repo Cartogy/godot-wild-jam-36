@@ -1,10 +1,11 @@
-[gd_resource type="Theme" load_steps=11 format=2]
+[gd_resource type="Theme" load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/pixellari.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/graphics/button_highlight.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/button_disabled.png" type="Texture" id=3]
 [ext_resource path="res://assets/graphics/button.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/button_pressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/panel.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 3 )
@@ -38,6 +39,22 @@ margin_right = 13.6439
 margin_top = 20.686
 margin_bottom = 18.9254
 
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 7.54707
+margin_right = 8.78053
+margin_top = 13.3799
+margin_bottom = 11.9164
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 8.38232
+margin_right = 8.98105
+margin_top = 13.1722
+margin_bottom = 13.1722
+
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
@@ -54,3 +71,5 @@ Button/styles/focus = null
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
+Panel/styles/panel = SubResource( 6 )
+PanelContainer/styles/panel = SubResource( 7 )

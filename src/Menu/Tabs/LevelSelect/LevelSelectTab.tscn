@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Menu/Tabs/LevelSelect/level_select_tab.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=3]
 
 [node name="LevelSelectTab" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -20,8 +22,8 @@ custom_constants/separation = 150
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 83.0
-margin_right = 290.0
+margin_left = 65.0
+margin_right = 309.0
 margin_bottom = 600.0
 mouse_filter = 2
 custom_constants/margin_right = 20
@@ -32,18 +34,18 @@ custom_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 187.0
+margin_right = 224.0
 margin_bottom = 580.0
 
 [node name="BackButton" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 167.0
-margin_bottom = 20.0
+margin_right = 204.018
+margin_bottom = 52.6
 text = "RETURN TO MAIN MENU"
 
 [node name="Levels" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
-margin_left = 103.0
+margin_left = 122.0
 margin_top = 20.0
-margin_right = 103.0
+margin_right = 122.0
 margin_bottom = 580.0
 mouse_filter = 2
 size_flags_horizontal = 4
@@ -51,8 +53,8 @@ custom_constants/separation = 8
 alignment = 1
 
 [node name="LevelInfo" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 440.0
-margin_right = 940.0
+margin_left = 459.0
+margin_right = 959.0
 margin_bottom = 600.0
 size_flags_horizontal = 4
 custom_constants/separation = 16
@@ -68,10 +70,10 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LevelInfo/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 493.0
-margin_bottom = 493.0
+margin_left = 8.38232
+margin_top = 13.1722
+margin_right = 491.019
+margin_bottom = 486.828
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -80,8 +82,8 @@ custom_constants/margin_bottom = 20
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 466.0
-margin_bottom = 466.0
+margin_right = 462.0
+margin_bottom = 453.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -89,15 +91,15 @@ __meta__ = {
 [node name="VBoxContainer" type="Control" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 466.0
-margin_bottom = 466.0
+margin_right = 462.0
+margin_bottom = 453.0
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer"]
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = -38.0
-rect_min_size = Vector2( 446, 400 )
+margin_right = 4.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 446, 360 )
 scroll_horizontal_enabled = false
 scroll_deadzone = 20
 __meta__ = {
@@ -106,7 +108,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
 margin_right = 446.0
-margin_bottom = 175.0
+margin_bottom = 185.0
 rect_min_size = Vector2( 446, 0 )
 custom_constants/separation = 16
 __meta__ = {
@@ -115,15 +117,15 @@ __meta__ = {
 
 [node name="MissionTitle" type="Label" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_right = 446.0
-margin_bottom = 14.0
+margin_bottom = 16.0
 align = 1
 valign = 1
 uppercase = true
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 30.0
+margin_top = 32.0
 margin_right = 446.0
-margin_bottom = 94.0
+margin_bottom = 96.0
 
 [node name="MissionImage" type="TextureRect" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer"]
 margin_left = 191.0
@@ -132,9 +134,9 @@ margin_bottom = 64.0
 texture = ExtResource( 2 )
 
 [node name="MissionExplanation" type="Label" parent="HBoxContainer/LevelInfo/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 110.0
+margin_top = 112.0
 margin_right = 446.0
-margin_bottom = 175.0
+margin_bottom = 185.0
 rect_min_size = Vector2( 446, 0 )
 text = "Lorem ipsum dolores is a bitch she knew something was up yet she didn't tell anyone omgf why didn't she say something and why does she like to eat carrots oh my it's always the friggin carrots and bunnies like carrots and dolores is a bunny"
 autowrap = true
@@ -146,7 +148,7 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -20.0
+margin_top = -52.6
 text = "DEPLOY BUNNIES"
 __meta__ = {
 "_edit_use_anchors_": false
