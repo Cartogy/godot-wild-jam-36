@@ -273,7 +273,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot-wild-jam- 36"
-run/main_scene="res://src/Main/Main.tscn"
+run/main_scene="res://src/Menu/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

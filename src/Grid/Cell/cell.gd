@@ -77,7 +77,7 @@ func pointy_hex_corner(center: Vector2, c_size: Vector2, corner_id: int):
 
 func get_hex_center() -> Vector2:
 	return real_hex_center - self.global_position
-	
+
 func being_attacked(bunny):
 	if structure != null:
 		structure.being_attacked_by(bunny)
@@ -85,13 +85,13 @@ func being_attacked(bunny):
 func not_being_attacked_by(bunny):
 	if structure != null:
 		structure.not_being_attacked_by(bunny)
-		
+
 func bunny_nearby(bunny):
 	print_debug("bunny_nearby")
 	# To implement if needed
 	if structure != null:
 		pass
-		
+
 
 ###############
 # BNET Interface

@@ -47,10 +47,10 @@ func remove_from_net(net):
 func being_attacked_by(entity):
 	if entities_nearby.has(entity) == false:
 		entities_nearby.append(entity)
-	
+
 func not_being_attacked_by(entity):
 	if entities_nearby.has(entity):
 		entities_nearby.erase(entity)
- 
+
 func entity_nearby(entity):
 	 pass
