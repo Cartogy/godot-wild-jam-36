@@ -2,10 +2,12 @@ extends KinematicBody2D
 class_name Nuke
 
 var speed = 10
+var speed_modification = 1
 
 var base_from
 var cell_to_nuke: Cell
 var from_cell: Cell
+var played_landing_sound: bool = false
 var launch_direction = Vector2(0,-1)
 
 var max_distance_away =  20
@@ -14,6 +16,7 @@ enum STATES { LAUNCHING, LANDING }
 var state
 
 func _ready():
+	AudioEngine.play_effect("rocket-blastoff")
 	state = STATES.LAUNCHING
 	
 func _physics_process(delta):
@@ -25,8 +28,10 @@ func _physics_process(delta):
 	elif landing():
 		if has_landed():
 			nuke()
-		
-		move_and_slide(launch_direction * -speed)
+		if played_landing_sound == false:
+			AudioEngine.play_effect("rocket-landing")
+			played_landing_sound = true
+		move_and_slide(launch_direction * (-speed * speed_modification))
 
 func launching() -> bool:
 	return state == STATES.LAUNCHING
