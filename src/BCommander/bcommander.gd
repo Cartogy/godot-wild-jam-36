@@ -9,6 +9,8 @@ export (NodePath) var hex_grid_path
 
 var hex_grid
 var selected_units: Array = []
+var units_with_selection: Array = []
+
 var units_in_tiles: Dictionary = {}
 var select_rect = RectangleShape2D.new()
 
@@ -38,6 +40,25 @@ func _ready():
 
 
 
+func update_selection():
+	var units_to_remove = []
+	for unit in units_with_selection:
+		if unit in selected_units:
+			unit.set_selected()
+		else:
+			unit.set_deselected()
+			units_to_remove.append(unit)
+
+	for unit in selected_units:
+		if unit in units_with_selection:
+			pass
+		else:
+			units_with_selection.append(unit)
+			unit.set_selected()
+
+	for unit_to_remove in units_to_remove:
+		units_with_selection.erase(unit_to_remove)
+
 
 func _unhandled_input(event):
 
@@ -56,11 +77,15 @@ func _unhandled_input(event):
 				selected_units = filter_units(unit_collision)
 
 				if selected_units.size() != 0:
+					selected_units = [selected_units[0]]
+
 					var first_unit = selected_units[0]
 					if first_unit.has_method("show_upgrades"):
 						bunny = first_unit
 						first_unit.show_upgrades()
 						selecting_upgrades = true
+
+				update_selection()
 
 
 	elif event is InputEventMouseButton:
@@ -74,6 +99,7 @@ func _unhandled_input(event):
 		elif event.button_index == BUTTON_RIGHT and event.pressed:
 
 			move_units(selected_units, get_global_mouse_position())
+
 	# Display square while moving mouse
 	elif dragging:
 		if event is InputEventMouseMotion:
@@ -94,12 +120,14 @@ func drag_select(event: InputEventMouseButton):
 	if event.pressed:
 		if structure_selected():
 			return
-		var selected_units = []
+		selected_units = []
+		update_selection()
 		dragging = true
 		drag_start = get_global_mouse_position()
 	elif dragging:
+		# equals a click
 		dragging = false
-		var drag_end = get_global_mouse_position()
+		drag_end = get_global_mouse_position()
 		select_rect.extents = (drag_end - drag_start) / 2
 		var space = get_world_2d().direct_space_state
 		var query = Physics2DShapeQueryParameters.new()
@@ -107,6 +135,10 @@ func drag_select(event: InputEventMouseButton):
 		query.transform = Transform2D(0, (drag_end + drag_start) / 2)
 		var units = space.intersect_shape(query)
 		selected_units = filter_units(units)
+		if drag_end.distance_to(drag_start) < 2 and selected_units.size() > 0:
+			print("Emulate click for this")
+			selected_units = [selected_units[0]]
+		update_selection()
 		cursor = drag_end
 
 		update()
@@ -151,7 +183,7 @@ func individual_unit_selection(event: InputEvent):
 			if is_instance_valid(bunny) == false:
 				bunny = null
 
-
+		update_selection()
 		drag_start = cursor - (mouse_click_area/2)
 		drag_end = cursor + (mouse_click_area / 2)
 		update()

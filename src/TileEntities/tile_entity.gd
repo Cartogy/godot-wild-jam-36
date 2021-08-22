@@ -78,3 +78,10 @@ func check_collision(amount: int, from: Cell, to: Cell):
 func _on_state_changed(next_state):
 	pass
 
+
+func set_selected():
+	$SelectedIndicator.visible = true
+
+func set_deselected():
+	$SelectedIndicator.visible = false
+
