@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource( 1 )
-res_cost = 8
+res_cost = 5
 tex = ExtResource( 2 )
 scene_path = "res://src/TileEntities/Bunnies/ScubaBunny/ScubaBunny.tscn"

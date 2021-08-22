@@ -3,4 +3,4 @@ class_name TreeResource
 
 func _init():
 	special_resource_name = "Tree"
-	amount = 10
+	amount = 5

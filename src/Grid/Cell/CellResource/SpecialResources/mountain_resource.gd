@@ -3,4 +3,4 @@ class_name MountainResource
 
 func _init():
 	special_resource_name = "Mountain"
-	amount = 15
+	amount = 5
