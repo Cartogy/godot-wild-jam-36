@@ -18,12 +18,15 @@ func attack():
 		if n.state_machine.current_state.name == "BNet":
 			send_bullet(direction)	
 	for e in entities_nearby:
-		var bunny_from_cell = e.cell
-		var direction = Vector2.ZERO
-		if bunny_from_cell.get_state() != "BNet":
-			direction = calculate_direction(cell.global_position, bunny_from_cell.global_position)
+		if is_instance_valid(e) == false:
+			entities_nearby.erase(e)
+		else:
+			var bunny_from_cell = e.cell
+			var direction = Vector2.ZERO
+			if bunny_from_cell.get_state() != "BNet":
+				direction = calculate_direction(cell.global_position, bunny_from_cell.global_position)
 
-			send_bullet(direction)
+				send_bullet(direction)
 
 func send_bullet(direction: Vector2):
 	if sent_bullet == false:

@@ -48,4 +48,5 @@ script = ExtResource( 3 )
 visible = false
 position = Vector2( 0, -15.91 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
