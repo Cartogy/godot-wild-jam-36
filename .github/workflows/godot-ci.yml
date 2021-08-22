@@ -6,7 +6,7 @@ on:
 
 env:
   GODOT_VERSION: 3.3.2
-  EXPORT_NAME: gwj-36
+  EXPORT_NAME: fluffland
 
 jobs:
   export-deploy-windows:
@@ -33,7 +33,7 @@ jobs:
         env:
             BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
             CHANNEL: windows
-            ITCH_GAME: gwj-36
+            ITCH_GAME: fluffland
             ITCH_USER: jonas1426
             PACKAGE: build/windows
 
@@ -62,7 +62,7 @@ jobs:
         env:
             BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
             CHANNEL: linux
-            ITCH_GAME: gwj-36
+            ITCH_GAME: fluffland
             ITCH_USER: jonas1426
             PACKAGE: build/linux
 
@@ -91,7 +91,7 @@ jobs:
         env:
             BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
             CHANNEL: web
-            ITCH_GAME: gwj-36 
+            ITCH_GAME: fluffland 
             ITCH_USER: jonas1426
             PACKAGE: build/web
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
@@ -129,6 +129,6 @@ jobs:
         env:
             BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
             CHANNEL: mac
-            ITCH_GAME: gwj-36
+            ITCH_GAME: fluffland
             ITCH_USER: jonas1426
             PACKAGE: build/mac
