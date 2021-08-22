@@ -153,6 +153,12 @@ func set_texture(tex: Texture):
 
 func remove_all_bunnies():
 	bunnies.remove_all_bunnies()
+
+func remove_bunny_amount(amount: int):
+	bunnies.delete_bunnies(amount)
+
+func has_bunnies():
+	return bunnies.has_bunnies()
 	
 	
 ###############

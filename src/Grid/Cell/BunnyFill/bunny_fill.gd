@@ -60,6 +60,9 @@ func add_bunny(center: Vector2, hex_coord: Vector2, bnet):
 func append_bunny(bunny):
 	bunnies_in_tile.append(bunny)
 
+func has_bunnies():
+	return bunnies_in_tile.size() > 0
+
 func place_bunny_on_cell(bunny):
 	var cell: Cell = get_owner()
 	var hex_center = cell.global_position
@@ -126,9 +129,20 @@ func remove_all_bunnies():
 	
 
 func delete_bunnies(amount: int):
-	for i in amount:
-		var bunny = bunnies_in_tile[i]
-		bunny.queue_free()
+	var index = 0
+	while bunnies_in_tile.size() > 0:
+		# No more bunnies to destroy
+		if index >= amount:
+
+			break
+		var b: BunnyBase = bunnies_in_tile.pop_front()
+		remove_bunny(b)
+		b.die()
+
+	var cell = get_owner()
+	if cell.has_structure() == false:
+		if cell.get_state() != "Water":
+			cell.available_cell()
 
 # Gets a position inside the cell
 func get_cell_position(center: Vector2, cell_size: Vector2, bunny_id: int, percentage: float, percentage_increase: float) -> Vector2:
