@@ -11,137 +11,137 @@
 [ext_resource path="res://assets/graphics/Scuba_Swim.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 160, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 192, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 6 )
-region = Rect2( 224, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 5 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 5 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 5 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 5 )
-region = Rect2( 160, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 5 )
-region = Rect2( 192, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 5 )
 region = Rect2( 224, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 160, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=30]
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 6 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 6 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=29]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "bunny_eat",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
 "loop": true,
 "name": "bunny",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
-"name": "scuba",
+"name": "buff",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
-"name": "buff",
+"name": "scuba",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
+"loop": true,
+"name": "bunny_eat",
 "speed": 5.0
 } ]
 
@@ -168,7 +168,7 @@ z_as_relative = false
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 310.681, 290.962 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "bunny"
 frame = 5
 playing = true
@@ -177,7 +177,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 633.422, 251.474 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "bunny"
 frame = 4
 playing = true
@@ -187,7 +187,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 687.398, 377.896 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "bunny"
 frame = 4
 playing = true
@@ -196,7 +196,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 362.338, 428.293 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "bunny"
 frame = 4
 playing = true
@@ -206,7 +206,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 286.743, 390.495 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "bunny_eat"
 frame = 1
 playing = true
@@ -215,7 +215,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 352.259, 352.698 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "bunny_eat"
 frame = 1
 playing = true
@@ -225,7 +225,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 541.247, 570.664 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "bunny_eat"
 playing = true
 script = ExtResource( 8 )
@@ -233,7 +233,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 660.91, 333.054 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "bunny_eat"
 frame = 7
 playing = true
@@ -242,7 +242,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 828.509, 187.648 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "scuba"
 frame = 4
 playing = true
@@ -252,7 +252,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 844.888, 384.196 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "scuba"
 frame = 3
 playing = true
@@ -261,7 +261,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 99.0146, 255.684 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "scuba"
 frame = 2
 playing = true
@@ -270,7 +270,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite12" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 266.584, 513.968 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "scuba"
 frame = 1
 playing = true
@@ -279,7 +279,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite13" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 410.215, 56.6163 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "scuba"
 playing = true
 flip_h = true
@@ -288,7 +288,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite14" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 450.533, 314.9 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "buff"
 frame = 1
 playing = true
@@ -298,7 +298,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite15" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 607.851, 303.39 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "buff"
 playing = true
 flip_h = true
@@ -307,7 +307,7 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite16" type="AnimatedSprite" parent="Bunnies"]
 position = Vector2( 366.324, 312.638 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 30 )
+frames = SubResource( 29 )
 animation = "buff"
 playing = true
 script = ExtResource( 8 )
@@ -415,10 +415,8 @@ margin_bottom = 222.0
 
 [node name="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 448.0
 margin_right = 576.0
-margin_bottom = 60.0
 
 [node name="AudioContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 238.0
