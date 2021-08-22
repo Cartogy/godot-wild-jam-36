@@ -28,6 +28,10 @@ func _ready():
 	Flow.loaded_level = self
 	load_level()
 
+	# setup bnet
+	bnet.actor_data.connect("update_pop", self, "bunnies_updated")
+	bnet.actor_data.connect("update_max_pop", self, "max_updated")
+
 func load_level():
 	var level_data = Flow.get_level_data()
 	if level_data != "":
@@ -104,6 +108,13 @@ func lost_level():
 	else:
 		return false
 
+func game_over():
+	AudioEngine.play_effect("lost")
+	print_debug("You lost")
+	Flow.lost_game()
+	stop_bnet()
+
+
 #################
 ## Cell notification
 #################
@@ -126,6 +137,18 @@ func bnet_gained():
 
 func won_level():
 	return current_map_info.consumed_all()
+
+################
+## BNet actor info
+###################
+
+func max_updated():
+	if bnet.actor_data.max_population < bnet.actor_data.total_population:
+		game_over()
+
+func bunnies_updated():
+	if bnet.actor_data.max_population < bnet.actor_data.total_population:
+		game_over()
 
 ##################
 ## Level Map Info
