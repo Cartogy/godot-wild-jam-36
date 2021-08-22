@@ -1,13 +1,15 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://src/Grid/Cell/CellResource/SpecialResources/mountain_resource.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/grass.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/desert_mountain.png" type="Texture" id=3]
 [ext_resource path="res://assets/graphics/mountain.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/desert.png" type="Texture" id=5]
 
 [resource]
 script = ExtResource( 1 )
 res_texture = ExtResource( 4 )
 consumed_texture = ExtResource( 2 )
 consumed_bnet_texture = ExtResource( 3 )
+consumed_stationary_texture = ExtResource( 5 )
 amount = 5

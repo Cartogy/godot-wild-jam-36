@@ -272,7 +272,10 @@ func _draw():
 func bnet_tex():
 	if resources.has_special_res():
 		var tex = resources.special_res.get_bnet_consumed_texture()
-		set_texture(tex)
+		if resources.special_res.consumed():
+			set_texture(resources.special_res.get_consumed_stationary_texture())
+		else:
+			set_texture(tex)
 	else:
 		set_texture(bnet_texture)
 
