@@ -88,6 +88,7 @@ func _process(delta):
 		var pixel_center = hex_converter.doublewidth_to_pixel(hex_coord, grid.origin, grid.size)
 		selected_structure.global_position = pixel_center
 
+		# Place den. Hard coded because just one uilding
 		if Input.is_action_just_pressed("left_click"):
 			if can_place_den(hex_coord):
 				if can_afford_building("den"):
@@ -95,8 +96,9 @@ func _process(delta):
 					var den = den_pack.instance()
 					var cell = grid.hexagon_coords[hex_coord.to_vector()]
 					b_net.add_structure(den, hex_coord.to_vector(), cell)
-					selected_structure.queue_free()
+					var old_cell = selected_structure
 					selected_structure = null
+					old_cell.queue_free()
 		elif Input.is_action_just_pressed("right_click"):
 			var old_struct = selected_structure
 			b_net.remove_child(selected_structure)
