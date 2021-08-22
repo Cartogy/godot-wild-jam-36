@@ -27,7 +27,7 @@ var selecting_upgrades: bool = false
 var bunny: Bunny
 
 var elapsed_time = 0.0
-
+var current_unit_upgrading: TileEntity
 
 onready var structures = {
 	"barracks": preload("res://src/Structures/BNetStructure/Barracks/Barracks.tscn"),
@@ -89,9 +89,12 @@ func _unhandled_input(event):
 
 				if selected_units.size() != 0:
 					selected_units = [selected_units[0]]
+					if current_unit_upgrading != null:
+						current_unit_upgrading.hide_upgrades()
+					current_unit_upgrading = selected_units[0]
 
 					var first_unit = selected_units[0]
-					if first_unit.has_method("show_upgrades"):
+					if current_unit_upgrading.has_method("show_upgrades"):
 						bunny = first_unit
 						first_unit.show_upgrades()
 						selecting_upgrades = true

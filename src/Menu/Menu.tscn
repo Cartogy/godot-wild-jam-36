@@ -48,12 +48,6 @@ __meta__ = {
 
 [node name="SettingsMenuTab" parent="CanvasLayer/TabContainer" instance=ExtResource( 4 )]
 visible = false
-margin_left = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
 
 [node name="LevelSelectTab" parent="CanvasLayer/TabContainer" instance=ExtResource( 5 )]
 visible = false
-margin_left = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
