@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/Menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://src/Menu/Tabs/Main/MainMenuTab.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://assets/graphics/Bunny_Eating.png" type="Texture" id=9]
 [ext_resource path="res://assets/graphics/Buff_Idle.png" type="Texture" id=10]
 [ext_resource path="res://src/Menu/Tabs/Main/RandomFrameAssignment.gd" type="Script" id=12]
-[ext_resource path="res://src/Menu/Tabs/Settings/settings_menu_tab.gd" type="Script" id=14]
 [ext_resource path="res://src/Level/MenuLevel.tscn" type="PackedScene" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -201,11 +200,9 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -288, -91 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-tab_type = 1
 
 [node name="MenuLevel" parent="CanvasLayer/TabContainer/CreditsTab" instance=ExtResource( 15 )]
 position = Vector2( 50, 100 )
@@ -220,6 +217,7 @@ position = Vector2( 310.681, 290.962 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "bunny"
+frame = 6
 playing = true
 script = ExtResource( 12 )
 
@@ -228,7 +226,7 @@ position = Vector2( 633.422, 251.474 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "bunny"
-frame = 7
+frame = 5
 playing = true
 flip_h = true
 script = ExtResource( 12 )
@@ -238,7 +236,7 @@ position = Vector2( 589.062, 328.71 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "bunny"
-frame = 7
+frame = 5
 playing = true
 script = ExtResource( 12 )
 
@@ -247,7 +245,7 @@ position = Vector2( 434.368, 327.5 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "bunny"
-frame = 7
+frame = 5
 playing = true
 flip_h = true
 script = ExtResource( 12 )
@@ -257,7 +255,7 @@ position = Vector2( 286.743, 390.495 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "bunny_eat"
-frame = 4
+frame = 2
 playing = true
 script = ExtResource( 12 )
 
@@ -266,7 +264,7 @@ position = Vector2( 352.259, 352.698 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "bunny_eat"
-frame = 4
+frame = 2
 playing = true
 flip_h = true
 script = ExtResource( 12 )
@@ -276,7 +274,7 @@ position = Vector2( 541.247, 570.664 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "bunny_eat"
-frame = 3
+frame = 1
 playing = true
 script = ExtResource( 12 )
 
@@ -285,7 +283,6 @@ position = Vector2( 660.91, 333.054 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "bunny_eat"
-frame = 2
 playing = true
 script = ExtResource( 12 )
 
@@ -294,7 +291,7 @@ position = Vector2( 828.509, 187.648 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "scuba"
-frame = 1
+frame = 5
 playing = true
 flip_h = true
 script = ExtResource( 12 )
@@ -304,6 +301,7 @@ position = Vector2( 844.888, 384.196 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "scuba"
+frame = 4
 playing = true
 script = ExtResource( 12 )
 
@@ -312,7 +310,7 @@ position = Vector2( 99.0146, 255.684 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "scuba"
-frame = 5
+frame = 3
 playing = true
 script = ExtResource( 12 )
 
@@ -321,7 +319,7 @@ position = Vector2( 266.584, 513.968 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "scuba"
-frame = 4
+frame = 2
 playing = true
 script = ExtResource( 12 )
 
@@ -330,7 +328,7 @@ position = Vector2( 410.215, 56.6163 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "scuba"
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 script = ExtResource( 12 )
@@ -340,7 +338,7 @@ position = Vector2( 436.996, 203.266 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "buff"
-frame = 4
+frame = 2
 playing = true
 flip_h = true
 script = ExtResource( 12 )
@@ -350,7 +348,7 @@ position = Vector2( 591.094, 204.056 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "buff"
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 script = ExtResource( 12 )
@@ -360,7 +358,7 @@ position = Vector2( 350.668, 312.638 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 33 )
 animation = "buff"
-frame = 3
+frame = 1
 playing = true
 script = ExtResource( 12 )
 
@@ -511,7 +509,7 @@ text = "Isabella Lau - Music Compoer & SFX"
 margin_top = 40.0
 margin_right = 259.0
 margin_bottom = 56.0
-text = "Willowblade - Programmer"
+text = "Willowblade - Programmer & Opportunist"
 __meta__ = {
 "_edit_use_anchors_": false
 }
