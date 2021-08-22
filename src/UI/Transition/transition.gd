@@ -4,9 +4,9 @@ onready var color_rect = $ColorRect
 onready var tween = $Tween
 
 func _ready():
-	GameFlow.register_overlay("transition", self)
+	Flow.transition = self
 
-func transition_to_dark(timeout: float = 2.0):
+func transition_to_dark(timeout: float = 1.2):
 	yield(transition_to_color(Color(0, 0, 0, 1), timeout), "completed")
 
 func transition_to_clear(timeout: float = 1.0):

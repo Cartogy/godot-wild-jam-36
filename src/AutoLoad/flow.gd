@@ -13,6 +13,7 @@ var pause_menu : Control = null
 var b_net_ui: Control = null
 var win_screen: Control = null
 var lose_screen: Control = null
+var transition: Control = null
 var b_net: BNet = null
 var grid = null
 
@@ -140,7 +141,13 @@ func won_game():
 func lost_game():
 	lose_screen.visible = true
 
+
+func restart_level():
+	yield(transition.transition_to_dark(), "completed")
+	start_level()
+
 func go_to_level_select():
 	menu_tab = "level"
+	yield(transition.transition_to_dark(), "completed")
 	change_scene_to(STATE.MENU)
 

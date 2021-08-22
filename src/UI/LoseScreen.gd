@@ -10,4 +10,4 @@ func _ready():
 
 
 func _on_restart_pressed():
-	Flow.start_level()
+	Flow.restart_level()
