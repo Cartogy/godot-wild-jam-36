@@ -15,6 +15,8 @@ func _ready():
 	_fill_upgrades(bunny_upgrades)
 	hide_upgrades()
 
+func showing_upgrades():
+	return upgrades.visible
 
 func show_upgrades():
 	upgrades.visible = true

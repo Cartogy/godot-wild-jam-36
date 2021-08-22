@@ -106,7 +106,8 @@ func _unhandled_input(event):
 			#dragging = true
 			#drag_start = get_global_mouse_position()
 		elif event.button_index == BUTTON_RIGHT and event.pressed:
-
+			if selected_units.size() == 1:
+				hide_upgrades()
 			move_units(selected_units, get_global_mouse_position())
 
 	# Display square while moving mouse
@@ -153,6 +154,9 @@ func drag_select(event: InputEventMouseButton):
 		update()
 		reset_box()
 
+func hide_upgrades():
+	for s in selected_units:
+		s.hide_upgrades()
 
 func reset_box():
 	cursor = Vector2.ZERO
