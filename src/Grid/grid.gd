@@ -154,6 +154,7 @@ func create_level_cell(cell_data: Dictionary, bnet: BNet, mnet: MNet):
 				mnet.add_structure(structure, hex_coord, cell)
 				structure.grid = self
 
+	cell.connect("get_resources", bnet.actor_data, "add_resources")
 	add_child(cell)
 	# Check if special res
 	if cell.get_state() == "Water":
