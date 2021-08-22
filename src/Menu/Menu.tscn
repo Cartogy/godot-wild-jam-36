@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://src/Menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://src/Menu/Tabs/Main/MainMenuTab.tscn" type="PackedScene" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://src/Menu/Tabs/Settings/SettingsMenuTab.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Menu/Tabs/LevelSelect/LevelSelectTab.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/theme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/graphics/Scuba_Swim.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/Bunny_Idle.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/Bunny_Eating.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/Buff_Idle.png" type="Texture" id=10]
+[ext_resource path="res://src/Menu/Tabs/Main/RandomFrameAssignment.gd" type="Script" id=12]
+[ext_resource path="res://src/Menu/Tabs/Settings/settings_menu_tab.gd" type="Script" id=14]
+[ext_resource path="res://src/Level/MenuLevel.tscn" type="PackedScene" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -14,6 +21,141 @@
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 8 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 8 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 8 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 8 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 8 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 8 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 10 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 7 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 7 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 7 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 9 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 9 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 9 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 9 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 9 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 9 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 9 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=33]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "bunny",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "buff",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "scuba",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "bunny_eat",
+"speed": 5.0
+} ]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -51,3 +193,462 @@ visible = false
 
 [node name="LevelSelectTab" parent="CanvasLayer/TabContainer" instance=ExtResource( 5 )]
 visible = false
+
+[node name="CreditsTab" type="MarginContainer" parent="CanvasLayer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -288, -91 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+tab_type = 1
+
+[node name="MenuLevel" parent="CanvasLayer/TabContainer/CreditsTab" instance=ExtResource( 15 )]
+position = Vector2( 50, 100 )
+scale = Vector2( 2, 2 )
+z_index = -26
+z_as_relative = false
+
+[node name="Bunnies" type="Node2D" parent="CanvasLayer/TabContainer/CreditsTab"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 310.681, 290.962 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "bunny"
+playing = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 633.422, 251.474 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "bunny"
+frame = 7
+playing = true
+flip_h = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 589.062, 328.71 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "bunny"
+frame = 7
+playing = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 434.368, 327.5 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "bunny"
+frame = 7
+playing = true
+flip_h = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 286.743, 390.495 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "bunny_eat"
+frame = 4
+playing = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 352.259, 352.698 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "bunny_eat"
+frame = 4
+playing = true
+flip_h = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 541.247, 570.664 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "bunny_eat"
+frame = 3
+playing = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 660.91, 333.054 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "bunny_eat"
+frame = 2
+playing = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 828.509, 187.648 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "scuba"
+frame = 1
+playing = true
+flip_h = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 844.888, 384.196 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "scuba"
+playing = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 99.0146, 255.684 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "scuba"
+frame = 5
+playing = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 266.584, 513.968 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "scuba"
+frame = 4
+playing = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 410.215, 56.6163 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "scuba"
+frame = 3
+playing = true
+flip_h = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite14" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 436.996, 203.266 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "buff"
+frame = 4
+playing = true
+flip_h = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite15" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 591.094, 204.056 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "buff"
+frame = 3
+playing = true
+flip_h = true
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite16" type="AnimatedSprite" parent="CanvasLayer/TabContainer/CreditsTab/Bunnies"]
+position = Vector2( 350.668, 312.638 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 33 )
+animation = "buff"
+frame = 3
+playing = true
+script = ExtResource( 12 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TabContainer/CreditsTab"]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.415686 )
+
+[node name="BackContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab"]
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+
+[node name="BackButton" type="Button" parent="CanvasLayer/TabContainer/CreditsTab/BackContainer"]
+margin_right = 128.0
+margin_bottom = 52.6
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 0
+text = "BACK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab"]
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+
+[node name="TitleHBox" type="HBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer"]
+margin_left = 465.0
+margin_right = 559.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="FrontLabel" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/TitleHBox"]
+margin_top = 2.0
+margin_right = 10.0
+margin_bottom = 18.0
+text = "~"
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/TitleHBox"]
+margin_left = 14.0
+margin_right = 80.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 4
+text = "CREDITS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackLabel" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/TitleHBox"]
+margin_left = 84.0
+margin_top = 2.0
+margin_right = 94.0
+margin_bottom = 18.0
+text = "~"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer"]
+margin_top = 24.0
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="_h_scroll2" type="HScrollBar" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer"]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="_h_scroll3" type="HScrollBar" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer"]
+visible = false
+margin_right = 12.0
+margin_bottom = 12.0
+max_value = 756.0
+page = 1024.0
+
+[node name="_v_scroll2" type="VScrollBar" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer"]
+visible = false
+margin_right = 12.0
+margin_bottom = 12.0
+max_value = 312.0
+page = 576.0
+
+[node name="_v_scroll3" type="VScrollBar" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer"]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer"]
+margin_right = 1024.0
+margin_bottom = 576.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+alignment = 1
+
+[node name="SectionHBox" type="HBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 172.0
+margin_right = 1024.0
+margin_bottom = 188.0
+
+[node name="FrontHSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/SectionHBox"]
+margin_right = 474.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/SectionHBox"]
+margin_left = 478.0
+margin_right = 545.0
+margin_bottom = 16.0
+text = "MADE BY"
+
+[node name="BackHSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/SectionHBox"]
+margin_left = 549.0
+margin_right = 1024.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 1024.0
+margin_bottom = 280.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer"]
+margin_left = 382.0
+margin_right = 641.0
+margin_bottom = 76.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer/MarginContainer2"]
+margin_right = 259.0
+margin_bottom = 76.0
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer"]
+margin_right = 259.0
+margin_bottom = 16.0
+text = "D4yz           - Pixel Artist"
+
+[node name="Label2" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer"]
+margin_top = 20.0
+margin_right = 259.0
+margin_bottom = 36.0
+text = "Isabella Lau - Music Compoer & SFX"
+
+[node name="Label3" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer"]
+margin_top = 40.0
+margin_right = 259.0
+margin_bottom = 56.0
+text = "Willowblade - Programmer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer"]
+margin_top = 60.0
+margin_right = 259.0
+margin_bottom = 76.0
+text = "Jonas          - Lead Programmer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 296.0
+margin_right = 1024.0
+margin_bottom = 312.0
+mouse_filter = 2
+custom_constants/separation = 16
+
+[node name="SectionHBox" type="HBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer"]
+margin_right = 1024.0
+margin_bottom = 16.0
+
+[node name="FrontHSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SectionHBox"]
+margin_right = 455.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SectionHBox"]
+margin_left = 459.0
+margin_right = 564.0
+margin_bottom = 16.0
+text = "PLAYTESTERS"
+
+[node name="BackHSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/AudioContainer/SectionHBox"]
+margin_left = 568.0
+margin_right = 1024.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 328.0
+margin_right = 1024.0
+margin_bottom = 404.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer2"]
+margin_left = 464.0
+margin_right = 559.0
+margin_bottom = 76.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer2/MarginContainer"]
+margin_right = 95.0
+margin_bottom = 76.0
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer"]
+margin_right = 95.0
+margin_bottom = 16.0
+text = "SpaghettiMan"
+
+[node name="Label2" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 95.0
+margin_bottom = 36.0
+text = "Phildjii"
+
+[node name="Label3" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer"]
+margin_top = 40.0
+margin_right = 95.0
+margin_bottom = 56.0
+text = "BackAt50Ft"
+
+[node name="Label4" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 95.0
+margin_bottom = 76.0
+text = "Bitron"
+
+[node name="LocaleContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 366.0
+margin_right = 1024.0
+margin_bottom = 366.0
+mouse_filter = 2
+custom_constants/separation = 16
+
+[node name="SectionHBox" type="HBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer"]
+visible = false
+margin_right = 896.0
+margin_bottom = 14.0
+
+[node name="FrontHSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer/SectionHBox"]
+margin_right = 408.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer/SectionHBox"]
+margin_left = 412.0
+margin_right = 484.0
+margin_bottom = 14.0
+text = "LANGUAGE"
+
+[node name="BackHSeparator" type="HSeparator" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer/SectionHBox"]
+margin_left = 488.0
+margin_right = 896.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="LanguageHBox" type="HBoxContainer" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer"]
+visible = false
+margin_left = 360.0
+margin_right = 536.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="PreviousButton" type="Button" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer/LanguageHBox"]
+margin_right = 20.0
+margin_bottom = 20.0
+text = "<"
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer/LanguageHBox"]
+margin_left = 24.0
+margin_top = 3.0
+margin_right = 152.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 128, 0 )
+text = "LOCALE"
+align = 1
+valign = 1
+
+[node name="NextButton" type="Button" parent="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer/LanguageHBox"]
+margin_left = 156.0
+margin_right = 176.0
+margin_bottom = 20.0
+text = ">"
+
+[connection signal="mouse_entered" from="CanvasLayer/TabContainer/CreditsTab/BackContainer/BackButton" to="CanvasLayer/TabContainer/CreditsTab" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer/LanguageHBox/PreviousButton" to="CanvasLayer/TabContainer/CreditsTab" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/TabContainer/CreditsTab/VBoxContainer/ScrollContainer/VBoxContainer/LocaleContainer/LanguageHBox/NextButton" to="CanvasLayer/TabContainer/CreditsTab" method="_on_button_mouse_entered"]
