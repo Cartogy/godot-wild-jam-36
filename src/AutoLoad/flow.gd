@@ -36,6 +36,7 @@ var level = null
 var loaded_level = null
 
 var selected_structure = null
+var hex_converter: HexConversion = HexConversion.new()
 
 onready var _options_loader := $OptionsLoader
 
@@ -76,6 +77,31 @@ func _unhandled_input(event : InputEvent):
 					selected_structure = null
 				else:
 					toggle_paused()
+
+func _process(delta):
+	if selected_structure != null:
+		var cursor = b_net.get_global_mouse_position()
+		
+		var hex_coord = grid.pixel_to_hex(b_net.get_global_mouse_position())
+		var pixel_center = hex_converter.doublewidth_to_pixel(hex_coord, grid.origin, grid.size)
+		selected_structure.global_position = pixel_center
+		
+		if Input.is_action_just_pressed("left_click"):
+			if can_place_den(hex_coord):
+				if can_afford_building("den"):
+					var den_pack = load(selected_structure.structure_scene_path)
+					var den = den_pack.instance()
+					var cell = grid.hexagon_coords[hex_coord.to_vector()]
+					b_net.add_structure(den, hex_coord.to_vector(), cell)
+					selected_structure.queue_free()
+					selected_structure = null
+		elif Input.is_action_just_pressed("right_click"):
+			var old_struct = selected_structure
+			b_net.remove_child(selected_structure)
+			old_struct.queue_free()
+			selected_structure = null
+			
+					
 
 func toggle_paused():
 	get_tree().paused = not get_tree().paused
@@ -120,13 +146,38 @@ func start_level() -> void:
 
 
 func can_afford_building(structure_name: String) -> bool:
-	return true
+	var noms_available = b_net.actor_data.total_resources
+	var den_price = 10
+	
+	if noms_available >= den_price:
+		b_net.actor_data.remove_resources(den_price)
+		
+		return true
+	else:
+		return false
+
 
 func select_structure(structure_name: String):
-	if can_afford_building(structure_name):
-		selected_structure = structure_name
-		print("Selected building ", structure_name)
+	selected_structure = load_den_display()
+	b_net.add_child(selected_structure)
+		
+		
 
+func load_den_display() -> TileDisplay:
+	var display_pack = load("res://src/MapMaker/TileDisplay/Cells/BNetDisplay.tscn")
+	var display = display_pack.instance()
+	
+	return display
+	
+func can_place_den(cursor: DoubleCoordinate):
+	var cell: Cell = grid.hexagon_coords[cursor.to_vector()]
+	
+	if cell.get_state() == "BNet" and cell.has_structure() == false:
+		return true
+	else:
+		return false
+	
+	
 
 func get_level_data():
 	if level == null:

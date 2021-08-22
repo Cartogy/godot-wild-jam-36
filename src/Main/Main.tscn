@@ -224,7 +224,6 @@ rect_min_size = Vector2( 86, 64 )
 texture = ExtResource( 5 )
 expand = true
 script = ExtResource( 7 )
-structure_name = "den"
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/BuildingTab/MarginContainer/VBoxContainer/Barracks"]
 margin_top = 52.0

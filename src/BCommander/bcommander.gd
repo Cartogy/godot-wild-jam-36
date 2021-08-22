@@ -165,6 +165,7 @@ func reset_box():
 	update()
 
 func structure_selected() -> bool:
+	return false
 	if Flow.selected_structure:
 		var cell_coordinate = hex_grid.pixel_to_hex(get_global_mouse_position())
 		if cell_coordinate == null:

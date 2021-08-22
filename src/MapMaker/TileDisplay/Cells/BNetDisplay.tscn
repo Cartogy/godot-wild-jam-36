@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/MapMaker/TileDisplay/TileDisplay.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/graphics/desert.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/den.png" type="Texture" id=2]
 
 [node name="BNetDisplay" instance=ExtResource( 1 )]
 cell_scene_path = "res://src/Grid/Cell/CellScenes/BNet.tscn"
